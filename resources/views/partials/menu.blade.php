@@ -44,14 +44,17 @@
                     </li>
                 </ul>
             </li>
+            {{-- ooooo --}}
+            
             <li class="nav-item">
-                <a href="{{ route("admin.products.index") }}" class="nav-link {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'active' : '' }}">
+                <a href="{{ route("admin.periodes.index") }}" class="nav-link {{ request()->is('admin/periodes') || request()->is('admin/periodes/*') ? 'active' : '' }}">
                     <i class="fas fa-cogs nav-icon">
 
                     </i>
-                    {{ trans('global.product.title') }}
+                    {{ trans('global.periode.title') }}
                 </a>
             </li>
+            {{-- oooooo --}}
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
