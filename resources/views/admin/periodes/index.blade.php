@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-@can('product_create')
+@can('periode_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.products.create") }}">
-                {{ trans('global.add') }} {{ trans('global.product.title_singular') }}
+            <a class="btn btn-success" href="{{ route("admin.periodes.create") }}">
+                {{ trans('global.add') }} {{ trans('global.periode.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('global.product.title_singular') }} {{ trans('global.list') }}
+        {{ trans('global.periode.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -23,13 +23,13 @@
 
                         </th>
                         <th>
-                            {{ trans('global.product.fields.name') }}
+                            {{ trans('global.periode.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('global.product.fields.description') }}
+                            {{ trans('global.periode.fields.date_debut') }}
                         </th>
                         <th>
-                            {{ trans('global.product.fields.price') }}
+                            {{ trans('global.periode.fields.date_fin') }}
                         </th>
                         <th>
                             &nbsp;
@@ -37,33 +37,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $key => $product)
-                        <tr data-entry-id="{{ $product->id }}">
+                    @foreach($periodes as $key => $periode)
+                        <tr data-entry-id="{{ $periode->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $product->name ?? '' }}
+                                {{ $periode->name ?? '' }}
                             </td>
                             <td>
-                                {{ $product->description ?? '' }}
+                                {{ $periode->date_debut ?? '' }}
                             </td>
                             <td>
-                                {{ $product->price ?? '' }}
+                                {{ $periode->date_fin ?? '' }}
                             </td>
                             <td>
-                                @can('product_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.products.show', $product->id) }}">
+                                @can('periode_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.periodes.show', $periode->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
-                                @can('product_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.products.edit', $product->id) }}">
+                                @can('periode_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.periodes.edit', $periode->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
-                                @can('product_delete')
-                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('periode_delete')
+                                    <form action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -85,7 +85,7 @@
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.products.massDestroy') }}",
+    url: "{{ route('admin.periodes.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -109,7 +109,7 @@
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('product_delete')
+@can('periode_delete')
   dtButtons.push(deleteButton)
 @endcan
 
