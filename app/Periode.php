@@ -12,7 +12,9 @@ class Periode extends Model
         'updated_at',
         'deleted_at',
     ];
-    
+    /**
+     * 
+     */
     protected $fillable = [
         'name',
         'date_debut',
