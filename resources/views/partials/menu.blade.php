@@ -12,7 +12,7 @@
             </li>
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle">
-                    <i class="fas fa-users nav-icon">
+                    <i class="fas fa-users-cog nav-icon">
 
                     </i>
                     {{ trans('global.userManagement.title') }}
@@ -64,6 +64,15 @@
                 </a>
             </li>
             {{-- aaaaaaaaaaaaa --}}
+            <li class="nav-item">
+                <a href="{{ route("admin.services.index") }}" class="nav-link {{ request()->is('admin/services') || request()->is('admin/services/*') ? 'active' : '' }}">
+                    <i class="fas fa-stethoscope nav-icon">
+
+                    </i>
+                    {{ trans('global.service.title') }}
+                </a>
+            </li>
+            {{-- ssssssssssssssssss --}}
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
