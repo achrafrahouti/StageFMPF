@@ -311,7 +311,7 @@ return [
     'deselect_all'                         => 'Deselect all',
     'team-management'                      => 'Teams',
     'team-management-singular'             => 'Team',
-    'site_title'                           => 'Laravel + CoreUI',
+    'site_title'                           => 'Fmpf Stages',
     'userManagement'                       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',
