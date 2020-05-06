@@ -27,11 +27,11 @@
                 <input type="date" id="date_debut" name="date_debut" class="form-control" value="{{ old('date_debut', isset($periode) ? $periode->date_debut : '') }}" step="0.01">
                 @if($errors->has('date_debut'))
                     <em class="invalid-feedback">
-                        {{ $errors->first('date_fin') }}
+                        {{ $errors->first('date_debut') }}
                     </em>
                 @endif
                 <p class="helper-block">
-                    {{ trans('global.periode.fields.date_fin_helper') }}
+                    {{ trans('global.periode.fields.date_debut_helper') }}
                 </p>
             </div>
 {{-- 4444444444444444444444444 --}}
