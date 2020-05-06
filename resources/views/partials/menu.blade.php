@@ -56,6 +56,15 @@
             </li>
             {{-- oooooo --}}
             <li class="nav-item">
+                <a href="{{ route("admin.groupes.index") }}" class="nav-link {{ request()->is('admin/groupes') || request()->is('admin/groupes/*') ? 'active' : '' }}">
+                    <i class="fas fa-users nav-icon">
+
+                    </i>
+                    {{ trans('global.groupe.title') }}
+                </a>
+            </li>
+            {{-- aaaaaaaaaaaaa --}}
+            <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
 

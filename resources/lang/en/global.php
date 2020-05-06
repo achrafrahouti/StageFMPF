@@ -311,7 +311,7 @@ return [
     'deselect_all'                         => 'Deselect all',
     'team-management'                      => 'Teams',
     'team-management-singular'             => 'Team',
-    'site_title'                           => 'Laravel + CoreUI',
+    'site_title'                           => 'Fmpf Stages',
     'userManagement'                       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',
@@ -355,7 +355,7 @@ return [
     ],
     'periode'                              => [
         'title'          => 'Périodes ',
-        'title_singular' => 'Périodes ',
+        'title_singular' => 'Période ',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => '',
@@ -365,6 +365,22 @@ return [
             'date_debut_helper'        => '',
             'date_fin'              =>'Date Fin',
             'date_fin_helper'        => '',
+            'created_at'         => 'Created At',
+            'created_at_helper'  => '',
+            'updated_at'         => 'Updated At',
+            'updated_at_helper'  => '',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => '',
+        ],
+    ],
+    'groupe'                              => [
+        'title'          => 'Groupes ',
+        'title_singular' => 'Groupe ',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => '',
+            'name'               => 'Name',
+            'name_helper'        => '',
             'created_at'         => 'Created At',
             'created_at_helper'  => '',
             'updated_at'         => 'Updated At',

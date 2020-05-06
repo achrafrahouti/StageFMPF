@@ -30,4 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('periodes','PeriodesController');
 
+    Route::delete('groupes/destroy', 'GroupesController@massDestroy')->name('groupes.massDestroy');
+
+    Route::resource('groupes','GroupesController');
+
 });
