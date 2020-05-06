@@ -7,12 +7,13 @@ class PermissionsTableSeeder extends Seeder
 {
     public function run()
     {
-        $permissions = [[
-            'id'         => '1',
-            'title'      => 'user_management_access',
-            'created_at' => '2019-04-15 19:14:42',
-            'updated_at' => '2019-04-15 19:14:42',
-        ],
+        $permissions = [
+            [
+                'id'         => '1',
+                'title'      => 'user_management_access',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
             [
                 'id'         => '2',
                 'title'      => 'permission_create',
@@ -162,7 +163,38 @@ class PermissionsTableSeeder extends Seeder
                 'title'      => 'groupe_access',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42', 
-            ]];
+            ],
+            [
+                'id'         => '27',
+                'title'      => 'service_create',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '28',
+                'title'      => 'service_edit',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '29',
+                'title'      => 'service_show',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '30',
+                'title'      => 'service_delete',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '31',
+                'title'      => 'service_access',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+        ];
 
         Permission::insert($permissions);
     }

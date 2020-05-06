@@ -34,4 +34,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('groupes','GroupesController');
 
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+
+    Route::resource('services','ServicesController');
+
 });
