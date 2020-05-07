@@ -194,6 +194,37 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42', 
             ],
+            [
+                'id'         => '32',
+                'title'      => 'stage_create',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '33',
+                'title'      => 'stage_edit',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '34',
+                'title'      => 'stage_show',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '35',
+                'title'      => 'stage_delete',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '36',
+                'title'      => 'stage_access',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            
         ];
 
         Permission::insert($permissions);

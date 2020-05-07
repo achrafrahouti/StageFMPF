@@ -38,4 +38,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('services','ServicesController');
 
+    Route::delete('stages/destroy', 'StagesController@massDestroy')->name('stages.massDestroy');
+
+    Route::resource('stages','StagesController');
+
 });

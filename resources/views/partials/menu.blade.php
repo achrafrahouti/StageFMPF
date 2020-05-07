@@ -73,6 +73,16 @@
                 </a>
             </li>
             {{-- ssssssssssssssssss --}}
+            {{-- aaaaaaaaaaaaa --}}
+            <li class="nav-item">
+                <a href="{{ route("admin.stages.index") }}" class="nav-link {{ request()->is('admin/stages') || request()->is('admin/stages/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{ trans('global.stage.title') }}
+                </a>
+            </li>
+            {{-- ssssssssssssssssss --}}
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
