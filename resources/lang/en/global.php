@@ -409,4 +409,22 @@ return [
             'deleted_at_helper'  => '',
         ],
     ],
+    'stage'                              => [
+        'title'          => 'Stages ',
+        'title_singular' => 'Stage ',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => '',
+            'name'               => 'Name',
+            'name_helper'        => '',
+            'services'            =>'Services',
+            'services_helper'        => '',
+            'created_at'         => 'Created At',
+            'created_at_helper'  => '',
+            'updated_at'         => 'Updated At',
+            'updated_at_helper'  => '',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => '',
+        ],
+    ],
 ];

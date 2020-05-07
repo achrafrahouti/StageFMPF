@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.role.title') }}
+        {{ trans('global.show') }} {{ trans('global.stage.title') }}
     </div>
 
     <div class="card-body">
@@ -11,21 +11,20 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.role.fields.title') }}
+                        {{ trans('global.stage.fields.name') }}
                     </th>
                     <td>
-                        {{ $role->title }}
+                        {{ $stage->name }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        Permissions
+                        Services
                     </th>
                     <td>
-                        @foreach($role->permissions as $id => $permissions)
-                            <span class="label label-info label-many">{{ $permissions->title }}</span>
-                            {{ '|' }}
-                        @endforeach
+                        {{-- @foreach($stage->service as $id => $services) --}}
+                            <span class="label label-info label-many">{{ $stage->service->name }}</span>
+                        {{-- @endforeach --}}
                     </td>
                 </tr>
             </tbody>

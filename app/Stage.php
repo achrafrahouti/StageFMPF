@@ -4,25 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Stage extends Model
 {
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 
     protected $fillable = [
         'name',
-        'capacite',
-        'lieu',
+        'service_id',
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 
-    public function stages()
+    public function service()
     {
-        return $this->hasMany(Stage::class);
+        return $this->belongsTo(Service::class);
     }
 }
