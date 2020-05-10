@@ -11,13 +11,15 @@ class Groupe extends Model
         'updated_at',
         'deleted_at',
     ];
-    /**
-     * FOR TEST BRANCHE
-     */
     protected $fillable = [
         'name',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function stagaires()
+    {
+        return $this->hasMany('App\Stagaire', 'groupe_id');
+    }
 }

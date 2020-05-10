@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             ServicesSeeder::class,
+            EtudiantSeeder::class,
+            GroupeSeeder::class,
+            StageSeeder::class,
+            StagaireSeeder::class,
         ]);
     }
 }

@@ -37,6 +37,30 @@ class ServicesSeeder extends Seeder
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
+            [
+                'id'         => '4',
+                'name'       => 'Urgance',
+                'capacite'   => '6',
+                'lieu'       => 'CHU FES',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
+            [
+                'id'         => '5',
+                'name'       => 'LAbo',
+                'capacite'   => '30',
+                'lieu'       => 'CHU FES',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
+            [
+                'id'         => '6',
+                'name'       => 'Chirurgie',
+                'capacite'   => '1',
+                'lieu'       => 'CHU FES',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
         ];
         Service::insert($services);
     }
