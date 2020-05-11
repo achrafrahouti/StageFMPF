@@ -63,4 +63,38 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    public function hasRole($role)
+    {
+        if($this->roles()->where('title',$role)->first()){
+            return true;
+        }
+        return false;
+    }
+
+    public function permissions()
+    {
+        return $this->roles->map->permissions->flatten()->pluck('title')->unique();
+    }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('Admin');
+    }
+    public function isUser()
+    {
+        return $this->hasRole('User');
+    }
+    public function isEtudiant()
+    {
+        return $this->hasRole('Etudiant');
+    }
+    public function isSecretaire()
+    {
+        return $this->hasRole('Secretaire');
+    }
+    public function isEncadreant()
+    {
+        return $this->hasRole('Encadrant');
+    }
+    
 }
