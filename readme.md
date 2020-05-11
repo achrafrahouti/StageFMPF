@@ -12,20 +12,25 @@ periodes terminer
 
 ### Admin
 
+is
 __admin@admin.com__
 
 ### Etudiant
 
+is
 __etudiant@etudiant.com__
 
 ### Secretaire
 
+is
 __secretaire@secretaire.com__
 
 ### Encadrant
 
+is
 __encadrant@encadrant.com__
 
 ### Passwords
 
+is
 __password__
