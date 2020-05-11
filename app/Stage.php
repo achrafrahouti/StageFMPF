@@ -25,6 +25,6 @@ class Stage extends Model
 
     public function lignestages()
     {
-        return $this->belongsToMany('App\Stagaire', 'notes', 'stage_id', 'stagaire_id');
+        return $this->belongsToMany('App\Stagaire', 'notes', 'stage_id', 'stagaire_id')->withPivot('note');
     }
 }

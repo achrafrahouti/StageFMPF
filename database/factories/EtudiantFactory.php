@@ -9,8 +9,8 @@ use Faker\Generator as Faker;
 $factory->define(Etudiant::class, function (Faker $faker) {
     return [
         'cne' => $faker->randomNumber(8),
-        'nom' => $faker->name,
-        'prenom' => $faker->name,
+        'nom' => $faker->firstName,
+        'prenom' => $faker->lastName,
 
     ];
 });

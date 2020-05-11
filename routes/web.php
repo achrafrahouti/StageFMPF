@@ -8,7 +8,7 @@ Route::redirect('/', '/login');
 Route::redirect('/home', '/admin');
 
 Auth::routes(['register' => false]);
-
+Route::get('/notes','NotesController@index');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
