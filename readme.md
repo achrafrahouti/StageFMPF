@@ -10,10 +10,10 @@ periodes terminer
 
 ## Users
 
-__admin@admin.com__
-__etudiant@etudiant.com__
-__secretaire@secretaire.com__
-__encadrant@encadrant.com__
+For Admin __admin@admin.com__
+For Etudiant __etudiant@etudiant.com__
+For Secretaire __secretaire@secretaire.com__
+For Encadrant __encadrant@encadrant.com__
 
 ### Passwords
 
