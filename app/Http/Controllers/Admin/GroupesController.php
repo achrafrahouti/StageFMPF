@@ -10,7 +10,13 @@ use App\Http\Requests\UpdateGroupeRequest;
 use Illuminate\Http\Request;
 
 class GroupesController extends Controller
+
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('role:ROLE_ADMIN');
+    }
     public function index()
     {
         abort_unless(\Gate::allows('groupe_access'), 403);

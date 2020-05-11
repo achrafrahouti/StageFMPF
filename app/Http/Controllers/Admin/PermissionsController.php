@@ -10,6 +10,12 @@ use App\Permission;
 
 class PermissionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('role:ROLE_ADMIN');
+    }
+    
     public function index()
     {
         abort_unless(\Gate::allows('permission_access'), 403);

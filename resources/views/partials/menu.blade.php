@@ -10,6 +10,7 @@
                     {{ trans('global.dashboard') }}
                 </a>
             </li>
+            @if ( Auth::user()->isAdmin())
             <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle">
                     <i class="fas fa-users-cog nav-icon">
@@ -44,6 +45,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
             {{-- ooooo --}}
             
             <li class="nav-item">
