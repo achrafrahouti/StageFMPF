@@ -311,7 +311,7 @@ return [
     'deselect_all'                         => 'Deselect all',
     'team-management'                      => 'Teams',
     'team-management-singular'             => 'Team',
-    'site_title'                           => 'Fmpf notes',
+    'site_title'                           => 'Fmpf Notes',
     'userManagement'                       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',
