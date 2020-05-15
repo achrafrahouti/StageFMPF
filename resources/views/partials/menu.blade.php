@@ -19,7 +19,7 @@
                     {{ trans('global.userManagement.title') }}
                 </a>
                 <ul class="nav-dropdown-items">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                             <i class="fas fa-unlock-alt nav-icon">
 
@@ -34,7 +34,7 @@
                             </i>
                             {{ trans('global.role.title') }}
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                             <i class="fas fa-user nav-icon">
