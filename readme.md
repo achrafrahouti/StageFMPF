@@ -14,15 +14,15 @@ pour des commande bash
 
 - lancer git et excuter `cd /c/xampp/htdocs`
 - Cloner le repo  `git clone https://github.com/achrafrahouti/StageFMPF.git projet`
-- acheminer `cd` a l'intereiure de repertoire
+- acheminer `cd` a l'intereiure de repertoire `projet`
 - excuter `composer install`
 - excuter `cp .env.example .env`
 - excuter `php artisan key:generate`
-- Configurer les cordonner de base de donner dans le fichier  `.env`
+- Configurer les coordonner de base de donner dans le fichier  `.env`
 
-DB_DATABASE=database_name
-DB_USERNAME=root //user
-DB_PASSWORD=     //password
+-- DB_DATABASE=database_name
+-- DB_USERNAME=root //user
+-- DB_PASSWORD=     //password
 
 - excuter `php artisan serve`
 - consulter le projet __http://127.0.0.1:8000__
