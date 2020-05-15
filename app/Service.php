@@ -25,4 +25,8 @@ class Service extends Model
     {
         return $this->hasMany(Stage::class);
     }
+    public function secretaire()
+    {
+        return $this->belongsTo('App\Secretaire');
+    }
 }
