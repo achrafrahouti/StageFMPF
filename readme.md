@@ -1,12 +1,32 @@
 # Stage fmpf fes
 
-## application web  gestion des stagaire
+## composant pour tester le projet
 
-Realiser par __achraf rahouti__ and __abdo sabri__
+### xampp ou wamp
 
-## Periodes
+Servere et  sql et php
 
-periodes terminer
+### git
+
+pour des commande bash
+
+
+## Installation
+
+- lancer git et excuter `cd /c/xampp/htdocs`
+- Cloner le repo  `git clone https://github.com/achrafrahouti/StageFMPF.git projet` 
+- acheminer `cd` a l'intereiure de repertoire
+- excuter `composer install`
+- excuter `cp .env.example .env`
+- excuter `php artisan key:generate`
+- Configurer les cordonner de base de donner dans le fichier  `.env`
+
+DB_DATABASE=database_name
+DB_USERNAME=root //user
+DB_PASSWORD=     //password
+
+- excuter `php artisan serve`
+- consulter le projet __http://127.0.0.1:8000__
 
 ## Users
 
