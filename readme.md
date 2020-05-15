@@ -10,11 +10,10 @@ Servere et  sql et php
 
 pour des commande bash
 
-
 ## Installation
 
 - lancer git et excuter `cd /c/xampp/htdocs`
-- Cloner le repo  `git clone https://github.com/achrafrahouti/StageFMPF.git projet` 
+- Cloner le repo  `git clone https://github.com/achrafrahouti/StageFMPF.git projet`
 - acheminer `cd` a l'intereiure de repertoire
 - excuter `composer install`
 - excuter `cp .env.example .env`
