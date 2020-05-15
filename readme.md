@@ -20,9 +20,9 @@ pour des commande bash
 - excuter `php artisan key:generate`
 - Configurer les coordonner de base de donner dans le fichier  `.env`
 
--- DB_DATABASE=database_name
--- DB_USERNAME=root //user
--- DB_PASSWORD=     //password
+`DB_DATABASE=database_name`
+`DB_USERNAME=root //user`
+`DB_PASSWORD=     //password`
 
 - excuter `php artisan serve`
 - consulter le projet __http://127.0.0.1:8000__
