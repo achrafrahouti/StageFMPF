@@ -10,6 +10,10 @@ Servere et  sql et php
 
 pour des commande bash
 
+## composer
+
+gestionnaire de dependaces libre ecrit en php
+
 ## Installation
 
 - lancer git et excuter `cd /c/xampp/htdocs`
