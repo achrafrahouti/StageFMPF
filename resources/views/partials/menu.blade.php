@@ -86,6 +86,25 @@
             </li>
             {{-- ssssssssssssssssss --}}
             <li class="nav-item">
+                <a href="{{ route("stagaire.notes.index") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{ trans('global.note.title') }}
+                </a>
+            </li>
+            {{-- ssssssssssssssssss --}}
+
+            <li class="nav-item">
+                <a href="{{ route("stagaire.notes.choix") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{ 'Saisir les '.trans('global.note.title') }}
+                </a>
+            </li>
+            {{-- ssssssssssssssssss --}}
+            <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
 
@@ -93,6 +112,7 @@
                     {{ trans('global.logout') }}
                 </a>
             </li>
+            
         </ul>
 
         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">

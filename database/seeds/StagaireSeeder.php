@@ -43,6 +43,26 @@ class StagaireSeeder extends Seeder
                 'etudiant_id'=>'6',
                 'groupe_id'=>'3'
             ],
+            [
+                'id'=> '7',
+                'etudiant_id'=>'7',
+                'groupe_id'=>'4'
+            ],
+            [
+                'id'=> '8',
+                'etudiant_id'=>'8',
+                'groupe_id'=>'4'
+            ],
+            [
+                'id'=> '9',
+                'etudiant_id'=>'9',
+                'groupe_id'=>'4'
+            ],
+            [
+                'id'=> '10',
+                'etudiant_id'=>'10',
+                'groupe_id'=>'4'
+            ],
             ];
 
             // sync stages with stagaire and insert notes

@@ -26,6 +26,15 @@
                             {{ trans('global.groupe.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('global.groupe.fields.groupe_tot') }}
+                        </th>
+                        <th>
+                            {{ trans('global.groupe.fields.groupe_sh') }}
+                        </th>
+                        <th>
+                            {{ trans('global.groupe.fields.groupe_sgh') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -38,6 +47,15 @@
                             </td>
                             <td>
                                 {{ $groupe->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $groupe->groupe_tot ?? '' }}
+                            </td>
+                            <td>
+                                {{ $groupe->groupe_sh ?? '' }}
+                            </td>
+                            <td>
+                                {{ $groupe->groupe_sgh ?? '' }}
                             </td>
                             <td>
                                 @can('groupe_show')

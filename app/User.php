@@ -96,5 +96,10 @@ class User extends Authenticatable
     {
         return $this->hasRole('Encadrant');
     }
-    
+
+    protected $with='profile';
+    public function profile()
+    {
+        return $this->morphTo();
+    }
 }

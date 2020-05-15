@@ -8,8 +8,13 @@ Route::redirect('/', '/login');
 Route::redirect('/home', '/admin');
 
 Auth::routes(['register' => false]);
-Route::get('/notes','NotesController@index');
 
+Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire','middleware'=>['auth']], function () {
+    Route::get('notes','NotesController@index')->name('notes.index')->middleware('role:etudiant');
+    Route::get('notes/choix','NotesController@choix')->name('notes.choix');
+    Route::get('notes/create','NotesController@create')->name('notes.create');
+    Route::post('notes','NotesController@store')->name('notes.store');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');

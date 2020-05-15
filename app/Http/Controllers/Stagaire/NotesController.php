@@ -1,13 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Stagaire;
 
+use App\Groupe;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Stagaire;
 use App\Stage;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {
+
+
+    public function __invoke()
+    {
+        
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,17 +25,34 @@ class NotesController extends Controller
      */
     public function index()
     {
-        return view('notes.index');
+        //
+
+        $user=Auth::user();
+        // dd($user);
+        return view('stagaire.notes.index',compact('user'));
     }
+
+    public function choix()
+    {
+        $groupes=Groupe::all();
+        $stages=Auth::user()->profile->service->stages;
+        return view('stagaire.notes.choix',compact('groupes','stages'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $groupe=$request['groupe'];
+        $user=Auth::user();
+        $stage=Stage::where('id',$request['stage'])->first();
+        $stagaires=Stagaire::where('groupe_id',$groupe)->get();
+        return view('stagaire.notes.create',compact('stage','stagaires'));
+
     }
 
     /**
@@ -36,7 +63,22 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /**
+         * Authurize
+         * 
+         */
+        
+        $stage=Stage::where('id',$request->stage)->first()->id;
+        $stagaires=Stagaire::find($request->groupe);
+        
+       foreach ($stagaires as  $stagaire) {
+           $note=$request->notes[$stagaire->id];
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['note'=>$note]]);
+        }   
+        /**
+         * reste feedback
+         */
+        return redirect(route('stagaire.notes.choix'));
     }
 
     /**

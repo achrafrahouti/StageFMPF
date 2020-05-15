@@ -29,4 +29,9 @@ class Stagaire extends Model
     {
         return $this->belongsToMany('App\Stage', 'notes', 'stagaire_id', 'stage_id')->withPivot('note');
     }
+
+    public function user()
+    {
+        return $this->morphOne('App\User','profile');
+    }
 }

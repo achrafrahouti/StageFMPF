@@ -9,13 +9,14 @@ class Groupe extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
     protected $fillable = [
         'name',
+        'groupe_tot',
+        'groupe_sh',
+        'geoupe_sgh',
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 
     public function stagaires()

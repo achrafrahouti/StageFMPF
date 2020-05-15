@@ -23,8 +23,13 @@ class Stage extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function lignestages()
+    public function stagaires()
     {
         return $this->belongsToMany('App\Stagaire', 'notes', 'stage_id', 'stagaire_id')->withPivot('note');
+    }
+
+    public function secretaire()
+    {
+        return $this->belongsTo('App\Secretaire', 'secretaire_id');
     }
 }

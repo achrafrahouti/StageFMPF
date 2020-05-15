@@ -17,14 +17,13 @@ class StageSeeder extends Seeder
         [
         'id' => '1',
         'name'=>'Chirurgie A',
-        'service_id'=>'6',
-        'created_at'=> '2019-04-15 19:14:42',
+        'service_id'=>'1',        'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
         [
         'id' => '2',
         'name'=>'Chirurgie B',
-        'service_id'=>'6',
+        'service_id'=>'1',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
@@ -38,7 +37,7 @@ class StageSeeder extends Seeder
         [
         'id' => '4',
         'name'=>'LAbo 1',
-        'service_id'=>'5',
+        'service_id'=>'5',        
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
