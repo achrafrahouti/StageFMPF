@@ -28,6 +28,7 @@ gestionnaire de dependaces libre ecrit en php
 `DB_USERNAME=root //user`
 `DB_PASSWORD=     //password`
 
+- excuter `php artisan migrate --seed`
 - excuter `php artisan serve`
 - consulter le projet __http://127.0.0.1:8000__
 
