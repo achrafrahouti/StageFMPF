@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Stage extends Model
 {
@@ -31,5 +32,14 @@ class Stage extends Model
     public function secretaire()
     {
         return $this->belongsTo('App\Secretaire', 'secretaire_id');
+    }
+    public function periodes()
+    {
+        return $this->belongsToMany('App\Stage','stage_groupe_periode','periode_id','stage_id')->wherePivot('groupe_id');
+    }
+
+    public function groupes()
+    {
+        return $this->belongsToMany('App\Groupe', 'stage_groupe_periode', 'stage_id', 'groupe_id')->withPivot('periode_id');
     }
 }

@@ -452,5 +452,10 @@ return [
             'deleted_at_helper'  => '',
         ],
     ],
+    'cursus'                              => [
+        'title'          => 'Cursus des Stages ',
+        'title_singular' => 'Stage ',
+    ],
+    
     
 ];

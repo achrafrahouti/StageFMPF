@@ -23,4 +23,14 @@ class Groupe extends Model
     {
         return $this->hasMany('App\Stagaire', 'groupe_id');
     }
+
+    public function stages()
+    {
+        return $this->belongsToMany('App\Stage','stage_groupe_periode','groupe_id','stage_id')->withPivot('periode_id');
+    }
+
+    public function periodes()
+    {
+        return $this->belongsToMany('App\Periode','stage_groupe_periode','groupe_id','periode_id')->withPivot('stage_id');
+    }
 }
