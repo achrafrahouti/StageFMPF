@@ -8,12 +8,17 @@
             @if (Auth::user()->isEtudiant())
             <div class="card">
                 <div class="card-header">
-                   <h4 class="text-info"> {{ trans('global.cursus.title') }}</h4>
-                   <div class="card-body custom-radio bg-info">
-                   <center class="text-danger font-italic h2">{{ ' Votre Groupe  ' }}{{ $groupe->groupe_tot. '.'.$groupe->groupe_sgh }}</center>
-                </div>
+                   <h4 class="text-primary"> Profile</h4>
                 </div>   
                 <div class="card-body">
+                    <h4 class="text-info">Information Personnele</h4>
+                    <ul class="list-group-horizontal">
+                        <li class="list-group-item list-group-item-primary"><h4 class="fas fa-id-card nav-icon">{{ ' CNE    :' }} {{ Auth::user()->profile->etudiant->cne }}</h4></li>
+                        <li class="list-group-item list-group-item-primary"><h4 class="fas fa-portrait nav-icon">{{ ' Nom    :' }} {{ Auth::user()->profile->etudiant->nom }}</h4></li>
+                        <li class="list-group-item list-group-item-primary"><h4 class="fas fa-portrait nav-icon">{{ ' Prenom :' }} {{ Auth::user()->profile->etudiant->prenom }}</h4></li>
+                        <li class="list-group-item list-group-item-primary"><h4 class="fas fa-clone nav-icon">{{ ' Groupe :' }} {{ Auth::user()->profile->groupe->groupe_tot.'.'.Auth::user()->profile->groupe->groupe_sgh }}</h4></li>
+                    </ul>
+                    <h4 class="text-info">{{ trans('global.cursus.title') }}</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover datatable">
                             <thead>
