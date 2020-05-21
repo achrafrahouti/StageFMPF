@@ -9,9 +9,7 @@ class HomeController
 {
     public function index()
     {
-        $user=Auth::user()->profile;
-        $groupe=$user->groupe;
-        $stages=$groupe->stages;
-        return view('home',compact('stages','groupe','user'));
+    
+        return view('home');
     }
 }

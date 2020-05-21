@@ -6,6 +6,11 @@
     <div class="row">
         <div class="col-lg-12">
             @if (Auth::user()->isEtudiant())
+            @php
+                        $user=Auth::user()->profile;
+                        $groupe=$user->groupe;
+                        $stages=$groupe->stages;
+            @endphp
             <div class="card">
                 <div class="card-header">
                    <h4 class="text-primary"> Profile</h4>
