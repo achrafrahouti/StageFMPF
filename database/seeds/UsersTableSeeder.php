@@ -10,20 +10,13 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        $secretaire=[[
-            'id'=>1,
-            'created_at'     => '2019-04-15 19:13:32',
-            'updated_at'     => '2019-04-15 19:13:32',
-
-        ]];
-        Secretaire::insert($secretaire);
         $users = [[
             'id'             => 1,
             'name'           => 'Admin',
             'email'          => 'admin@admin.com',
             'password'       => '$2y$10$imU.Hdz7VauIT3LIMCMbsOXvaaTQg6luVqkhfkBcsUd.SJW2XSRKO',
-            'profile_type'   =>null,
-            'profile_id'     =>null,
+            'profile_type'   =>'App\Admin',
+            'profile_id'     =>'1',
             'remember_token' => null,
             'created_at'     => '2019-04-15 19:13:32',
             'updated_at'     => '2019-04-15 19:13:32',
@@ -58,7 +51,7 @@ class UsersTableSeeder extends Seeder
             'name'           => 'Encadrant',
             'email'          => 'encadrant@encadrant.com',
             'password'       => Hash::make('password'),
-            'profile_type'   =>null,
+            'profile_type'   =>'App\Encadrant',
             'profile_id'     =>null,
             'remember_token' => null,
             'created_at'     => '2019-04-15 19:13:32',

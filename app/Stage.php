@@ -29,10 +29,6 @@ class Stage extends Model
         return $this->belongsToMany('App\Stagaire', 'notes', 'stage_id', 'stagaire_id')->withPivot('note');
     }
 
-    public function secretaire()
-    {
-        return $this->belongsTo('App\Secretaire', 'secretaire_id');
-    }
     public function periodes()
     {
         return $this->belongsToMany('App\Stage','stage_groupe_periode','periode_id','stage_id')->wherePivot('groupe_id');

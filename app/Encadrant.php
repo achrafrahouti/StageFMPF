@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Secretaire extends Model
+class Encadrant extends Model
 {
-
     protected $fillable = [
         'nom',
         'prenom',
@@ -14,14 +13,14 @@ class Secretaire extends Model
         'created_at',
         'updated_at',
     ];
-    public function user()
-    {
-        return $this->morphOne('App\User','profile');
-    }
+
 
     public function service()
     {
         return $this->belongsTo('App\Service');
     }
-
+    public function user()
+    {
+        return $this->morphOne('App\User','profile');
+    }
 }

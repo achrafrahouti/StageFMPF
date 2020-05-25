@@ -33,6 +33,9 @@ class StorePeriodeRequest extends FormRequest
             'date_fin' => [
                 'required',
             ],
+            'niveau_id'=>[
+                'required',
+            ],
         ];
     }
 }

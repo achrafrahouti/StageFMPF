@@ -21,6 +21,25 @@
                     {{ trans('global.periode.fields.name_helper') }}
                 </p>
             </div>
+            {{-- //////////////////////////////// --}}
+            <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
+                <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}*</label>
+                <select name="niveau_id" id="niveau_id" class="form-control select2" >
+                    @foreach($niveaux as $id => $niveau)
+                        <option value="{{ $niveau->id }}">
+                            {{ $niveau->liblle }}
+                        </option>
+                    @endforeach
+                </select>
+                @if($errors->has('niveau_id'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('niveau_id') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('global.periode.fields.niveau_id_helper') }}
+                </p>
+            </div>
 {{-- 444444444444444444444 --}}
             <div class="form-group {{ $errors->has('date_debut') ? 'has-error' : '' }}">
                 <label for="date_debut">{{ trans('global.periode.fields.date_debut') }}</label>

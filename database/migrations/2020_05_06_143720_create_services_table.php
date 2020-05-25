@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('capacite');
-            $table->unsignedBigInteger('secretaire_id')->nullable();
-            $table->foreign('secretaire_id')->references('id')->on('secretaires');
+            // $table->unsignedBigInteger('secretaire_id')->nullable();
+            // $table->foreign('secretaire_id')->references('id')->on('secretaires');
             $table->string('lieu');
             $table->timestamps();
             $table->softDeletes();

@@ -20,6 +20,7 @@ class Periode extends Model
         'name',
         'date_debut',
         'date_fin',
+        'niveau_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -36,6 +37,11 @@ class Periode extends Model
     public function groupes()
     {
         return $this->belongsToMany('App\Stage','stage_groupe_periode','periode_id','groupe_id')->withPivot('stage_id');
+    }
+
+    public function niveau()
+    {
+        return $this->belongsTo('App\Niveau');
     }
 
 }
