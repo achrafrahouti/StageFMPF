@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@can('groupe_create')
+  @can('groupe_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.groupes.create") }}">
@@ -8,13 +8,13 @@
             </a>
         </div>
     </div>
-@endcan
-<div class="card">
-    <div class="card-header">
+  @endcan
+ <div class="card">
+     <div class="card-header">
         {{ trans('global.groupe.title_singular') }} {{ trans('global.list') }}
-    </div>
+     </div>
 
-    <div class="card-body">
+     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
                 <thead>
@@ -75,15 +75,15 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
-                            </td>
+                             </td>
 
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+                         </tr>
+                     @endforeach
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>
 @section('scripts')
 @parent
 <script>

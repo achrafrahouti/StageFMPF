@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyPeriodeRequest;
 use App\Http\Requests\StorePeriodeRequest;
 use App\Http\Requests\UpdatePeriodeRequest;
+use App\Niveau;
 use Illuminate\Http\Request;
 use App\Periode;
 
@@ -24,14 +25,13 @@ class PeriodesController extends Controller
     public function create()
     {
         abort_unless(\Gate::allows('periode_create'), 403);
-
-        return view('admin.periodes.create');
+        $niveaux=Niveau::all();
+        return view('admin.periodes.create',compact('niveaux'));
     }
 
     public function store(StorePeriodeRequest $request)
     {
         abort_unless(\Gate::allows('periode_create'), 403);
-
         $periode = Periode::create($request->all());
 
         return redirect()->route('admin.periodes.index');
@@ -40,8 +40,8 @@ class PeriodesController extends Controller
     public function edit(Periode $periode)
     {
         abort_unless(\Gate::allows('periode_edit'), 403);
-
-        return view('admin.periodes.edit', compact('periode'));
+        $niveaux=Niveau::all();
+        return view('admin.periodes.edit', compact('periode','niveaux'));
     }
 
     public function update(UpdatePeriodeRequest $request, Periode $periode)

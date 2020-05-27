@@ -365,6 +365,8 @@ return [
             'date_debut_helper'        => '',
             'date_fin'              =>'Date Fin',
             'date_fin_helper'        => '',
+            'niveau_id'              =>'Niveau',
+            'niveau_id_helper'        => '',
             'created_at'         => 'Created At',
             'created_at_helper'  => '',
             'updated_at'         => 'Updated At',
@@ -452,5 +454,10 @@ return [
             'deleted_at_helper'  => '',
         ],
     ],
+    'cursus'                              => [
+        'title'          => 'Cursus des Stages ',
+        'title_singular' => 'Stage ',
+    ],
+    
     
 ];

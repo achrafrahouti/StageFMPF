@@ -32,6 +32,9 @@
                             {{ trans('global.periode.fields.date_fin') }}
                         </th>
                         <th>
+                            {{ trans('global.periode.fields.niveau_id') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -50,6 +53,9 @@
                             </td>
                             <td>
                                 {{ $periode->date_fin ?? '' }}
+                            </td>
+                            <td>
+                                {{ $periode->niveau->liblle ?? '' }}
                             </td>
                             <td>
                                 @can('periode_show')

@@ -27,6 +27,11 @@ class Service extends Model
     }
     public function secretaire()
     {
-        return $this->belongsTo('App\Secretaire');
+        return $this->hasOne('App\Secretaire','service_id');
+    }
+
+    public function encadrant()
+    {
+        return $this->hasOne('App\Encadrant', 'service_id');
     }
 }

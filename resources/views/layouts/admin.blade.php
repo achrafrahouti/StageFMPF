@@ -36,27 +36,6 @@
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-{{--                   -------- profile--------------   --}}
-        <ul class="nav navbar-nav ml-auto">
-          @if(Auth::user()->isEtudiant())
-              <li class="nav-item dropdown d-md-down-none">
-                  <a class="nav-link text-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                      {{ Auth::user()->profile->etudiant->nom }}
-                      {{ Auth::user()->profile->etudiant->prenom }}
-
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item">CNE    : {{ Auth::user()->profile->etudiant->cne }}</a>
-                    <a class="dropdown-item">Nom    : {{ Auth::user()->profile->etudiant->nom }}</a>
-                    <a class="dropdown-item">Prenom : {{ Auth::user()->profile->etudiant->prenom }}</a>
-                          {{-- <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a> --}}
-                  </div>
-              </li>
-          @endif
-      </ul>
-{{-- --------------------           ----------------------------------- --}}
-
         <ul class="nav navbar-nav ml-auto">
             @if(count(config('panel.available_languages', [])) > 1)
                 <li class="nav-item dropdown d-md-down-none">

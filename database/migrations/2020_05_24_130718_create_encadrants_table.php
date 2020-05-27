@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeriodesTable extends Migration
+class CreateEncadrantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreatePeriodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('periodes', function (Blueprint $table) {
+        Schema::create('encadrants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->date('date_debut');
-            $table->date('date_fin');
-            $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')->references('id')->on('niveaux');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->unsignedBigInteger('service_id')->nullable();
+            $table->foreign('service_id')->references('id')->on('services');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +30,6 @@ class CreatePeriodesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periodes');
+        Schema::dropIfExists('encadrants');
     }
 }
