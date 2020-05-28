@@ -35,6 +35,10 @@
                             {{ trans('global.groupe.fields.groupe_sgh') }}
                         </th>
                         <th>
+                            {{-- {{ trans('global.groupe.fields.groupe_sgh') }} --}}
+                            Niveau
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +60,9 @@
                             </td>
                             <td>
                                 {{ $groupe->groupe_sgh ?? '' }}
+                            </td>
+                            <td>
+                                {{ $groupe->niveau->liblle ?? '' }}
                             </td>
                             <td>
                                 @can('groupe_show')

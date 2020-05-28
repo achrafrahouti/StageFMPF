@@ -389,6 +389,8 @@ return [
             'groupe_sh_helper'   => '',
             'groupe_sgh'         => 'S H Groupe',
             'groupe_sgh_helper'        => '',
+            'niveau_id'         => 'Niveau',
+            'niveau_id_helper'        => '',
             'created_at'         => 'Created At',
             'created_at_helper'  => '',
             'updated_at'         => 'Updated At',

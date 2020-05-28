@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyGroupeRequest;
 use App\Http\Requests\StoreGroupeRequest;
 use App\Http\Requests\UpdateGroupeRequest;
+use App\Niveau;
 use Illuminate\Http\Request;
 
 class GroupesController extends Controller
@@ -29,8 +30,8 @@ class GroupesController extends Controller
     public function create()
     {
         abort_unless(\Gate::allows('groupe_create'), 403);
-
-        return view('admin.groupes.create');
+        $niveaux=Niveau::all();
+        return view('admin.groupes.create',compact('niveaux'));
     }
 
     public function store(StoreGroupeRequest $request)
@@ -45,8 +46,8 @@ class GroupesController extends Controller
     public function edit(groupe $groupe)
     {
         abort_unless(\Gate::allows('groupe_edit'), 403);
-
-        return view('admin.groupes.edit', compact('groupe'));
+        $niveaux=Niveau::all();
+        return view('admin.groupes.edit', compact('groupe','niveaux'));
     }
 
     public function update(UpdateGroupeRequest $request, Groupe $groupe)

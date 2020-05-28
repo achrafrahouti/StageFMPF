@@ -16,7 +16,7 @@ class GroupeSeeder extends Seeder
                     $groupes=[
                         [
                         'id'=>1,
-                        'name'=>'Groupe 1',
+                        'name'=>'G 1.1.1',
                         'groupe_tot'=>'1',
                         'niveau_id'=>'1',
                         'groupe_sh'=>'1',
@@ -24,7 +24,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>2,
-                        'name'=>'Groupe 2',
+                        'name'=>'G 1.1.2',
                         'groupe_tot'=>'1',
                         'niveau_id'=>'1',
                         'groupe_sh'=>'1',
@@ -32,7 +32,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>3,
-                        'name'=>'Groupe 3',
+                        'name'=>'G 1.2.3',
                         'groupe_tot'=>'1',
                         'niveau_id'=>'1',
                         'groupe_sh'=>'2',
@@ -40,7 +40,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>4,
-                        'name'=>'Groupe 4',
+                        'name'=>'G 1.2.4',
                         'groupe_tot'=>'1',
                         'niveau_id'=>'1',
                         'groupe_sh'=>'2',
@@ -48,7 +48,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>'5',
-                        'name'=>'Groupe 5',
+                        'name'=>'G 2.1.1',
                         'groupe_tot'=>'2',
                         'niveau_id'=>'2',
                         'groupe_sh'=>'1',
@@ -56,7 +56,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>'6',
-                        'name'=>'Groupe 6',
+                        'name'=>'G 2.1.2',
                         'groupe_tot'=>'2',
                         'niveau_id'=>'2',
                         'groupe_sh'=>'1',
@@ -64,7 +64,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>'7',
-                        'name'=>'Groupe 7',
+                        'name'=>'G 2.2.3',
                         'groupe_tot'=>'2',
                         'niveau_id'=>'2',
                         'groupe_sh'=>'2',
@@ -72,7 +72,7 @@ class GroupeSeeder extends Seeder
                         ],
                         [
                         'id'=>'8',
-                        'name'=>'Groupe 8',
+                        'name'=>'G 2.2.4',
                         'groupe_tot'=>'2',
                         'niveau_id'=>'2',
                         'groupe_sh'=>'2',

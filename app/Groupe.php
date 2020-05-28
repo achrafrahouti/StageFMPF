@@ -14,7 +14,8 @@ class Groupe extends Model
         'name',
         'groupe_tot',
         'groupe_sh',
-        'geoupe_sgh',
+        'groupe_sgh',
+        'niveau_id',
         'created_at',
         'updated_at',
     ];
@@ -32,5 +33,9 @@ class Groupe extends Model
     public function periodes()
     {
         return $this->belongsToMany('App\Periode','stage_groupe_periode','groupe_id','periode_id')->withPivot('stage_id');
+    }
+    public function niveau()
+    {
+        return $this->belongsTo('App\Niveau');
     }
 }

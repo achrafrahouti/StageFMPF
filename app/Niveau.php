@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Niveau extends Model
 {
-    public function periode()
+    public function periodes()
     {
-        return $this->hasOne('App\Periode','niveau_id');
+        return $this->hasMany('App\Periode','niveau_id');
+    }
+    public function groupes()
+    {
+        return $this->hasMany('App\Niveau', 'niveau_id');
     }
 }
