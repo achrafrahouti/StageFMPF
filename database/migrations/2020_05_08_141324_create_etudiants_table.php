@@ -15,9 +15,11 @@ class CreateEtudiantsTable extends Migration
     {
         Schema::create('etudiants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('cne');
+            $table->string('cne')->unique();
             $table->string('nom');
             $table->string('prenom');
+            $table->unsignedBigInteger('niveau_id');
+            $table->foreign('niveau_id')->references('id')->on('niveaux');
             $table->timestamps();
         });
     }

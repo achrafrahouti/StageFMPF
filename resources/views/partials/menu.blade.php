@@ -83,6 +83,16 @@
                     {{ trans('global.stage.title') }}
                 </a>
             </li>
+            {{-- ------------------ --}}
+            <li class="nav-item">
+                <a href="{{ route("stagaire.affictation.index") }}" class="nav-link {{ request()->is('stagaire/affictation') || request()->is('stagaire/affictation/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{-- {{ trans('global.stage.title') }} --}}
+                    Affictation
+                </a>
+            </li>
             @endif
             {{-- ssssssssssssssssss --}}
             @if (Auth::user()->isEtudiant())

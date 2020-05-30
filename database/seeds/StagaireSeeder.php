@@ -16,61 +16,51 @@ class StagaireSeeder extends Seeder
             [
                 'id'=> '1',
                 'etudiant_id'=>'1',
-                'niveau_id'=>'3',
                 'groupe_id'=>'1'
             ],
             [
                 'id'=> '2',
                 'etudiant_id'=>'2',
-                'niveau_id'=>'3',
                 'groupe_id'=>'1'
             ],
             [
                 'id'=> '3',
                 'etudiant_id'=>'3',
-                'niveau_id'=>'3',
                 'groupe_id'=>'2'
             ],
             [
                 'id'=> '4',
                 'etudiant_id'=>'4',
-                'niveau_id'=>'3',
                 'groupe_id'=>'2'
             ],
             [
                 'id'=> '5',
                 'etudiant_id'=>'5',
-                'niveau_id'=>'3',
                 'groupe_id'=>'3'
             ],
             [
                 'id'=> '6',
                 'etudiant_id'=>'6',
-                'niveau_id'=>'3',
                 'groupe_id'=>'3'
             ],
             [
                 'id'=> '7',
                 'etudiant_id'=>'7',
-                'niveau_id'=>'3',
                 'groupe_id'=>'4'
             ],
             [
                 'id'=> '8',
                 'etudiant_id'=>'8',
-                'niveau_id'=>'3',
                 'groupe_id'=>'4'
             ],
             [
                 'id'=> '9',
                 'etudiant_id'=>'9',
-                'niveau_id'=>'3',
                 'groupe_id'=>'4'
             ],
             [
                 'id'=> '10',
                 'etudiant_id'=>'10',
-                'niveau_id'=>'3',
                 'groupe_id'=>'4'
             ],
             ];

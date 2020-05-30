@@ -38,4 +38,8 @@ class Stage extends Model
     {
         return $this->belongsToMany('App\Groupe', 'stage_groupe_periode', 'stage_id', 'groupe_id')->withPivot('periode_id');
     }
+    public function niveau()
+    {
+        return $this->belongsTo('App\Niveau');
+    }
 }

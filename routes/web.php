@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AffictationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,9 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::get('notes/choix','NotesController@choix')->name('notes.choix');
     Route::get('notes/create','NotesController@create')->name('notes.create');
     Route::post('notes','NotesController@store')->name('notes.store');
+    Route::get('affictation','AffictationController@index')->name('affictation.index')->middleware('role:admin');
+    Route::get('affictation/n','AffictationController@store')->name('affictation.store')->middleware('role:admin');
+    Route::get('affictation/groupe','AffictationController@show')->name('affictation.show')->middleware('role:admin');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {

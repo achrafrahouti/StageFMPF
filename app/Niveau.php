@@ -12,6 +12,14 @@ class Niveau extends Model
     }
     public function groupes()
     {
-        return $this->hasMany('App\Niveau', 'niveau_id');
+        return $this->hasMany('App\Groupe', 'niveau_id');
+    }
+    public function stages()
+    {
+        return $this->hasMany('App\Stage','niveau_id');
+    }
+    public function etudiants()
+    {
+        return $this->hasMany('App\Etudiant', 'niveau_id');
     }
 }
