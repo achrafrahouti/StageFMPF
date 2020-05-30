@@ -11,7 +11,7 @@ $factory->define(Etudiant::class, function (Faker $faker) {
         'cne' => $faker->unique()->randomNumber(8),
         'nom' => $faker->firstName,
         'prenom' => $faker->lastName,
-        'niveau_id'=>'2'
+        'niveau_id'=>'1'
 
 
     ];
