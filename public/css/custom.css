@@ -1,3 +1,6 @@
+body{
+    font-family: "Comic Sans MS", cursive, sans-serif;  
+}
 .ck-editor__editable,
 textarea {
     min-height: 150px;

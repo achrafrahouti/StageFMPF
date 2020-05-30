@@ -30,8 +30,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">
-            <span class="navbar-brand-full">Project</span>
-            <span class="navbar-brand-minimized">P</span>
+            <span class="navbar-brand-full">FMP FES</span>
+            <span class="navbar-brand-minimized">F</span>
         </a>
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>

@@ -28,21 +28,20 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('capacite') ? 'has-error' : '' }}">
-                <label for="capacite">Nombre de Stagaire dans sous groupe * </label>
+                <label for="capacite">Nombre des Stagaires dans sous groupe</label>
                 <input type="number" id="capacite" name="capacite" class="form-control" value="{{ old('capacite', isset($groupe) ? $groupe->capacite : '') }}">
                 @if($errors->has('capacite'))
                     <em class="invalid-feedback">
                         {{ $errors->first('capacite') }}
                     </em>
                 @endif
-                <p class="helper-block">
-                    Si tu ne entrer pas une valeur on travaier avec la capacite minimale*
-                    {{ trans('global.groupe.fields.groupe_tot_helper') }}
+                <p class="helper-block text-danger">
+                      si ce champ est vide:Valeur par defaut c'est capacité minimale de service du niveau
                 </p>
             </div>
-            </div>
+            <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
-            </div>
+           </div>
         </form>
     </div>
 </div>

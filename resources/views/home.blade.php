@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 @section('content')
 @can('update', Model::class)
     
@@ -79,7 +80,96 @@
                         </table>    
                     </div>    
                 </div> 
-            </div>              
+            </div> 
+            @elseif(Auth::user()->isAdmin())
+            
+                   <p class="font-weight-bold">Bienvenue retour {{Auth::user()->name}}</p>
+                 
+                 
+                 {{--  start card deck --}}
+                <div class="card-columns">
+                          <div class="card bg-primary">
+                            <div class="card-body text-center">
+                                <div class="fa fa-user-md fa-2x "></div>
+                              <p class="card-text">Nombre totales des etudiants  <span class="badge badge-light">{{$stagaire->count()}}</span></p>
+                            </div>
+                          </div>
+                          <div class="card bg-warning">
+                             <div class="card-body text-center">
+                                <div class="fas fa-briefcase-medical fa-2x "></div>
+                            <p class="card-text">Nombre totales des encadrants  <span class="badge badge-light">30</span></p>
+                            </div>
+                          </div>
+                          <div class="card bg-success">
+                           <div class="card-body text-center">
+                            <div class="fas fa-user-edit md fa-2x"></div>
+                            <p class="card-text">Nombre totales des secretaires  <span class="badge badge-light">30</span></p>
+                            </div>
+                          </div>
+                          <div class="card bg-danger">
+                          <div class="card-body text-center">
+                            <div class="fas fa-microscope fa-2x"></div>
+                           <p class="card-text">Nombre totales des services d'accueil  <span class="badge badge-light">30</span></p>
+                            </div>
+                          </div>
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <div class="fas fa-file-medical-alt fa-2x"></div>
+                                   <p class="card-text">Nombre totales des stages <span class="badge badge-dark">30</span></p>
+                                </div>
+                          </div>
+                          <div class="card bg-info">
+                            <div class="card-body text-center">
+                                <div class="fa far fa-hospital fa-2x "></div>
+                                   <p class="card-text">Nombre totales des lieu de stages <span class="badge badge-light">30</span></p>
+                             </div>
+                          </div>
+                 </div>
+                  {{-- end card deck --}}
+                  {{-- start chart  --}}
+                <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['1ére année', '2éme année', '3éme année', '4éme année', '5éme année', '6éme année'],
+                            datasets: [{
+                                label: 'Taux de Réussite',                                  
+                                /*here data from database*/
+                                data: [12, 19, 3, 5, 2, 3],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                  {{-- end chart --}}
+
             @else
                 home
             @endif

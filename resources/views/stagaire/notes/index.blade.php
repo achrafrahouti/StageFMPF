@@ -2,7 +2,18 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div> 
+       <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div> 
+       <div class="d-inline">
+                <label id="niv">Niveau:</label>
+                <select name="niv" for="niv">
+                    <option value="1">1ére année</option>
+                    <option value="1">2éme année</option>
+                    <option value="1">3éme année</option>
+                    <option value="1">4éme année</option>
+                    <option value="1">5éme année</option>
+                    <option value="1">6éme année</option>
+                </select>
+      </div>
     </div>
 
     <div class="card-body">
@@ -26,7 +37,7 @@
                 </thead>
                 <tbody>
                     @foreach($user->profile->stages as $stage)
-                        <tr data-entry-id="{{ $stage->id }}">
+                        <tr data-entry-id="{{$stage->id }}">
                             <td>
 
                             </td>

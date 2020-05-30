@@ -19,11 +19,11 @@
                         </th>
                         <th>
                             {{-- {{ trans('global.note.fields.stage') }} --}}
-                            nom
+                            Nom
                         </th>
                         <th>
                             {{-- {{ trans('global.note.fields.note') }} --}}
-                            prenom
+                            Prenom
                         </th>
                         <th>
                             {{-- {{ trans('global.note.fields.note') }} --}}

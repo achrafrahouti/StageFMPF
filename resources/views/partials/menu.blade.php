@@ -90,7 +90,7 @@
 
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}
-                    Affictation
+                    Affectation
                 </a>
             </li>
             @endif
