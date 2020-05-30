@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyStageRequest;
 use App\Http\Requests\StoreStageRequest;
 use App\Http\Requests\UpdateStageRequest;
+use App\Niveau;
 use App\Service;
 use App\Stage;
 use Illuminate\Http\Request;
@@ -26,8 +27,9 @@ class StagesController extends Controller
         abort_unless(\Gate::allows('stage_create'), 403);
 
         $services = Service::all()->pluck('name', 'id');
+        $niveaux=Niveau::all();
 
-        return view('admin.stages.create', compact('services'));
+        return view('admin.stages.create', compact('services','niveaux'));
     }
 
     public function store(StoreStageRequest $request)
@@ -44,10 +46,9 @@ class StagesController extends Controller
         abort_unless(\Gate::allows('stage_edit'), 403);
 
         $services = Service::all()->pluck('name', 'id');
-
+        $niveaux=Niveau::all();
         $stage->load('service');
-        // dd($services,$stage);
-        return view('admin.stages.edit', compact('services', 'stage'));
+        return view('admin.stages.edit', compact('services','niveaux', 'stage'));
     }
 
     public function update(UpdateStageRequest $request, Stage $stage)

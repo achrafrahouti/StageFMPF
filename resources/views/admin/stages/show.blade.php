@@ -27,6 +27,15 @@
                         {{-- @endforeach --}}
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        {{-- {{ trans('global.stage.fields.name') }} --}}
+                        Niveau
+                    </th>
+                    <td>
+                        {{ $stage->niveau->liblle }}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
