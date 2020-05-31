@@ -35,8 +35,8 @@
                         {{ $errors->first('capacite') }}
                     </em>
                 @endif
-                <p class="helper-block">
-                    Si tu ne entrer pas une valeur on travaier avec la capacite minimale*
+                <p class="helper-block text-warning">
+                    Si tu ne entrer pas une valeur on travaier avec la capacite minimale
                     {{ trans('global.groupe.fields.groupe_tot_helper') }}
                 </p>
             </div>
