@@ -93,6 +93,15 @@
                     Affectation
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route("stagaire.repartition.choix") }}" class="nav-link {{ request()->is('stagaire/repartition') || request()->is('stagaire/repartition/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{-- {{ trans('global.stage.title') }} --}}
+                    Repartition
+                </a>
+            </li>
             @endif
             {{-- ssssssssssssssssss --}}
             @if (Auth::user()->isEtudiant())

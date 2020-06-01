@@ -16,7 +16,7 @@ class ServicesSeeder extends Seeder
             [
                 'id'         => '1',
                 'name'       => 'Radiologie',
-                'capacite'   => '12',
+                'capacite'   => '14',
                 'lieu'       => 'CHU FES',
                 // 'secretaire_id'=>'1',
                 'created_at' => '2019-04-15 19:14:42',
@@ -34,7 +34,7 @@ class ServicesSeeder extends Seeder
             [
                 'id'         => '3',
                 'name'       => 'Pshycho',
-                'capacite'   => '12',
+                'capacite'   => '15',
                 'lieu'       => 'CHU FES',
                 // 'secretaire_id'=>null,
                 'created_at' => '2019-04-15 19:14:42',
@@ -43,7 +43,7 @@ class ServicesSeeder extends Seeder
             [
                 'id'         => '4',
                 'name'       => 'Urgance',
-                'capacite'   => '12',
+                'capacite'   => '16',
                 'lieu'       => 'CHU FES',
                 // 'secretaire_id'=>null,
                 'created_at' => '2019-04-15 19:14:42',

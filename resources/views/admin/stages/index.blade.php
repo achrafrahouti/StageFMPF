@@ -29,6 +29,10 @@
                             {{ trans('global.stage.fields.services') }}
                         </th>
                         <th>
+                            {{-- {{ trans('global.stage.fields.services') }} --}}
+                            Niveau
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -45,6 +49,9 @@
                             <td>
                                     {{ $stage->service->name }}
                             </td>
+                            <td>
+                                {{ $stage->niveau->liblle }}
+                        </td>
                             <td>
                                 @can('stage_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.stages.show', $stage->id) }}">

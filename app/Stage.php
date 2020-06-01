@@ -15,6 +15,7 @@ class Stage extends Model
     protected $fillable = [
         'name',
         'service_id',
+        'niveau_id',
         'created_at',
         'updated_at',
     ];

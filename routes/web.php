@@ -16,8 +16,12 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::get('notes/create','NotesController@create')->name('notes.create');
     Route::post('notes','NotesController@store')->name('notes.store');
     Route::get('affictation','AffictationController@index')->name('affictation.index')->middleware('role:admin');
-    Route::get('affictation/n','AffictationController@store')->name('affictation.store')->middleware('role:admin');
-    Route::get('affictation/groupe','AffictationController@show')->name('affictation.show')->middleware('role:admin');
+    Route::get('affictation/store','AffictationController@store')->name('affictation.store')->middleware('role:admin');
+    Route::get('affictation/grouper','AffictationController@show')->name('affictation.show')->middleware('role:admin');
+    Route::get('repartition','RepartitionController@choix')->name('repartition.choix')->middleware('role:admin');
+    Route::get('repartition/repartir','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
+    Route::get('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
+
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {

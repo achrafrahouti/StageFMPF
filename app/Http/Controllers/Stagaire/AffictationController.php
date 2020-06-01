@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Niveau;
 use App\Service;
 use App\Stagaire;
+use App\Stage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AffictationController extends Controller
 {
@@ -19,9 +21,19 @@ class AffictationController extends Controller
     public function store(Request $request)
     {
         $niveau=Niveau::where('id',$request->niveau_id)->first();//Niveau
-        if (empty($request->capacite)) {// pour capacite si l'utilisateur n' a pas entré une valeur
-            $service=Service::all();
-            $capacite=$service->min('capacite');
+
+        // if (empty($request->capacite)) {// pour capacite si l'utilisateur n' a pas entré une valeur
+        //     $service=Service::all();
+        //     $capacite=$service->min('capacite');
+
+        if (empty($request->capacite)) {// pour capacite si l'utilisateur pas entrer une valeur
+            $capacite=10000;
+            $stages=Stage::where('niveau_id',$request->niveau_id)->get();
+            foreach ($stages as  $stage) {
+                if($capacite > $stage->service->capacite){
+                    $capacite=$stage->service->capacite;
+                }
+            }
         }
         else{
                     $capacite=$request->capacite;
@@ -40,7 +52,6 @@ class AffictationController extends Controller
         $stagaire= $etudiant->stagaire; 
         $stagaire->groupe_id=$groupes[$j]->id;
         $stagaire->save();
-        // dd($stagaire->groupe_id);
         $i++;
         }
         return view('stagaire.affictation.show',compact('etudiants','niveau'));
