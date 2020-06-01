@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('global.groupe.title_singular') }}
@@ -35,8 +35,9 @@
                         {{ $errors->first('capacite') }}
                     </em>
                 @endif
+ 
                 <p class="helper-block text-danger">
-                      si ce champ est vide:Valeur par defaut c'est capacité minimale de service du niveau
+                      Si ce champ est vide:Valeur par defaut c'est capacité minimale de service du niveau
                 </p>
             </div>
             <div>
@@ -45,5 +46,18 @@
         </form>
     </div>
 </div>
+
+
+<script>
+  
+
+  $("#capacite").focus(function(){
+    $("#myModal").modal("show");
+  $("#close").click(function(){
+    $("#myModal").modal("hide");
+    }); 
+  });
+
+</script>
 
 @endsection

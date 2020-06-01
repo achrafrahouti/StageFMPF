@@ -109,13 +109,13 @@
                           <div class="card bg-danger">
                           <div class="card-body text-center">
                             <div class="fas fa-microscope fa-2x"></div>
-                           <p class="card-text">Nombre totales des services d'accueil  <span class="badge badge-light">30</span></p>
+                           <p class="card-text">Nombre totales des services d'accueil  <span class="badge badge-light">{{$service->count()}}</span></p>
                             </div>
                           </div>
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <div class="fas fa-file-medical-alt fa-2x"></div>
-                                   <p class="card-text">Nombre totales des stages <span class="badge badge-dark">30</span></p>
+                                   <p class="card-text">Nombre totales des stages <span class="badge badge-dark">{{$stage->count()}}</span></p>
                                 </div>
                           </div>
                           <div class="card bg-info">
