@@ -55,6 +55,14 @@ class StageSeeder extends Seeder
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
+        [
+            'id' => '6',
+            'name'=>'Stage test repartition',
+            'service_id'=>'5',
+            'niveau_id'=>'1',
+            'created_at'=> '2019-04-15 19:14:42',
+            'updated_at'=> '2019-04-15 19:14:42',
+            ],
     ];
     Stage::insert($stages);
     DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[1,1,1,1 ]);

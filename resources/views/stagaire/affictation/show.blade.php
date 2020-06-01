@@ -4,7 +4,6 @@
     <div class="card-header">
         <div class="text-center text-danger"> {{ trans('global.list') }}{{ ' Des stagaire de niveau ' }}{{ $niveau->liblle }}</div> 
     </div>
-
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
