@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 @section('content')
-  @can('groupe_create')
-    <div style="margin-bottom: 10px;" class="row">
+ 
+ <div class="card">
+     <div class="card-header"> 
+        Liste des groupes
+            @can('groupe_create')
+    <div style="margin-bottom: 10px;" class="row float-right">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.groupes.create") }}">
-                {{ trans('global.add') }} {{ trans('global.groupe.title_singular') }}
+                <i class="fas fa-plus"></i> {{ trans('global.groupe.title_singular') }}
             </a>
         </div>
     </div>
-  @endcan
- <div class="card">
-     <div class="card-header">
-        {{ trans('global.groupe.title_singular') }} {{ trans('global.list') }}
+     @endcan
      </div>
-
      <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
@@ -65,23 +65,26 @@
                                 {{ $groupe->niveau->liblle ?? '' }}
                             </td>
                             <td>
+
+                              <center>
                                 @can('groupe_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.groupes.show', $groupe->id) }}">
-                                        {{ trans('global.view') }}
+                                    <a class="btn btn-xs btn-primary mr-2" href="{{ route('admin.groupes.show', $groupe->id) }}">
+                                       <i class="fas fa-eye"></i> 
                                     </a>
                                 @endcan
                                 @can('groupe_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.groupes.edit', $groupe->id) }}">
-                                        {{ trans('global.edit') }}
+                                    <a class="btn btn-xs btn-info mr-2" href="{{ route('admin.groupes.edit', $groupe->id) }}">
+                                        <i class="fas fa-edit"></i> 
                                     </a>
                                 @endcan
                                 @can('groupe_delete')
                                     <form action="{{ route('admin.groupes.destroy', $groupe->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
+                                </center>
                              </td>
 
                          </tr>

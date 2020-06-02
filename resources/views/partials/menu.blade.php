@@ -85,7 +85,7 @@
             </li>
             {{--  --}}
             {{-- encadrants --}}
-            <li class="nav-item">
+           {{--  <li class="nav-item">
                 <a href="{{ route("admin.encadrants.index") }}" class="nav-link {{ request()->is('admin/encadrants') || request()->is('admin/encadrants/*') ? 'active' : '' }}">
                     <i class="fas fa-cubes nav-icon">
 
@@ -93,16 +93,16 @@
                      Encadrants
                 </a>
             </li>
-            {{-- end encadrants--}}
+ --}}            {{-- end encadrants--}}
             {{-- secretaires --}}
-            <li class="nav-item">
+           {{--  <li class="nav-item">
                 <a href="{{ route("admin.secretaires.index") }}" class="nav-link {{ request()->is('admin/secretaires') || request()->is('admin/secretaires/*') ? 'active' : '' }}">
                     <i class="fas fa-user-edit nav-icon">
 
                     </i>
                     secretaires
                 </a>
-            </li>
+            </li> --}}
             {{-- end secretaires--}}
             <li class="nav-item">
                 <a href="{{ route("stagaire.affictation.index") }}" class="nav-link {{ request()->is('stagaire/affictation') || request()->is('stagaire/affictation/*') ? 'active' : '' }}">

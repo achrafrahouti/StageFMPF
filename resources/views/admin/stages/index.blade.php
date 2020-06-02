@@ -1,17 +1,18 @@
 @extends('layouts.admin')
 @section('content')
-@can('stage_create')
-    <div style="margin-bottom: 10px;" class="row">
+
+<div class="card">
+    <div class="card-header">
+        Liste des stages
+        @can('stage_create')
+    <div style="margin-bottom: 10px;" class="row float-right ">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.stages.create") }}">
-                {{ trans('global.add') }} {{ trans('global.stage.title_singular') }}
+                <i class="fas  fa-plus"></i> {{ trans('global.stage.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.stage.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -53,23 +54,25 @@
                                 {{ $stage->niveau->liblle }}
                         </td>
                             <td>
+                                 <center>
                                 @can('stage_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.stages.show', $stage->id) }}">
-                                        {{ trans('global.view') }}
+                                    <a class="btn btn-xs btn-primary mr-2" href="{{ route('admin.stages.show', $stage->id) }}">
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                 @endcan
                                 @can('stage_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.stages.edit', $stage->id) }}">
-                                        {{ trans('global.edit') }}
+                                    <a class="btn btn-xs btn-info mr-2" href="{{ route('admin.stages.edit', $stage->id) }}">
+                                         <i class="fas fa-edit" ></i>
                                     </a>
                                 @endcan
                                 @can('stage_delete')
                                     <form action="{{ route('admin.stages.destroy', $stage->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash "></i></button>
                                     </form>
                                 @endcan
+                                </center>
                             </td>
 
                         </tr>
