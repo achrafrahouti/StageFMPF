@@ -55,4 +55,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('stages','StagesController');
 
+    Route::delete('encarants/destroy', 'EncadrantsController@massDestroy')->name('encarants.massDestroy');
+
+    Route::resource('encarants','EncarantsController');
+
+    Route::delete('secretaires/destroy', 'SecretairesController@massDestroy')->name('secretaires.massDestroy');
+
+    Route::resource('secretaires','SecretairesController');
+
+
 });

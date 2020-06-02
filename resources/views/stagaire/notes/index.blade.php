@@ -55,21 +55,6 @@
     </div>
 </div>
 <script>
-        function showCustomer(id) {
-          var xhttp;  
-          if (id==null) {
-            document.getElementById("txtHint").innerHTML = "";
-            return;
-          }
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            console.log(this.readyState);
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-          };
-          xhttp.open("GET", "getnote.php?q="+id,true);
-          xhttp.send();
-        }
+
 </script>
 @endsection

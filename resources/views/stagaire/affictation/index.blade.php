@@ -52,12 +52,6 @@
 <script>
   
 
-  $("#capacite").focus(function(){
-    $("#myModal").modal("show");
-  $("#close").click(function(){
-    $("#myModal").modal("hide");
-    }); 
-  });
 
 </script>
 
