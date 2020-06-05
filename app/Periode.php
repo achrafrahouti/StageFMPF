@@ -36,7 +36,7 @@ class Periode extends Model
 
     public function groupes()
     {
-        return $this->belongsToMany('App\Stage','stage_groupe_periode','periode_id','groupe_id')->withPivot('stage_id');
+        return $this->belongsToMany('App\Groupe','stage_groupe_periode','periode_id','groupe_id')->withPivot('stage_id');
     }
 
     public function niveau()

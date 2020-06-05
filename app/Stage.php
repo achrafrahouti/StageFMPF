@@ -32,7 +32,7 @@ class Stage extends Model
 
     public function periodes()
     {
-        return $this->belongsToMany('App\Stage','stage_groupe_periode','periode_id','stage_id')->wherePivot('groupe_id');
+        return $this->belongsToMany('App\Periode','stage_groupe_periode','stage_id','periode_id')->withPivot('groupe_id');
     }
 
     public function groupes()
