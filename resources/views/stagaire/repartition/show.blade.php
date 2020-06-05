@@ -1,7 +1,17 @@
 @extends('layouts.admin')
 @section('content')
   <div class="card">
-    <div class="card-header">
+      <div class="card-header">
+    @can('groupe_create')
+    <div style="margin-bottom: 10px;" class="row float-right">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route("stagaire.repartition.choix") }}">
+                <i class="fas fa-plus"></i> {{ 'Repartir'}}
+            </a>
+        </div>
+    </div>
+     @endcan
+    
         <div class="text-center text-danger"> {{ trans('global.list') }}{{ ' Des stagaire de niveau ' }}</div> 
     </div>
     <div class="card-body">

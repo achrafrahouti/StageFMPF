@@ -49,13 +49,21 @@ class RepartitionController extends Controller
         $periode=Periode::where('id',$request->periode_id)->first();
         $stage=Stage::where('id',$request->stage_id)->first();
         $groupes=$request->groupes;
-        $periodes=Periode::where('niveau_id',$stage->niveau_id)->get();
+        $periodes=Periode::all();
         foreach($groupes as $groupe)
         {
             $periode->stages()->attach($stage->id,['groupe_id'=>$groupe]);
         }
 
+        return redirect()->route('stagaire.repartition.index');
+
+    }
+
+    public function index()
+    {
+        $periodes=Periode::all();
         return view('stagaire.repartition.show',compact('periodes'));
+
     }
     
 }
