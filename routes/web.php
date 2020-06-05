@@ -10,6 +10,9 @@ Route::redirect('/home', '/admin');
 
 Auth::routes(['register' => false]);
 
+Route::get('repartition','Stagaire\RepartitionController@choix')->name('stagaire.repartition.choix');
+
+
 Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire','middleware'=>['auth']], function () {
     Route::get('notes','NotesController@index')->name('notes.index')->middleware('role:etudiant');
     Route::get('notes/choix','NotesController@choix')->name('notes.choix');
@@ -18,9 +21,8 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::get('affictation','AffictationController@index')->name('affictation.index')->middleware('role:admin');
     Route::get('affictation/store','AffictationController@store')->name('affictation.store')->middleware('role:admin');
     Route::get('affictation/grouper','AffictationController@show')->name('affictation.show')->middleware('role:admin');
-    Route::get('repartition','RepartitionController@choix')->name('repartition.choix')->middleware('role:admin');
-    Route::get('repartition/repartir','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
-    Route::get('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
+    Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
+    Route::post('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
 
 });
 

@@ -70,10 +70,10 @@
                                     </a>
                                 @endcan
                                 @can('periode_delete')
-                                    <form action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-danger"> <i class="fas fa-trash"></i></button>
+                                        <button onclick="validateForm()" type="submit" class="btn btn-xs btn-danger"> <i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
                                 </center>
@@ -101,7 +101,8 @@
       });
 
       if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+        // alert('{{ trans('global.datatables.zero_selected') }}')
+        swal('{{ trans('global.datatables.zero_selected') }}')
 
         return
       }
@@ -127,3 +128,24 @@
 </script>
 @endsection
 @endsection
+<script>
+
+function validateForm() {
+         event.preventDefault(); // prevent form submit
+         var form = document.forms["myForm"]; // storing the form
+         swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+             .then((willDelete) => {
+                  if (willDelete) {
+                        form.submit();
+                  } else {
+                         swal("Your imaginary file is safe!");
+              }
+           });
+}
+</script>

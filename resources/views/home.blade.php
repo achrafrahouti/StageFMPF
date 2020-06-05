@@ -172,6 +172,9 @@
 
             @else
                 home
+                <div class="btn btn-danger">
+                    <button type="button" id="setSweet" onclick="swal('helllo');">ok</button>
+                </div>
             @endif
         </div>
     </div>
