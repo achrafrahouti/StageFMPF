@@ -15,7 +15,6 @@ class RepartitionController extends Controller
     {
         
         $niveaux=Niveau::all();
-
         return view('stagaire.repartition.choix',compact('niveaux'));
     }
 
@@ -62,6 +61,7 @@ class RepartitionController extends Controller
     public function index()
     {
         $periodes=Periode::all();
+                //dd($periodes);
         return view('stagaire.repartition.show',compact('periodes'));
 
     }
