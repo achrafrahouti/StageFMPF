@@ -16,30 +16,22 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable ">
+            <table class=" table table-bordered table-striped table-hover ">
                 <thead>
                     <tr>
-                        <th width="10">
-@php
-    
-@endphp
+
+                        <th>
+                            {{-- {{ trans('global.note.fields.periode') }} --}}
+                            Periodes
                         </th>
                         <th>
                             {{-- {{ trans('global.note.fields.periode') }} --}}
-                            Periode
+                            Stages
                         </th>
                         <th>
-                            {{-- {{ trans('global.note.fields.periode') }} --}}
-                            periode
+                           groupes
                         </th>
-                        <th>
-                            {{-- {{ trans('global.note.fields.note') }} --}}
-                            Groupes
-                        </th>
-                        <th>
-                            {{-- {{ trans('global.note.fields.note') }} --}}
-                            Groupe
-                        </th>
+                       
                         <th>
                             &nbsp;
                         </th>
@@ -48,27 +40,32 @@
                 <tbody>
                     @foreach($periodes as $periode)
                         <tr>
-                            {{-- if last == courant {passer iteration} --}}
-                            <td>
-
-                            </td>
-                            <td>
+                    
+                           
+                           <td rowspan="{{$periode->stages->count()+1}}">
                                 {{ $periode->name ?? '' }}
-                            </td>
+                           </td>
+{{--                            @php
+                          $stages=\DB::select('select *from stages s,stage_groupe_periode p where s.id=p.stage_id and p.periode_id=?',[$periode->id]);
+                             @endphp --}}
+                             @foreach($periode->stages as $stage)
+                              @php
+                                    $groupes=\DB::select('select * from groupes g,stage_groupe_periode p where p.periode_id= ? and p.stage_id=? and p.groupe_id=g.id',[$periode->id,$stage->id]);
+                               @endphp
+                               <tr>
+                                    <td>
+                                      {{ $stage->name?? '' }}
+                                    </td>
+                                <td> 
+                              @foreach($groupes as $groupe)
+                               {{$groupe->name}}<br> 
+                              @endforeach
+                                </td>
+                               </tr>    
+                             @endforeach
+                           
                             <td>
-                                {{ $periode->stages ?? '' }}
-                            </td>
-                            <td>
-                                {{-- @php
-                                   $groupes= \DB::select('select groupe_id from periode_groupe_periode where periode_id= ? and periode_id = ?',[$periode->periode_id,$periode->periode_id]);
-                                @endphp
-                                @foreach ($groupes as $groupe)
-                                    {!! $groupe->groupe_id !!}
-                                @endforeach --}}
-                                    {{ $periode->groupes }}
-                            </td>
-                            <td>
-                                {{-- {{ $periode->stagaire->groupe->name ?? '' }} --}}
+                            
                             </td>
                             <td>
                                 @can('groupe_show')
