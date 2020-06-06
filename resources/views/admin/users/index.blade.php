@@ -101,19 +101,36 @@
       });
 
       if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
 
         return
       }
-
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
+// 
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.value) {
+    $.ajax({
           headers: {'x-csrf-token': _token},
           method: 'POST',
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
-      }
+    Swal.fire({
+      titlt:'Deleted!',
+      text:'Your file has been deleted.',
+      icon:'success',
+      timer:3000
+    })
+  }
+})
+// 
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)

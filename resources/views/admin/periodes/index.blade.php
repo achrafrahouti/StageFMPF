@@ -70,10 +70,10 @@
                                     </a>
                                 @endcan
                                 @can('periode_delete')
-                                    <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;">
+                                    <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;" onsubmit="return confirm('{{ trans('global.areYouSure') }}');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button onclick="validateForm()" type="submit" class="btn btn-xs btn-danger"> <i class="fas fa-trash"></i></button>
+                                        <button onclick="deleteConfirmation({{ $periode->id }})"  type="submit" class="btn btn-xs btn-danger delete" > <i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
                                 </center>
@@ -102,19 +102,35 @@
 
       if (ids.length === 0) {
         // alert('{{ trans('global.datatables.zero_selected') }}')
-        swal('{{ trans('global.datatables.zero_selected') }}')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
 
         return
       }
-
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
+// 
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.value) {
+    $.ajax({
           headers: {'x-csrf-token': _token},
           method: 'POST',
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
-      }
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+// 
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -128,24 +144,3 @@
 </script>
 @endsection
 @endsection
-<script>
-
-function validateForm() {
-         event.preventDefault(); // prevent form submit
-         var form = document.forms["myForm"]; // storing the form
-         swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-              })
-             .then((willDelete) => {
-                  if (willDelete) {
-                        form.submit();
-                  } else {
-                         swal("Your imaginary file is safe!");
-              }
-           });
-}
-</script>
