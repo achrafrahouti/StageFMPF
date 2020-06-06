@@ -21,7 +21,10 @@ class CreateStageGroupePeriodeTable extends Migration
             $table->foreign('stage_id')->references('id')->on('stages');            
             $table->foreign('groupe_id')->references('id')->on('groupes');            
             $table->foreign('periode_id')->references('id')->on('periodes');   
-            $table->unique(['stage_id','periode_id','groupe_id']); 
+            // $table->unique(['stage_id','periode_id','groupe_id']); 
+            $table->unique(['periode_id','stage_id']);
+            $table->unique(['periode_id','groupe_id']);
+            $table->unique(['groupe_id','stage_id']);
         });
     }
 
