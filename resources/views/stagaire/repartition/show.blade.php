@@ -42,13 +42,14 @@
                         <tr>
                     
                            
-                           <td rowspan="{{$periode->stages->count()+1}}">
+                           <td rowspan="{{$periode->stages->unique()->count()+1}}">
                                 {{ $periode->name ?? '' }}
                            </td>
 {{--                            @php
                           $stages=\DB::select('select *from stages s,stage_groupe_periode p where s.id=p.stage_id and p.periode_id=?',[$periode->id]);
                              @endphp --}}
-                             @foreach($periode->stages as $stage)
+                             @foreach($periode->stages->unique() as $stage)
+
                               @php
                                     $groupes=\DB::select('select * from groupes g,stage_groupe_periode p where p.periode_id= ? and p.stage_id=? and p.groupe_id=g.id',[$periode->id,$stage->id]);
                                @endphp
