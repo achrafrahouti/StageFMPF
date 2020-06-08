@@ -10,14 +10,97 @@
             @php
                         $user=Auth::user()->profile;
                         $groupe=$user->groupe;
-                        $stages=$groupe->stages;
+                         $stages=$groupe->stages;
             @endphp
+            
+ <div class="card-deck">
+             <div class="card ">
+                <div class="card-title bg-dark">
+                    <h3 class="card-text text-center text-black">{{ trans('global.etudiant.fields.profile') }}</h3>
+                </div>
+                <div class="card-body d-flex">
+                <div class="table-responsive">
+                        <table class="table table-secondary  table-bordered table-hover  datatable ">
+                    
+                              <tr>
+                                <th class="text-warning">Firstname</th>
+                                <td class="text-info">{{ Auth::user()->profile->etudiant->prenom }}</td>
+                              </tr>
+                            
+                          
+                              <tr>
+                                <th class="text-warning">Lastname</th>
+                                <td class="text-info">{{Auth::user()->profile->etudiant->nom}}</td>
+                              </tr>
+                              <tr>
+                                <th class="text-warning">Cne</th>
+                                <td class="text-info">{{Auth::user()->profile->etudiant->cne}}</td>
+                              </tr>
+                              <tr>
+                                <th class="text-warning">Groupe</th>
+                                <td class="text-info">{{ Auth::user()->profile->groupe->groupe_tot.'.'.Auth::user()->profile->groupe->groupe_sgh }}</td>
+                              </tr>
+                            
+                     </table>
+     </div>
+</div>           
+</div>
+
+<div class="card">
+                <div class="card-title bg-dark">
+                    <h3 class="card-text text-center text-black text-xl">{{ trans('global.cursus.title') }}</h3>
+                </div>
+                <div class="card-body d-flex">
+                <div class="table-responsive">
+                        <table class="table table-secondary table-bordered table-hover datatable  ">
+                            
+                                <tr>
+                                    <th class="text-warning">
+                                        {{ trans('global.stage.title_singular') }}
+                                    </th>  
+                                    <th class="text-warning">
+                                        {{ trans('global.periode.title_singular') }}
+                                    </th>
+                                    <th class="text-warning">
+                                        {{ trans('global.periode.fields.date_debut') }}
+                                    </th>
+                                    <th class="text-warning">
+                                        {{ trans('global.periode.fields.date_fin') }}
+                                    </th>
+                                </tr>    
+                          
+                        
+                                @foreach ($stages   as $stage)
+                                <tr data-entry-id="{{ $stage->id }}">
+                                    @php
+                                            $periode_id=$stage->pivot->periode_id ;
+                                           $periode=App\Periode::find($periode_id);
+                                    @endphp
+
+                                    <td class="text-info">
+                                        {{ $stage->name ?? ''}}
+                                    </td>
+                                    <td class="text-info">
+                                        {{ $periode->name ?? ''}}
+                                    </td>
+                                    <td class="text-info">
+                                        {{ $periode->date_debut ?? '' }}
+                                    </td>
+                                    <td class="text-info">
+                                        {{ $periode->date_fin ?? '' }}
+                                    </td>       
+                                 </tr>
+                                @endforeach  
+             </table>    
+     </div>
+</div>    
+            {{--
             <div class="card">
                 <div class="card-header">
-                   <h4 class="text-primary"> Profile</h4>
+                   <h4 class="text-primary">{{ trans('global.etudiant.fields.profile') }}</h4>
                 </div>   
                 <div class="card-body">
-                    <h4 class="text-info">Information Personnele</h4>
+                    <h4 class="text-info"> {{ trans('global.etudiant.fields.info') }}</h4>
                     <ul class="list-group-horizontal">
                         <li class="list-group-item list-group-item-primary"><h4 class="fas fa-id-card nav-icon">{{ ' CNE    :' }} {{ Auth::user()->profile->etudiant->cne }}</h4></li>
                         <li class="list-group-item list-group-item-primary"><h4 class="fas fa-portrait nav-icon">{{ ' Nom    :' }} {{ Auth::user()->profile->etudiant->nom }}</h4></li>
@@ -80,10 +163,10 @@
                         </table>    
                     </div>    
                 </div> 
-            </div> 
+            </div>  --}}
             @elseif(Auth::user()->isAdmin())
             
-                   <p class="font-weight-bold">Bienvenue retour {{Auth::user()->name}}</p>
+                   <p class="font-weight-bold">{{ trans('global.admin.fields.welcome') }} {{Auth::user()->name}}</p>
                  
                  
                  {{--  start card deck --}}

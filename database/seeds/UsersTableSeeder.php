@@ -12,7 +12,6 @@ class UsersTableSeeder extends Seeder
 
         $users = [[
             'id'             => 1,
-            'name'           => 'Admin',
             'email'          => 'admin@admin.com',
             'password'       => '$2y$10$imU.Hdz7VauIT3LIMCMbsOXvaaTQg6luVqkhfkBcsUd.SJW2XSRKO',
             'profile_type'   =>'App\Admin',
@@ -24,7 +23,6 @@ class UsersTableSeeder extends Seeder
         ],
         [
             'id'             => 2,
-            'name'           => 'Etudiant',
             'email'          => 'etudiant@etudiant.com',
             'password'       => Hash::make('password'),
             'profile_type'   =>'App\Stagaire',
@@ -36,7 +34,6 @@ class UsersTableSeeder extends Seeder
         ],
         [
             'id'             => 3,
-            'name'           => 'Secretaire',
             'email'          => 'secretaire@secretaire.com',
             'password'       => Hash::make('password'),
             'profile_type'   =>'App\Secretaire',
@@ -48,7 +45,6 @@ class UsersTableSeeder extends Seeder
         ],
         [
             'id'             => 4,
-            'name'           => 'Encadrant',
             'email'          => 'encadrant@encadrant.com',
             'password'       => Hash::make('password'),
             'profile_type'   =>'App\Encadrant',

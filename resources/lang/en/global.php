@@ -102,14 +102,18 @@ return [
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => '',
-            'name'                     => 'Name',
+            'name'                     => 'Firstname',
             'name_helper'              => '',
+            'lastname'                     => 'Lasttname',
+            'lastname_helper'              => '',
             'email'                    => 'Email',
             'email_helper'             => '',
             'email_verified_at'        => 'Email verified at',
             'email_verified_at_helper' => '',
             'password'                 => 'Password',
             'password_helper'          => '',
+            'roles'                    => 'Roles',
+            'roles_helper'             => '',
             'roles'                    => 'Roles',
             'roles_helper'             => '',
             'remember_token'           => 'Remember Token',
@@ -460,6 +464,48 @@ return [
         'title'          => 'Cursus des Stages ',
         'title_singular' => 'Stage ',
     ],
+
+     'repartition'                              => [
+        'title'          => 'Distribution',
+        'title_singular' => 'distribution ',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => '',
+             'periode'               => 'Period',
+             'periode_helper'        => '',
+            'stage_helper'        => '',
+            'stage'               => 'hospital internship',
+            'stage_helper'        => '',
+            'groupe'              =>'Group',
+            'groupe_helper'       => '',
+            'choix'               =>'choose a  level',
+            'created_at'          => 'Created At',
+            'created_at_helper'  => '',
+            'updated_at'         => 'Updated At',
+            'updated_at_helper'  => '',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => '',
+        ],
+    ],
+    
+    'admin'                =>[  
+        'title' =>  'Administrator',
+        'title_singular'=>'administrator',
+        'fields'         => [
+             'welcome'          => 'welcome',
+        ],
+
+    ],
+    'etudiant'                =>[  
+        'title' =>  'Student',
+        'title_singular'=>'student',
+        'fields'         => [
+             'profile'  => 'Profil',
+             'info'          => 'personal informations',
+        ],
+
+
+    ]
     
     
 ];
