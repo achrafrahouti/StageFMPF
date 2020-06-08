@@ -45,7 +45,10 @@
                            <td rowspan="{{$periode->stages->unique()->count()+1}}">
                                 {{ $periode->name ?? '' }}
                            </td>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
                              @foreach($periode->stages->unique() as $stage)
 
                               @php
@@ -68,7 +71,7 @@
                             </td>
                             <td>
                                 @can('groupe_show')
-
+                       
                                 @endcan
                                 @can('groupe_edit')
 

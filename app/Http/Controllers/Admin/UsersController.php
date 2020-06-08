@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\Encadrant;
+use App\Secretaire;
+use App\Service;
 
 class UsersController extends Controller
 {
@@ -20,7 +24,7 @@ class UsersController extends Controller
     {
         abort_unless(\Gate::allows('user_access'), 403);
 
-        $users = User::all();
+        $users = User::whereNotIn('profile_type',['App\Stagaire'])->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -30,16 +34,34 @@ class UsersController extends Controller
         abort_unless(\Gate::allows('user_create'), 403);
 
         $roles = Role::all()->pluck('title', 'id');
+        $services=Service::all();
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', compact(['roles','services']));
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
         abort_unless(\Gate::allows('user_create'), 403);
+        if($request->roles[0]==4)
+        {   $encadrant=Encadrant::create($request->except(['email','password']));
+            $user=User::create($request->only(['email','password']));
+            $user->profile_type="App\Encadrant";
+            $user->profile_id=$encadrant->id;
+            $user->save();
+            $user->roles()->sync($request->input('roles', []));
+            
+        }
+        elseif ($request->roles[0]==3) {
+            $secretaire=Secretaire::create($request->only(['nom','prenom','service_id']));
+            $user=User::create($request->only(['email','password']));
+            $user->profile_type="App\Secretaire";
+            $user->profile_id=$secretaire->id;
+            $user->save();
+            $user->roles()->sync($request->input('roles', []));
+            
+        }
 
-        $user = User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        
 
         return redirect()->route('admin.users.index')->with('create', 'User Created');
     }
@@ -67,7 +89,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        abort_unless(\Gate::allows('user_show'), 403);
+             abort_unless(\Gate::allows('user_show'), 403);
 
         $user->load('roles');
 
@@ -77,9 +99,28 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         abort_unless(\Gate::allows('user_delete'), 403);
+<<<<<<< HEAD
 
         $user->forceDelete();        
         return back()->with('delete', 'User Deleted');
+=======
+        if($user->profile_type=="App\Encadrant")
+        {
+            $profile_id=$user->profile_id;
+            $user->forceDelete();
+            $encadrant=Encadrant::find($profile_id);
+            $encadrant->delete();      
+        }
+        elseif ($user->profile_type=="App\Secretaire") 
+        {
+            $profile_id=$user->profile_id;
+            $user->forceDelete();
+            $secretaire=Secretaire::find($profile_id);
+            $secretaire->delete();  
+        }
+    
+        return back();
+>>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

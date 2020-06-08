@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('global.user.fields.name') }}*</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($user) ? $user->name : '') }}">
+                <input type="text" id="name" name="prenom" class="form-control" >
                 @if($errors->has('name'))
                     <em class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -21,9 +21,34 @@
                     {{ trans('global.user.fields.name_helper') }}
                 </p>
             </div>
+            {{-- last_name --}}
+            <div class="form-group {{ $errors->has('lastname') ? 'has-error' : '' }}">
+                <label for="lastname">{{ trans('global.user.fields.lastname') }}*</label>
+                <input type="text" id="lastname" name="nom" class="form-control">
+                @if($errors->has('lastname'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('lastname') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('global.user.fields.lastname_helper') }}
+                </p>
+            </div>
+            {{-- end last_name --}}
+            {{-- service --}}
+     <div class="form-group {{ $errors->has('service_id') ? 'has-error' : '' }}">
+                <label for="service_id">{{ trans('global.stage.fields.services') }}*</label>
+                <select name="service_id" id="service_id" class="form-control select2" >
+                    @foreach($services as $service)
+                        <option value="{{ $service->id }}">
+                            {{ $service->name }}
+                        </option>
+                    @endforeach
+                </select>
+            {{-- end service --}}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label for="email">{{ trans('global.user.fields.email') }}*</label>
-                <input type="email" id="email" name="email" class="form-control" value="{{ old('email', isset($user) ? $user->email : '') }}">
+                <input type="email" id="email" name="email" class="form-control">
                 @if($errors->has('email'))
                     <em class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -46,13 +71,11 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
-                <label for="roles">{{ trans('global.user.fields.roles') }}*
-                    <span class="btn btn-info btn-xs select-all">Select all</span>
-                    <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
-                <select name="roles[]" id="roles" class="form-control select2" multiple="multiple">
-                    @foreach($roles as $id => $roles)
-                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>
-                            {{ $roles }}
+                <label for="roles">{{ trans('global.user.fields.roles') }}*</label>
+                <select name="roles[]" id="roles" class="form-control select2">
+                    @foreach($roles as $id => $role)
+                        <option value="{{$id}}">
+                            {{ $role }}
                         </option>
                     @endforeach
                 </select>

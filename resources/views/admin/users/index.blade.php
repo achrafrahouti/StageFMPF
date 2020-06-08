@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+<<<<<<< HEAD
 @if (session('create'))
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,16 +29,21 @@
 @endif
 @can('user_create')
     <div style="margin-bottom: 10px;" class="row">
+=======
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.user.title_singular') }} {{ trans('global.list') }}
+        @can('user_create')
+     <div style="margin-bottom: 10px;" class="row float-right ">
+>>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.users.create") }}">
-                {{ trans('global.add') }} {{ trans('global.user.title_singular') }}
+                <i class="fas  fa-plus"></i> {{ trans('global.user.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.user.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -51,11 +57,11 @@
                         <th>
                             {{ trans('global.user.fields.name') }}
                         </th>
-                        <th>
-                            {{ trans('global.user.fields.email') }}
+                         <th>
+                            {{ trans('global.user.fields.lastname') }}
                         </th>
                         <th>
-                            {{ trans('global.user.fields.email_verified_at') }}
+                            {{ trans('global.user.fields.email') }}
                         </th>
                         <th>
                             {{ trans('global.user.fields.roles') }}
@@ -72,37 +78,46 @@
 
                             </td>
                             <td>
-                                {{ $user->name ?? '' }}
+                                {{ $user->profile->nom ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->profile->prenom ?? '' }}
                             </td>
                             <td>
                                 {{ $user->email ?? '' }}
                             </td>
-                            <td>
-                                {{ $user->email_verified_at ?? '' }}
-                            </td>
+                            
                             <td>
                                 @foreach($user->roles as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @if($item->title=="Admin")
+                                   <span class="badge badge-pill badge-warning">{{ $item->title }}</span>
+                                @elseif($item->title=="Encadrant")
+                                    <span class="badge badge-pill badge-success">{{ $item->title }}</span>
+                                @else
+                                    <span class="badge badge-pill badge-dark">{{ $item->title }}</span>
+                                @endif
                                 @endforeach
                             </td>
                             <td>
+                                <center>
                                 @can('user_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.users.show', $user->id) }}">
-                                        {{ trans('global.view') }}
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                 @endcan
                                 @can('user_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', $user->id) }}">
-                                        {{ trans('global.edit') }}
+                                         <i class="fas fa-edit" ></i>
                                     </a>
                                 @endcan
                                 @can('user_delete')
                                     <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash "></i></button>
                                     </form>
                                 @endcan
+                                </center>
                             </td>
 
                         </tr>

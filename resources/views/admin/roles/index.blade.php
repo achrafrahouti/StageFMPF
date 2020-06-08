@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+<<<<<<< HEAD
 @if (session('create'))
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,16 +29,21 @@
 @endif
 @can('role_create')
     <div style="margin-bottom: 10px;" class="row">
+=======
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.role.title_singular') }} {{ trans('global.list') }}
+        @can('role_create')
+    <div style="margin-bottom: 10px;"class="row float-right">
+>>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.roles.create") }}">
-                {{ trans('global.add') }} {{ trans('global.role.title_singular') }}
+               <i class="fas  fa-plus"></i> {{ trans('global.role.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.role.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -74,23 +80,25 @@
                                 @endforeach
                             </td>
                             <td>
+                             <center>
                                 @can('role_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
-                                        {{ trans('global.view') }}
+                                       <i class="fas fa-eye"></i>
                                     </a>
                                 @endcan
                                 @can('role_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
-                                        {{ trans('global.edit') }}
+                                        <i class="fas fa-edit" ></i>
                                     </a>
                                 @endcan
                                 @can('role_delete')
                                     <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash "></i></button>
                                     </form>
                                 @endcan
+                                </center>
                             </td>
 
                         </tr>

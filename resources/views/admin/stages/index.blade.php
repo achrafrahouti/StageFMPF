@@ -28,7 +28,7 @@
 @endif
 <div class="card">
     <div class="card-header">
-        Liste des stages
+        {{trans('global.stage.title_singular')}}{{ trans('global.list') }}
         @can('stage_create')
     <div style="margin-bottom: 10px;" class="row float-right ">
         <div class="col-lg-12">

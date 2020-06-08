@@ -15,9 +15,6 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'     => [
-                'required',
-            ],
             'email'    => [
                 'required',
             ],
@@ -30,6 +27,15 @@ class StoreUserRequest extends FormRequest
             'roles'    => [
                 'required',
                 'array',
+            ],
+            'nom'=>[
+                'required',
+            ],
+            'prenom'=>[
+                'required',
+            ],
+            'service_id'=>[
+                'required',
             ],
         ];
     }
