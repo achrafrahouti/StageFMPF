@@ -45,9 +45,7 @@
                            <td rowspan="{{$periode->stages->unique()->count()+1}}">
                                 {{ $periode->name ?? '' }}
                            </td>
-{{--                            @php
-                          $stages=\DB::select('select *from stages s,stage_groupe_periode p where s.id=p.stage_id and p.periode_id=?',[$periode->id]);
-                             @endphp --}}
+
                              @foreach($periode->stages->unique() as $stage)
 
                               @php

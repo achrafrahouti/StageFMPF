@@ -3,7 +3,12 @@
 use App\Http\Controllers\AffictationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+Route::get('/achraf',function(){
+    return view('welcome')->with('succes','submited !!');
+})->name('achraf');
+Route::get('/ana',function(){
+    redirect()->route('achraf')->with('succes','submited !!');
+})->name('ana');
 Route::redirect('/', '/login');
 
 Route::redirect('/home', '/admin');

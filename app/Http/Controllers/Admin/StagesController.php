@@ -38,7 +38,7 @@ class StagesController extends Controller
 
         $stage = Stage::create($request->all());
 
-        return redirect()->route('admin.stages.index');
+        return redirect()->route('admin.stages.index')->with('create', 'Stage Created');
     }
 
     public function edit(Stage $stage)
@@ -57,7 +57,7 @@ class StagesController extends Controller
         $stage->update($request->all());
         // $stage->service()->sync($request->input('services', []));
 
-        return redirect()->route('admin.stages.index');
+        return redirect()->route('admin.stages.index')->with(['update'=> 'Stage Updated']);
     }
 
     public function show(Stage $stage)
@@ -75,7 +75,7 @@ class StagesController extends Controller
 
         $stage->delete();
 
-        return back();
+        return back()->with('delete', 'Stage Deleted');
     }
 
     public function massDestroy(MassDestroyStageRequest $request)

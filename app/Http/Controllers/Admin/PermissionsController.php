@@ -38,7 +38,7 @@ class PermissionsController extends Controller
 
         $permission = Permission::create($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('create', 'Permission Created');
     }
 
     public function edit(Permission $permission)
@@ -54,7 +54,7 @@ class PermissionsController extends Controller
 
         $permission->update($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('admin.permissions.index')->with('update', 'Permission Updated');
     }
 
     public function show(Permission $permission)
@@ -66,16 +66,16 @@ class PermissionsController extends Controller
 
     public function destroy(Permission $permission)
     {
-        abort_unless(\Gate::allows('permission_delete'), 403);
+        abort_unless(\Gate::allows('permission_create'), 403);
 
-        $permission->delete();
+        $permission->forceDelete();
 
-        return back();
+        return back()->with('delete', 'Permission Deleted');
     }
 
     public function massDestroy(MassDestroyPermissionRequest $request)
     {
-        Permission::whereIn('id', request('ids'))->delete();
+        Permission::whereIn('id', request('ids'))->forceDelete();
 
         return response(null, 204);
     }

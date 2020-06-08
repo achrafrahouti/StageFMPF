@@ -34,7 +34,7 @@ class PeriodesController extends Controller
         abort_unless(\Gate::allows('periode_create'), 403);
         $periode = Periode::create($request->all());
 
-        return redirect()->route('admin.periodes.index');
+        return redirect()->route('admin.periodes.index')->with('create', 'Periode created');
     }
 
     public function edit(Periode $periode)
@@ -50,7 +50,7 @@ class PeriodesController extends Controller
 
         $periode->update($request->all());
 
-        return redirect()->route('admin.periodes.index');
+        return redirect()->route('admin.periodes.index')->with('update', 'Periode Updated');
     }
 
     public function show(Periode $periode)
@@ -66,13 +66,12 @@ class PeriodesController extends Controller
 
         $periode->delete();
 
-        return back();
+        return back()->with('delete', 'Periode Deleted');
     }
 
     public function massDestroy(MassDestroyPeriodeRequest $request)
     {
         Periode::whereIn('id', request('ids'))->delete();
-
         return response(null, 204);
     }
 }

@@ -1,9 +1,34 @@
 @extends('layouts.admin')
 @section('content')
+@if (session('create'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes!</strong> {{ session('create') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+@if (session('update'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes!</strong> {{ session('update') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+@if (session('delete'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes!</strong> {{ session('delete') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
 <div class="card">
     <div class="card-header">
         Liste des périodes
-                @can('periode_create')
+
+@can('periode_create')
     <div style="margin-bottom: 10px;" class="row  float-right">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.periodes.create") }}">
@@ -73,7 +98,7 @@
                                     <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;" onsubmit="return confirm('{{ trans('global.areYouSure') }}');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button onclick="deleteConfirmation({{ $periode->id }})"  type="submit" class="btn btn-xs btn-danger delete" > <i class="fas fa-trash"></i></button>
+                                        <button   type="submit" class="btn btn-xs btn-danger delete" > <i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
                                 </center>
@@ -101,7 +126,6 @@
       });
 
       if (ids.length === 0) {
-        // alert('{{ trans('global.datatables.zero_selected') }}')
         swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
 
         return
@@ -123,11 +147,12 @@ Swal.fire({
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
+    Swal.fire({
+      titlt:'Deleted!',
+      text:'Your file has been deleted.',
+      icon:'success',
+      timer:3000
+    })
   }
 })
 // 

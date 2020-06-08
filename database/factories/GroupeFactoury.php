@@ -10,6 +10,10 @@ $factory->define(Groupe::class, function (Faker $faker) {
     $var=$faker->unique()->randomDigitNotNull;
     $g="Groupe".$var;
     return [
-        'name'=>  $g,
+        'name'=>  $g, 
+        'groupe_tot'=>$faker->randomDigit,
+        'groupe_sh'=>$faker->randomDigit,
+        'groupe_sgh'=>$faker->randomDigit,
+        'niveau_id'=>1,
     ];
 });

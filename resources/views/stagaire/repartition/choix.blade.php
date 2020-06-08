@@ -67,7 +67,6 @@
 </div>
 
 @endsection
-@parent
 <script type="text/javascript" >
     function set(id){
         var niveau_id=Number(id);

@@ -1,5 +1,31 @@
 @extends('layouts.admin')
 @section('content')
+@if (session('create'))
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes</strong>    {{ session('create') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+@endif
+@if (session('update'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes</strong>    {{ session('update') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+@if (session('delete'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Succes</strong>    {{ session('delete') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
 @can('user_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">

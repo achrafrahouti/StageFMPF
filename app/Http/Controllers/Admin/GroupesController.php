@@ -40,7 +40,7 @@ class GroupesController extends Controller
 
         $groupe = Groupe::create($request->all());
 
-        return redirect()->route('admin.groupes.index');
+        return redirect()->route('admin.groupes.index')->with('create', 'Groupe Created');
     }
 
     public function edit(groupe $groupe)
@@ -56,7 +56,7 @@ class GroupesController extends Controller
 
         $groupe->update($request->all());
 
-        return redirect()->route('admin.groupes.index');
+        return redirect()->route('admin.groupes.index')->with('update', 'Groupe Updated');
     }
 
     public function show(Groupe $groupe)
@@ -72,7 +72,7 @@ class GroupesController extends Controller
 
         $groupe->delete();
 
-        return back();
+        return back()->with('delete', 'Groupe Deleted');
     }
 
     public function massDestroy(MassDestroyGroupeRequest $request)

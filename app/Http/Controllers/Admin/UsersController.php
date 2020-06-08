@@ -41,7 +41,7 @@ class UsersController extends Controller
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('create', 'User Created');
     }
 
     public function edit(User $user)
@@ -62,7 +62,7 @@ class UsersController extends Controller
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('update', 'User Updated');
     }
 
     public function show(User $user)
@@ -78,9 +78,8 @@ class UsersController extends Controller
     {
         abort_unless(\Gate::allows('user_delete'), 403);
 
-        $user->delete();
-
-        return back();
+        $user->forceDelete();        
+        return back()->with('delete', 'User Deleted');
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
