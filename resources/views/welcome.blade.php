@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
 
         <!-- Styles -->
         <style>
@@ -82,6 +83,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <input type="button" value="ok" id="clic" onclick="swal.fire('asdfg');">
                 </div>
 
                 <div class="links">
@@ -95,5 +97,7 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+
     </body>
 </html>

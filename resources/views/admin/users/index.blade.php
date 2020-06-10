@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-<<<<<<< HEAD
 @if (session('create'))
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,23 +26,19 @@
     </button>
   </div>
 @endif
-@can('user_create')
-    <div style="margin-bottom: 10px;" class="row">
-=======
 
 <div class="card">
     <div class="card-header">
         {{ trans('global.user.title_singular') }} {{ trans('global.list') }}
         @can('user_create')
-     <div style="margin-bottom: 10px;" class="row float-right ">
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
-        <div class="col-lg-12">
+         <div style="margin-bottom: 10px;" class="row float-right ">
+             <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.users.create") }}">
                 <i class="fas  fa-plus"></i> {{ trans('global.user.title_singular') }}
             </a>
-        </div>
-    </div>
-@endcan
+             </div>
+         </div>
+        @endcan
     </div>
 
     <div class="card-body">
@@ -111,11 +106,8 @@
                                     </a>
                                 @endcan
                                 @can('user_delete')
-                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash "></i></button>
-                                    </form>
+                                <button class="btn btn-xs btn-danger remove-user" data-id="{{ $user->id }}" data-action="{{ route('admin.users.destroy', $user->id) }}"> <i class="fas fa-trash "></i></button>
+
                                 @endcan
                                 </center>
                             </td>
@@ -131,11 +123,11 @@
 @parent
 <script>
     $(function () {
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButtonTrans = ''
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.users.massDestroy') }}",
-    className: 'btn-danger',
+    url: "{{ route('admin.users.index') }}",
+    className: '',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
           return $(entry).data('entry-id')
@@ -145,16 +137,9 @@
         swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
 
         return
-      }
+      } 
 // 
-Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+Swal.fire({    
 }).then((result) => {
   if (result.value) {
     $.ajax({
@@ -164,10 +149,7 @@ Swal.fire({
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
     Swal.fire({
-      titlt:'Deleted!',
-      text:'Your file has been deleted.',
-      icon:'success',
-      timer:3000
+
     })
   }
 })
@@ -175,13 +157,42 @@ Swal.fire({
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('user_delete')
-  dtButtons.push(deleteButton)
-@endcan
+
 
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
+</script>
+@parent
+<script type="text/javascript">
+  $("body").on("click",".remove-user",async  function(){
+    var current_object = $(this);
+    // console.log(current_object);
+    // return;
+  const WillDelete = await  swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
+    });
+    if(WillDelete){
+        if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);
+            var action = current_object.attr('data-action');
+            var token = jQuery('meta[name="csrf-token"]').attr('content');
+            var id = current_object.attr('data-id');
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+        }
+    }
+});
 </script>
 @endsection
 @endsection

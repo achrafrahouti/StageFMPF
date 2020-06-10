@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class RepartitionController extends Controller
 {
+
+    
+
+
+    public function show(Request $request)
+    {
+        $periodes=Periode::where('niveau_id',$request->niveau_id)->get();
+        // dd($periodes);
+        $niveaux=Niveau::all();
+        return view('stagaire.repartition.show',compact('periodes','niveaux'));
+    }
     public function choix()
     {
         
@@ -31,16 +42,11 @@ class RepartitionController extends Controller
         $groupes=Groupe::where('niveau_id',$niveau_id)->get();
         $periodes=Periode::where('niveau_id',$niveau_id)->get();
 
-        // echo '                <select name="periode_id" id="periode_id" class="form-control select2" >';
-        // foreach ($periodes as  $periode) {
-        //     echo ' <option value="{{ $periode->id }}">'.$periode->name.'</option>';
-        // }
         $collections['stages']=$stages;
         $collections['periodes']=$periodes;
         $collections['groupes']=$groupes;
         return json_encode($collections);
-        // return view('stagaire.repartition.repartir',compact('stages','groupes','periodes'));
-        // dd($stages,$groupes,$periodes);
+
     }
 
     public function partitionner(Request $request)
@@ -49,8 +55,13 @@ class RepartitionController extends Controller
         $periode=Periode::where('id',$request->periode_id)->first();
         $stage=Stage::where('id',$request->stage_id)->first();
         $groupes=$request->groupes;
+        $nbrGroupe=Groupe::where('niveau_id',$periode->niveau_id)->distinct('groupe_tot')->count();
         $periodes=Periode::all();
+        $nbrPeriode=Periode::where('niveau_id',$periode->niveau_id)->count();
+        if ($nbrGroupe!=$nbrPeriode) {
+            return redirect()->route('stagaire.repartition.show')->with('error','La Repartition est trompée, le nombre de période doit égale le nombre de groupe   ');
 
+        }
         foreach($groupes as $groupe)
         {
             $periode->stages()->attach($stage->id,['groupe_id'=>$groupe]);
@@ -61,14 +72,7 @@ class RepartitionController extends Controller
          * 
          * 
          */
-        return redirect()->route('stagaire.repartition.index');
-
-    }
-
-    public function index()
-    {
-        $periodes=Periode::all();
-        return view('stagaire.repartition.show',compact('periodes'));
+        return redirect()->route('stagaire.repartition.show')->with('succes','Repartition est terminé avec succés');
 
     }
 
@@ -112,6 +116,19 @@ class RepartitionController extends Controller
 
         }
 
+    }
+
+
+    public function synchroniser()
+    {
+        $lignes=DB::table('stage_groupe_periode')->get();
+        foreach ($lignes as  $ligne) {
+            $groupe=Groupe::where('id',$ligne->groupe_id)->first();
+            $stagaires=$groupe->stagaires;
+            foreach ($stagaires as  $stagaire) {
+                $stagaire->stages()->attach($ligne->stage_id);
+            }
+        }
     }
     
 }

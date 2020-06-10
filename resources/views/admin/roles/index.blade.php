@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-<<<<<<< HEAD
 @if (session('create'))
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,16 +26,12 @@
     </button>
   </div>
 @endif
-@can('role_create')
-    <div style="margin-bottom: 10px;" class="row">
-=======
 
 <div class="card">
     <div class="card-header">
         {{ trans('global.role.title_singular') }} {{ trans('global.list') }}
         @can('role_create')
     <div style="margin-bottom: 10px;"class="row float-right">
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.roles.create") }}">
                <i class="fas  fa-plus"></i> {{ trans('global.role.title_singular') }}
@@ -79,7 +74,7 @@
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>
-                            <td>
+                            <td width="150">
                              <center>
                                 @can('role_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
@@ -87,16 +82,13 @@
                                     </a>
                                 @endcan
                                 @can('role_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
+                                    <a class="btn btn-xs btn-info " href="{{ route('admin.roles.edit', $role->id) }}">
                                         <i class="fas fa-edit" ></i>
                                     </a>
                                 @endcan
                                 @can('role_delete')
-                                    <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash "></i></button>
-                                    </form>
+                                <button class="btn btn-xs btn-danger remove-role" data-id="{{ $role->id }}" data-action="{{ route('admin.roles.destroy', $role->id) }}"> <i class="fas fa-trash "></i></button>
+
                                 @endcan
                                 </center>
                             </td>
@@ -123,19 +115,21 @@
       });
 
       if (ids.length === 0) {
-        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','warning')
 
         return
       }
 // 
 Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+  title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
 }).then((result) => {
   if (result.value) {
     $.ajax({
@@ -163,6 +157,39 @@ Swal.fire({
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
+</script>
+@parent
+<script type="text/javascript">
+  $("body").on("click",".remove-role",async  function(){
+    var current_object = $(this);
+    // console.log(current_object);
+    // return;
+  const WillDelete = await  swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
+    });
+    if(WillDelete){
+        if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);
+            var action = current_object.attr('data-action');
+            var token = jQuery('meta[name="csrf-token"]').attr('content');
+            var id = current_object.attr('data-id');
+          console.log(action);
+          // return;
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+        }
+    }
+});
 </script>
 @endsection
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
@@ -60,6 +61,15 @@ class UsersController extends Controller
             $user->roles()->sync($request->input('roles', []));
             
         }
+        elseif ($request->roles[0]==1) {
+            $admin=Admin::create($request->only(['nom','prenom','service_id']));
+            $user=User::create($request->only(['email','password']));
+            $user->profile_type="App\Admin";
+            $user->profile_id=$admin->id;
+            $user->save();
+            $user->roles()->sync($request->input('roles', []));
+            
+        }
 
         
 
@@ -99,11 +109,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         abort_unless(\Gate::allows('user_delete'), 403);
-<<<<<<< HEAD
 
-        $user->forceDelete();        
-        return back()->with('delete', 'User Deleted');
-=======
         if($user->profile_type=="App\Encadrant")
         {
             $profile_id=$user->profile_id;
@@ -118,9 +124,15 @@ class UsersController extends Controller
             $secretaire=Secretaire::find($profile_id);
             $secretaire->delete();  
         }
+        else
+        {
+            $profile_id=$user->profile_id;
+            $user->forceDelete();
+            $admin=Admin::find($profile_id);
+            $admin->delete();  
+        }
     
-        return back();
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
+        return back()->with('delete', 'User Deleted');
     }
 
     public function massDestroy(MassDestroyUserRequest $request)
