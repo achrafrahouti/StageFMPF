@@ -1,6 +1,6 @@
-@extends('layouts.admin') d
+@extends('layouts.admin')
 @section('content')
-<select name="niveau" id="niveau" class="custom-select" onchange="setCard(this.value)">
+<select name="niveau" id="niveau" class="custom-select">
   @foreach($niveaux as $niveau)
       <option value="{{$niveau->id}}">{{$niveau->liblle}}</option>
    @endforeach
@@ -133,16 +133,6 @@
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
-</script>
-<script>
-  function setCard(id){
-    
-    console.log(id);
-          document.getElementById(id).style.display="block";
-        
-   
-  }
-  
 </script>
 @endsection
 @endsection
