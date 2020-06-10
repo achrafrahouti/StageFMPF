@@ -224,6 +224,43 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42', 
             ],
+
+
+              [
+                'id'         => '37',
+                'title'      => 'demande_create',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '38',
+                'title'      => 'demande_edit',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '39',
+                'title'      => 'demande_show',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '40',
+                'title'      => 'demande_delete',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [
+                'id'         => '41',
+                'title'      => 'demande_access_etudiant',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
+            [   'id'         => '42',
+                'title'      => 'demande_access_admin',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+            ],
             
         ];
 

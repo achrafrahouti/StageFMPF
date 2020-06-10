@@ -19,6 +19,9 @@
                     {{ trans('global.userManagement.title') }}
                 </a>
                 <ul class="nav-dropdown-items">
+
+
+
                     {{-- <li class="nav-item">
                         <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                             <i class="fas fa-unlock-alt nav-icon">
@@ -122,8 +125,40 @@
                     Repartition
                 </a>
             </li>
+             {{--demandes--}}
+
+              <li class="nav-item nav-dropdown">
+                <a class="nav-link  nav-dropdown-toggle">
+                    <i class="fas fa-users-cog nav-icon">
+
+                    </i>
+                    {{ trans('global.demande.title') }}
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a href="{{ route("admin.demandes.indexv") }}" class="nav-link {{ request()->is('admin/demande/demandeverifiees') || request()->is('admin/demande/demandeverifiees/*') ? 'active' : '' }}">
+                            <i class="fas fa-user nav-icon">
+
+                            </i>
+                            {{-- {{ trans('global.demande.title') }} --}} verifiées
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a href="{{ route("admin.demandes.index") }}" class="nav-link {{ request()->is('admin/demandes') || request()->is('admin/demandes/*') ? 'active' : '' }}">
+                            <i class="fas fa-user nav-icon">
+
+                            </i>
+                            {{-- {{ trans('global.demande.title') }} --}}non  verifiées
+                        </a>
+                    </li>
+                </ul>
+            </li>         
+
             @endif
-            {{-- ssssssssssssssssss --}}
+           
+            {{-- etudaints --}}
             @if (Auth::user()->isEtudiant())
             <li class="nav-item">
                 <a href="{{ route("stagaire.notes.index") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
@@ -131,6 +166,15 @@
 
                     </i>
                     {{ trans('global.note.title') }}
+                </a>
+            </li>
+             {{--demandes--}}
+            <li class="nav-item">
+                <a href="{{ route("stagaire.demandes.index") }}" class="nav-link {{ request()->is('stagaire/demandes') || request()->is('stagaire/demandes/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{ trans('global.demande.title') }}
                 </a>
             </li>
             @endif

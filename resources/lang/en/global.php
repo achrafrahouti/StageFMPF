@@ -496,6 +496,8 @@ return [
         ],
 
     ],
+
+
     'etudiant'                =>[  
         'title' =>  'Student',
         'title_singular'=>'student',
@@ -503,9 +505,36 @@ return [
              'profile'  => 'Profil',
              'info'          => 'personal informations',
         ],
+    ],
 
-
-    ]
+    'demande'                              => [
+        'title'          => 'Demandes ',
+        'title_singular' => 'Demande',
+        'fields'         => [
+            'stage'              => 'Stage',
+            'stage_helper'         =>'',
+            'cne'                =>'Code massar',
+            'cne_helper'         =>'',
+            'id_helper'          => '',
+            'type'               => 'Type demande',
+            'type_helper'        =>'',
+            'objet'              => 'Objet demande',
+            'objet_helper'         =>'',
+            'name_helper'        => '',
+            'created_at'         => 'Created At',
+            'created_at_helper'  => '',
+            'updated_at'         => 'Updated At',
+            'updated_at_helper'  => '',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => '',
+        ],
+        'type_d'             => [
+            'transfert'       => 'Transfert',
+            'revalidation'   => 'Revalidation',
+            'reclamation'    => 'Réclamation',
+            'attestation'     =>'Attestaion', 
+        ],
+    ],
     
     
 ];

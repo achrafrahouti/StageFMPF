@@ -67,8 +67,9 @@ class RepartitionController extends Controller
 
     public function index()
     {
-        $periodes=Periode::all();
-        return view('stagaire.repartition.show',compact('periodes'));
+        // $periodes=Periode::all();
+        $niveaux=Niveau::all();
+        return view('stagaire.repartition.show',compact('niveaux'));
 
     }
 

@@ -43,4 +43,10 @@ class Stage extends Model
     {
         return $this->belongsTo('App\Niveau');
     }
+  
+   public function demandes()
+    {
+        return $this->hasMany('App\Demande','id_stage');
+    }
+    
 }

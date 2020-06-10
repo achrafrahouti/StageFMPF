@@ -99,11 +99,9 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         abort_unless(\Gate::allows('user_delete'), 403);
-<<<<<<< HEAD
 
-        $user->forceDelete();        
-        return back()->with('delete', 'User Deleted');
-=======
+
+       
         if($user->profile_type=="App\Encadrant")
         {
             $profile_id=$user->profile_id;
@@ -120,7 +118,7 @@ class UsersController extends Controller
         }
     
         return back();
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
+
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

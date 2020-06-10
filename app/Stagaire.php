@@ -34,4 +34,10 @@ class Stagaire extends Model
     {
         return $this->morphOne('App\User','profile');
     }
+
+    public function demandes()
+    {
+        return $this->hasMany('App\Demande','id_stagaire');
+    }
+
 }

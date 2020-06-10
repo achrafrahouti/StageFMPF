@@ -1,6 +1,13 @@
-@extends('layouts.admin')
+@extends('layouts.admin') d
 @section('content')
-  <div class="card">
+<select name="niveau" id="niveau" class="custom-select" onchange="setCard(this.value)">
+  @foreach($niveaux as $niveau)
+      <option value="{{$niveau->id}}">{{$niveau->liblle}}</option>
+   @endforeach
+</select>
+<br><br>
+@foreach($niveaux as $niveau)
+  <div class="card" id="{{$niveau->id}}">
       <div class="card-header">
     @can('groupe_create')
     <div style="margin-bottom: 10px;" class="row float-right">
@@ -38,6 +45,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                  @php
+                  $periodes=App\Periode::where('niveau_id',$niveau->id)->get();
+                  @endphp
                     @foreach($periodes as $periode)
                         <tr>
                     
@@ -45,10 +55,7 @@
                            <td rowspan="{{$periode->stages->unique()->count()+1}}">
                                 {{ $periode->name ?? '' }}
                            </td>
-<<<<<<< HEAD
 
-=======
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
                              @foreach($periode->stages->unique() as $stage)
 
                               @php
@@ -85,8 +92,10 @@
                 </tbody>
             </table>
         </div>
-    </div>
+     </div>
+    
 </div>
+@endforeach
 @section('scripts')
 @parent
 <script>
@@ -124,6 +133,16 @@
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
+</script>
+<script>
+  function setCard(id){
+    
+    console.log(id);
+          document.getElementById(id).style.display="block";
+        
+   
+  }
+  
 </script>
 @endsection
 @endsection

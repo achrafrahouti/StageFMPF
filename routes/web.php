@@ -29,6 +29,9 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::post('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
     Route::get('repartition/index','RepartitionController@index')->name('repartition.index');
     Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
+    
+    Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy'); 
+    Route::resource('demandes','DemandeController');
 
 });
 
@@ -60,9 +63,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('services','ServicesController');
 
     Route::delete('stages/destroy', 'StagesController@massDestroy')->name('stages.massDestroy');
-
+    
+     Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy');
     Route::resource('stages','StagesController');
+    Route::get('demande/demandeverifiees','DemandeController@indexv')->name('demandes.indexv');
 
-
+    Route::resource('demandes','DemandeController');
+    Route::post('demandes/accepte/{id}/{bool}','DemandeController@accepter');
 
 });
