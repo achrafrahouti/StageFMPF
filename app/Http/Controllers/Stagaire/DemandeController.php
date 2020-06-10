@@ -27,7 +27,8 @@ class DemandeController extends Controller
     public function create()
     {
         // abort_unless(\Gate::allows('demande_create'), 403);
-        $stages=Stage::all();
+        $niveau_id=Auth::user()->profile->etudiant->niveau_id;
+        $stages=Stage::where('niveau_id',$niveau_id)->get();
 
         return view('stagaire.demandes.create',compact('stages'));
     }
@@ -38,10 +39,7 @@ class DemandeController extends Controller
         $stage=Stage::where('id',$request->id_stage)->get();
         $stagaire=Stagaire::where('id',$request->id_stagaire)->first();
         $periode_id=DB::table('stage_groupe_periode')->where('stage_id',$request->id_stage)->where('groupe_id',$stagaire->groupe_id)->select('periode_id')->first();
-         $periode=Periode::where('id',$periode_id->periode_id)->first();
-        // date_timestamp_get(date_create($periode->date_debut));
-        //  date_diff($periode->date_debut,date("Y-m-d"));
-         
+         $periode=Periode::where('id',$periode_id->periode_id)->first();         
           $date_debut=Carbon::parse( $periode->date_debut);
           $now=Carbon::now();
          if($date_debut->diffInDays($now)>=10){
