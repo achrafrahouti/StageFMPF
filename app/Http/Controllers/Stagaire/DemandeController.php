@@ -81,7 +81,7 @@ class DemandeController extends Controller
 
     public function destroy(Demande $demande)
     {
-        // abort_unless(\Gate::allows('demande_delete'), 403);
+        abort_unless(\Gate::allows('demande_delete'), 403);
 
         $demande->delete();
 

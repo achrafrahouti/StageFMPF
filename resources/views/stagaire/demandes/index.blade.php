@@ -86,12 +86,12 @@
                             
                             <td>
                                 <center>
-                              {{-- @can('demande_show') --}}
+                              @can('demande_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('stagaire.demandes.show', $demande->id) }}">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                               {{--  @endcan --}}
-                                {{-- @can('demande_edit') --}}
+                                @endcan
+                                @can('demande_edit')
                                 @if(is_null($demande->demande_validé))
                                 <a  class="btn btn-xs btn-info" href="{{ route('stagaire.demandes.edit', $demande->id) }}">
                                         <i class="fas fa-edit"></i>
@@ -102,7 +102,7 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 @endif
-                                {{-- @endcan --}}
+                                @endcan
                                 
                                 </center>
                             </td>

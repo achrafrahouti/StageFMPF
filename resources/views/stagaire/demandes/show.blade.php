@@ -11,43 +11,23 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.demande.fields.cne') }}
+                        {{trans('global.groupe.fields.niveau_id')}}
+
                     </th>
-                     <td>
-                        {{ $demande->stagaire->etudiant->cne }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('global.user.fields.name') }}
-                    </th>
-                     <td>
-                        {{ $demande->stagaire->etudiant->nom}}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('global.user.fields.lastname') }}
-                    </th>
-                     <td>
-                        {{ $demande->stagaire->etudiant->prenom }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                            {{trans('global.groupe.fields.groupe_tot')}}
+
                             <td >
                                   {{ $demande->stagaire->etudiant->niveau->liblle?? '' }}
                             </td>  
-                   </th>
                 </tr>
                 <tr>
                     <th>
-                            {{trans('global.groupe.fields.niveau_id')}}
+                                                    {{trans('global.groupe.fields.groupe_tot')}}
+
+                        </th>
+
                              <td >
                                   {{ $demande->stagaire->groupe->name ?? '' }}
                             </td>
-                    </th>
                 </tr>
                 <tr> 
                     <th>

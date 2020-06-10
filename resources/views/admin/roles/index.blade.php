@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-<<<<<<< HEAD
 @if (session('create'))
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,16 +26,11 @@
     </button>
   </div>
 @endif
-@can('role_create')
-    <div style="margin-bottom: 10px;" class="row">
-=======
-
 <div class="card">
     <div class="card-header">
         {{ trans('global.role.title_singular') }} {{ trans('global.list') }}
         @can('role_create')
     <div style="margin-bottom: 10px;"class="row float-right">
->>>>>>> 0afaf141442d6bcdfc4c7aea41d785492b70a7a6
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.roles.create") }}">
                <i class="fas  fa-plus"></i> {{ trans('global.role.title_singular') }}
