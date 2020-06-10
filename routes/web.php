@@ -16,18 +16,28 @@ Route::redirect('/home', '/admin');
 Auth::routes(['register' => false]);
 
 Route::get('repartition','Stagaire\RepartitionController@choix')->name('stagaire.repartition.choix');
-
+Route::get('affictation','Stagaire\AffictationController@choix')->name('affictation.choix')->middleware('role:admin');    
+Route::get('notes','Stagaire\NotesController@show')->name('notes.ajax');    //middleware
+Route::get('synchroniser','Stagaire\RepartitionController@synchroniser')->name('synchroniser');
 
 Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire','middleware'=>['auth']], function () {
     Route::get('notes','NotesController@index')->name('notes.index')->middleware('role:etudiant');
-    Route::get('notes/choix','NotesController@choix')->name('notes.choix');
     Route::get('notes/create','NotesController@create')->name('notes.create');
     Route::post('notes','NotesController@store')->name('notes.store');
+    Route::get('getinfo/{id}','NotesController@ajax')->name('notes.getinfo');
+    Route::get('getinfoAdmin/{id}','NotesController@adminajax')->name('notes.getinfoAdmin');
+
     Route::get('affictation','AffictationController@index')->name('affictation.index')->middleware('role:admin');
+    Route::post('affictation/afficher','AffictationController@afficher')->name('affictation.afficher')->middleware('role:admin');
     Route::get('affictation/store','AffictationController@store')->name('affictation.store')->middleware('role:admin');
     Route::get('affictation/grouper','AffictationController@show')->name('affictation.show')->middleware('role:admin');
+    Route::get('affectation/list','AffictationController@list')->name('affectation.list')->middleware('role:admin');
+    Route::get('affecter/{id}','AffictationController@affecter')->name('affectation.affecter')->middleware('role:admin');
+
+    
     Route::post('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
-    Route::get('repartition/index','RepartitionController@index')->name('repartition.index');
+    // Route::get('repartition/index','RepartitionController@index')->name('repartition.index');
+    Route::get('repartition/show','RepartitionController@show')->name('repartition.show');
     Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
     
     Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy'); 

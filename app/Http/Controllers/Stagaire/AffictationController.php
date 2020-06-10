@@ -2,17 +2,42 @@
 
 namespace App\Http\Controllers\Stagaire;
 
-use App\Etudiant;
+use App\Groupe;
 use App\Http\Controllers\Controller;
 use App\Niveau;
-use App\Service;
 use App\Stagaire;
 use App\Stage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AffictationController extends Controller
 {
+
+
+    public function choix()
+    {
+        $niveaux=Niveau::all();
+        return view('stagaire.affictation.choix',compact('niveaux'));
+    }
+
+    public function affecter( $niveau_id)
+    {
+        $groupes=Groupe::where('niveau_id',$niveau_id)->get(); 
+        $collections['groupes']=$groupes;
+        return json_encode($collections);
+
+    }
+
+    public function afficher(Request $request)
+    {
+        $groupes=Groupe::whereIn('id',$request->groupes)->get()->pluck('id');
+        $arrGroupes=$groupes->toArray();
+        $stagaires=Stagaire::whereIn('groupe_id',$arrGroupes)->get();
+        return view('stagaire.affictation.show',compact('stagaires'));
+
+    }
+
+
+
     public function index()
     {
         $niveaux=Niveau::all();
@@ -22,9 +47,6 @@ class AffictationController extends Controller
     {
         $niveau=Niveau::where('id',$request->niveau_id)->first();//Niveau
 
-        // if (empty($request->capacite)) {// pour capacite si l'utilisateur n' a pas entré une valeur
-        //     $service=Service::all();
-        //     $capacite=$service->min('capacite');
 
         if (empty($request->capacite)) {// pour capacite si l'utilisateur pas entrer une valeur
             $capacite=10000;
@@ -54,6 +76,8 @@ class AffictationController extends Controller
         $stagaire->save();
         $i++;
         }
-        return view('stagaire.affictation.show',compact('etudiants','niveau'));
+
+        return view('stagaire.affictation.list',compact('niveau','etudiants'));
+        // return redirect()->route('affictation.choix')->with('succes','affectation terminer avec succes');
     }
 }

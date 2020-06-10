@@ -66,14 +66,16 @@ class GroupesController extends Controller
         return view('admin.groupes.show', compact('groupe'));
     }
 
-    public function destroy(Groupe $groupe)
+    public function destroy(Request $request,$id)
     {
         abort_unless(\Gate::allows('groupe_delete'), 403);
 
-        $groupe->delete();
+        Groupe::where('id',$id)->delete();
 
         return back()->with('delete', 'Groupe Deleted');
     }
+    
+
 
     public function massDestroy(MassDestroyGroupeRequest $request)
     {

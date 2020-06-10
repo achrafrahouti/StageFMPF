@@ -1,11 +1,20 @@
 @extends('layouts.admin')
 @section('content')
-
+@php
+    
+@endphp
 <div class="card">
     <div class="card-header">
         {{-- {{ trans('global.create') }} {{ trans('global.note.title_singular') }} --}}
        <h3 class="h1"> Insert Notes de                 {{ $stage->name }}</h3>
-
+@error('notes.*')
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Erreur</strong><br>  o	Certain(s) note(s) est invalide !!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@enderror
     </div>
 
     <div class="card-body">
@@ -49,8 +58,9 @@
                                     {{ $stagaire->etudiant->prenom ?? '' }}
                                 </td>
                                 <td>
-                                    <input type="hidden" name="groupe[]" value="{{ $stagaire->id }}">
-                                    <input type="double" name="notes[{{ $stagaire->id }}]" id="notes" value="{{ $stagaire->stages->where('id',$stage->id)->first()->pivot->note }}">
+                                    <input type="hidden" name="stagaire_id[]" value="{{ $stagaire->id }}">
+                                    <input class="{{ $errors->has('notes.*') ? 'has-error' : '' }}" type="double" name="notes[{{ $stagaire->id }}]" id="notes" value="{{ $stagaire->stages->where('id',$stage->id)->first()->pivot->note }}">
+                               
                                 </td>
                             </tr>
                         @endforeach

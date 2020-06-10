@@ -45,6 +45,9 @@
                         </option>
                     @endforeach
                 </select>
+                <p class="helper-block">
+                    {{ trans('global.user.fields.service_helper') }}
+                </p>
             {{-- end service --}}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label for="email">{{ trans('global.user.fields.email') }}*</label>

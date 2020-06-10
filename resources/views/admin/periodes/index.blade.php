@@ -95,11 +95,13 @@
                                     </a>
                                 @endcan
                                 @can('periode_delete')
-                                    <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;" onsubmit="return confirm('{{ trans('global.areYouSure') }}');">
+                                    {{-- <form name="myForm" action="{{ route('admin.periodes.destroy', $periode->id) }}" method="POST"  style="display: inline-block;" onsubmit="return confirm('{{ trans('global.areYouSure') }}');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button   type="submit" class="btn btn-xs btn-danger delete" > <i class="fas fa-trash"></i></button>
-                                    </form>
+                                    </form> --}}
+                                    <button class="btn btn-xs btn-danger remove-periode" data-id="{{ $periode->id }}" data-action="{{ route('admin.periodes.destroy', $periode->id) }}"> <i class="fas fa-trash "></i></button>
+
                                 @endcan
                                 </center>
                             </td>
@@ -126,19 +128,21 @@
       });
 
       if (ids.length === 0) {
-        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','warning')
 
         return
       }
 // 
 Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+       title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
 }).then((result) => {
   if (result.value) {
     $.ajax({
@@ -166,6 +170,39 @@ Swal.fire({
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
+</script>
+@parent
+<script type="text/javascript">
+  $("body").on("click",".remove-periode",async  function(){
+    var current_object = $(this);
+    // console.log(current_object);
+    // return;
+  const WillDelete = await  swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
+    });
+    if(WillDelete){
+        if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);
+            var action = current_object.attr('data-action');
+            var token = jQuery('meta[name="csrf-token"]').attr('content');
+            var id = current_object.attr('data-id');
+          console.log(action);
+          // return;
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+        }
+    }
+});
 </script>
 @endsection
 @endsection

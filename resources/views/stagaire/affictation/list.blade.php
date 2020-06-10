@@ -1,26 +1,26 @@
 @extends('layouts.admin')
 @section('content')
-@if (session('succes'))
+
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Succes</strong>    {{ session('succes') }}!!
+    <strong>Succes</strong>    affectation de {{ $niveau->liblle }} est terminé avec succes
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-@endif
+
 
  <div class="card">
      <div class="card-header"> 
         Liste des  Stagaire
-            @can('groupe_create')
-    <div style="margin-bottom: 10px;" class="row float-right">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("stagaire.affictation.index") }}">
-                <i class="fas fa-plus"></i> Regrouper
-            </a>
+        @can('groupe_create')
+        <div style="margin-bottom: 10px;" class="row float-right">
+            <div class="col-lg-12">
+                <a class="btn btn-success" href="{{ route("stagaire.affictation.index") }}">
+                    <i class="fas fa-plus"></i> Regrouper
+                </a>
+            </div>
         </div>
-    </div>
-     @endcan
+         @endcan
      </div>
      <div class="card-body">
         <div class="table-responsive">
@@ -48,22 +48,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($stagaires as $key => $stagaire)
+                    @foreach($etudiants as $key => $etudiant)
                         <tr data-entry-id="{{ '' }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $stagaire->etudiant->cne ?? '' }}
+                                {{ $etudiant->cne ?? '' }}
                             </td>
                             <td>
-                                {{ $stagaire->etudiant->nom ?? '' }}
+                                {{ $etudiant->nom ?? '' }}
                             </td>
                             <td>
-                                {{ $stagaire->etudiant->prenom ?? '' }}
+                                {{ $etudiant->prenom ?? '' }}
                             </td>
                             <td>
-                                {{ $stagaire->groupe->name ?? '' }}
+                                {{ $etudiant->stagaire->groupe->name ?? '' }}
                             </td>
                             <td>
 
@@ -134,8 +134,6 @@ Swal.fire({
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-
-
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 

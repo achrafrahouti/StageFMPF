@@ -108,21 +108,21 @@
             </li> --}}
             {{-- end secretaires--}}
             <li class="nav-item">
-                <a href="{{ route("stagaire.affictation.index") }}" class="nav-link {{ request()->is('stagaire/affictation') || request()->is('stagaire/affictation/*') ? 'active' : '' }}">
+                <a href="{{ route("affictation.choix") }}" class="nav-link {{ request()->is('stagaire/affictation') || request()->is('stagaire/affictation/*') ? 'active' : '' }}">
                     <i class="fas fa-cubes nav-icon">
-
+                        
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}
-                    Affectation
+                    Liste des Stagaires
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route("stagaire.repartition.index") }}" class="nav-link {{ request()->is('stagaire/repartition') || request()->is('stagaire/repartition/*') ? 'active' : '' }}">
+                <a href="{{ route("stagaire.repartition.show") }}" class="nav-link {{ request()->is('stagaire/repartition') || request()->is('stagaire/repartition/*') ? 'active' : '' }}">
                     <i class="fas fa-cubes nav-icon">
 
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}
-                    Repartition
+                    Planning 
                 </a>
             </li>
              {{--demandes--}}
@@ -183,7 +183,7 @@
                 
             
             <li class="nav-item">
-                <a href="{{ route("stagaire.notes.choix") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
+                <a href="{{ route("notes.ajax") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
                     <i class="fas fa-cubes nav-icon">
 
                     </i>
