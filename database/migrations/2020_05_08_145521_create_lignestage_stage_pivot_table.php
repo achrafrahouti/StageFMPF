@@ -18,6 +18,7 @@ class CreateLignestageStagePivotTable extends Migration
             $table->double('Note')->nullable();
             $table->unsignedBigInteger('stagaire_id');
             $table->unsignedBigInteger('stage_id');
+            $table->boolean('verify')->nullable();
             $table->foreign('stagaire_id')->references('id')->on('stagaires');
             $table->foreign('stage_id')->references('id')->on('stages');
             $table->unique(['stage_id','stagaire_id']);

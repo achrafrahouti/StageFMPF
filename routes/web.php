@@ -38,6 +38,7 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::post('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
     // Route::get('repartition/index','RepartitionController@index')->name('repartition.index');
     Route::get('repartition/show','RepartitionController@show')->name('repartition.show');
+    Route::get('getPeriode/{id}','RepartitionController@getPeriode')->name('getPeriode');
     Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
     
     Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy'); 

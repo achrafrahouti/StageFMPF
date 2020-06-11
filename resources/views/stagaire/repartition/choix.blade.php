@@ -51,7 +51,7 @@
                 <label for="groupes">{{ trans('global.repartition.fields.groupe') }}*
                     <span class="btn btn-info btn-xs select-all">Select all</span>
                     <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
-                <select name="groupes[]" id="groupes" class="form-control select2" multiple="multiple">
+                <select name="groupes[]" id="groupes" class=" form-control select2" multiple="multiple">
 
                 </select>
                 <p class="helper-block">

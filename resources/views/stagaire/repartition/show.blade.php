@@ -21,7 +21,7 @@
 
 @endif
 <div class="alert alert-info alert-dismissible fade show" role="alert">
-  <strong > S’il vous plait veuillez choisir un niveau pour voir sa répartition  </strong>
+  <strong > {{ trans('global.choix') }}</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -39,12 +39,11 @@
           </a>
       </div>
   </div>
-    <form action="{{ route('stagaire.repartition.show') }}" method="GET" enctype="multipart/form-data">
       <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
         <div class="row ">
           <label class="text-right col-sm-2" for="niveau_id"><strong class="text-secondary"> {{ trans('global.periode.fields.niveau_id') }} :</strong></label>
-          <select name="niveau_id" id="niveau_id" class=" col-sm-3 custom-select custom-select-sm " onchange="set(this.value);">
-              <option selected>{{ trans('global.repartition.fields.choix') }}</option>
+          <select name="niveau_id" id="niveau_id" class=" col-sm-3 custom-select custom-select-sm " >
+              <option value="0" selected>{{ trans('global.repartition.fields.choix') }}</option>
               @foreach($niveaux as $id => $niveau)
                   <option id="niveau_id" value="{{ $niveau->id }}">
                       {{ $niveau->liblle }}
@@ -54,10 +53,9 @@
               {{ trans('global.repartition.fields.niveau_id_helper') }}
           </p>
           </select>
-         <button class="btn btn-info mx-3 py-0 px-3" type="submit"><i class="fa fa-search"></i></button>
+         <button  id="but_search" class="btn btn-info mx-3 py-0 px-3" type="submit"><i class="fa fa-search"></i></button>
         </div>
       </div>
-  </form>
 
      @endcan
     
@@ -72,15 +70,17 @@
                     <tr>
 
                         <th class="text-center">
-                            {{-- {{ trans('global.note.fields.periode') }} --}}
-                            Periodes
+                            {{ trans('global.periode.title_singular') }}
+                            {{-- Periodes --}}
                         </th>
                         <th class="text-center">
-                            {{-- {{ trans('global.note.fields.periode') }} --}}
-                            Stages
+                            {{ trans('global.stage.title_singular') }}
+                            {{-- Stages --}}
                         </th>
                         <th class="text-center">
-                           groupes
+                          {{ trans('global.groupe.title_singular') }}
+
+                           {{-- groupes --}}
                         </th>
                        
                         <th>
@@ -89,9 +89,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @php
+                  {{-- @php
                   $periodes=App\Periode::where('niveau_id',$niveau->id)->get();
-                  @endphp
+                  @endphp --}}
                     @foreach($periodes as $periode)
                         <tr>
                     
@@ -136,13 +136,13 @@
                             </td>
                         </tr>
                     @endforeach
-                </tbody>
+                </tbody> 
             </table>
         </div>
      </div>
     
 </div>
-@section('scripts')
+@section('scripts') 
 @parent
 <script>
   $(function () {
@@ -194,5 +194,28 @@ $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
 </script>
+
+<script type='text/javascript'>
+     $(document).ready(function(){
+
+
+      $('#but_search').click(function(){
+      
+            var niveau_id = Number($('#niveau_id').val().trim());
+            console.log(niveau_id);
+            var action = '/stagaire/getPeriode/'+niveau_id;
+            // var token = jQuery('meta[name="csrf-token"]').attr('content');
+            // var id = current_object.attr('data-id');
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="get">');
+            // $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            // $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+
+});
+
+     });
+
+  </script>
 @endsection
 @endsection

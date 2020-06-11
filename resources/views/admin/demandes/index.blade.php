@@ -41,10 +41,10 @@
                             {{ trans('global.demande.fields.cne') }}
                         </th>
                         <th>
-                            {{ trans('global.user.fields.name') }}
+                            {{ trans('global.first_name') }}
                         </th>
-                        <th>
-                        {{ trans('global.user.fields.lastname') }}
+                        <th> 
+                        {{ trans('global.last_name') }}
                         </th>
                         <th>
                             {{trans('global.groupe.fields.niveau_id')}}
@@ -154,9 +154,7 @@
         }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('demande_delete')
-  dtButtons.push(deleteButton)
-@endcan
+
 
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })

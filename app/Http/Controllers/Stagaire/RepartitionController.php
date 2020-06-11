@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class RepartitionController extends Controller
 {
-
+ 
     
 
 
@@ -23,6 +23,14 @@ class RepartitionController extends Controller
         $niveaux=Niveau::all();
         return view('stagaire.repartition.show',compact('periodes','niveaux'));
     }
+
+    public function getPeriode($id)
+    {
+
+            $periodes = Periode::where('niveau_id', $id)->get(); 
+            $niveaux=Niveau::all();
+            return view('stagaire.repartition.show',compact('periodes','niveaux'));
+        }
     public function choix()
     {
         
