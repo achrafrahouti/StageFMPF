@@ -13,6 +13,26 @@
   </div>
 
 @endif
+@if (session('error'))
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Erreur</strong>    {{ session('error') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+@endif
+@if (session('verify'))
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Erreur</strong>    {{ session('verify') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+@endif
 <div class="card">
     <div class="card-header">
         <center>         {{ trans('global.repartition.title_singular') }}
@@ -20,7 +40,7 @@
         <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
             <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>
             
-            <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" @if (Auth::user()->isAdmin())onchange="setAdmin(this.value);"@endif @if (Auth::user()->isSecretaire())onchange="set(this.value);"@endif >
+            <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" @if (Auth::user()->isAdmin())onchange="setAdmin(this.value);"@endif @if (Auth::user()->isSecretaire() || Auth::user()->isEncadrant())onchange="set(this.value);"@endif >
                 <option selected>{{ trans('global.repartition.fields.choix') }}</option>
                 @foreach($niveaux as $id => $niveau)
                     <option id="niveau_id" value="{{ $niveau->id }}">

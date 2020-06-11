@@ -3,17 +3,6 @@
 <div class="card">
     <div class="card-header">
        <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div> 
-       <div class="d-inline">
-                <label id="niv" onchange="showCustomer(this.value)">Niveau:</label><div id="txtHint"></div>
-                <select name="niv" for="niv">
-                    <option value="1">1ére année</option>
-                    <option value="2">2éme année</option>
-                    <option value="3">3éme année</option>
-                    <option value="4">4éme année</option>
-                    <option value="5">5éme année</option>
-                    <option value="6">6éme année</option>
-                </select>
-      </div>
     </div>
 
     <div class="card-body">

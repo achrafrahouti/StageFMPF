@@ -18,7 +18,7 @@ Auth::routes(['register' => false]);
 Route::get('repartition','Stagaire\RepartitionController@choix')->name('stagaire.repartition.choix');
 Route::get('affictation','Stagaire\AffictationController@choix')->name('affictation.choix')->middleware('role:admin');    
 Route::get('notes','Stagaire\NotesController@show')->name('notes.ajax');    //middleware
-Route::get('synchroniser','Stagaire\RepartitionController@synchroniser')->name('synchroniser');
+
 
 Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire','middleware'=>['auth']], function () {
     Route::get('notes','NotesController@index')->name('notes.index')->middleware('role:etudiant');
@@ -36,10 +36,15 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
 
     
     Route::post('repartition/partitionner','RepartitionController@partitionner')->name('repartition.partitionner')->middleware('role:admin');
-    // Route::get('repartition/index','RepartitionController@index')->name('repartition.index');
     Route::get('repartition/show','RepartitionController@show')->name('repartition.show');
+
+    Route::get('getStagaires/stagaire','RepartitionController@synch')->name('repartition.synch');
+    Route::get('getStagaires/synchroniser','RepartitionController@synchroniser')->name('synchroniser');
+    Route::get('getStagaires/{id}','RepartitionController@getStagaires')->name('getStagaires');
+
     Route::get('getPeriode/{id}','RepartitionController@getPeriode')->name('getPeriode');
     Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
+
     Route::get('print/{id}','DemandeController@print')->name('print');
     Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy'); 
     Route::resource('demandes','DemandeController');

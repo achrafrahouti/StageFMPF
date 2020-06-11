@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Stagaire;
 
+use App\Etudiant;
 use App\Groupe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Niveau;
 use App\Periode;
+use App\Stagaire;
 use App\Stage;
 use Illuminate\Support\Facades\DB;
 
@@ -64,7 +66,6 @@ class RepartitionController extends Controller
         $stage=Stage::where('id',$request->stage_id)->first();
         $groupes=$request->groupes;
         $nbrGroupe=Groupe::where('niveau_id',$periode->niveau_id)->distinct('groupe_tot')->count();
-        $periodes=Periode::all();
         $nbrPeriode=Periode::where('niveau_id',$periode->niveau_id)->count();
         if ($nbrGroupe!=$nbrPeriode) {
             return redirect()->route('stagaire.repartition.show')->with('error','La Repartition est trompée, le nombre de période doit égale le nombre de groupe   ');
@@ -80,7 +81,9 @@ class RepartitionController extends Controller
          * 
          * 
          */
-        return redirect()->route('stagaire.repartition.show')->with('succes','Repartition est terminé avec succés');
+        $niveau_id=$periode->niveau_id;
+         return view('stagaire.repartition.index',compact('niveau_id'));
+        // return redirect()->route('stagaire.repartition.show')->with('succes','Repartition est terminé avec succés');
 
     }
 
@@ -126,6 +129,19 @@ class RepartitionController extends Controller
 
     }
 
+    public function synch()
+    {
+        $niveaux=Niveau::all();
+        $etudiants=Etudiant::get();
+        return view('stagaire.repartition.synch',compact('niveaux','etudiants'));
+    }
+
+    public function getStagaires($id)
+    {
+        $niveaux=Niveau::all();
+        $etudiants=Etudiant::where('niveau_id',$id)->get();
+        return view('stagaire.repartition.synch',compact('niveaux','etudiants'));
+    }
 
     public function synchroniser()
     {
@@ -137,6 +153,7 @@ class RepartitionController extends Controller
                 $stagaire->stages()->attach($ligne->stage_id);
             }
         }
+        return back()->with('succes','Attachment des stagaires avec sont stages est terminé');
     }
     
 }
