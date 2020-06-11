@@ -40,7 +40,7 @@ Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire'
     Route::get('repartition/show','RepartitionController@show')->name('repartition.show');
     Route::get('getPeriode/{id}','RepartitionController@getPeriode')->name('getPeriode');
     Route::get('repartition/{id}','RepartitionController@repartir')->name('repartition.repartir')->middleware('role:admin');
-    
+    Route::get('print/{id}','DemandeController@print')->name('print');
     Route::delete('demandes/destroy', 'DemandeController@massDestroy')->name('demandes.massDestroy'); 
     Route::resource('demandes','DemandeController');
 
