@@ -82,4 +82,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('demandes','DemandeController');
     Route::post('demandes/accepte/{id}/{bool}','DemandeController@accepter');
 
+    Route::delete('etudiants/destroy', 'StagaireController@massDestroy')->name('etudiants.massDestroy');
+    Route::get('etudiants/makes','StagaireController@store')->name('etudiants.make');
+    Route::resource('etudiants', 'StagaireController')->except(['create','store','show','edit','update']);
+    
+
 });

@@ -147,21 +147,4 @@ class UsersController extends Controller
         return response(null, 204);
     }
 
-    public function storeStagaire()
-    {
-        $stagaires_ids=Stagaire::all()->pluck('etudiant_id');
-        $etudiants=Etudiant::whereNotIn('id',$stagaires_ids)->get();
-        foreach ($etudiants as $etudiant) {
-            $stagaire=Stagaire::create(['etudiant_id'=>$etudiant->id]);
-            $cne=$etudiant->cne;
-            $password=Hash::make($cne);
-            $nom=$etudiant->nom;
-            $prenom=$etudiant->prenom;
-            $email=$nom.'.'.$prenom.'@usmba.ac.ma';
-            $user=User::create(['email'=>$email,'password'=>$password]);
-            $user->profile_id=$stagaire->id;
-            $user->profile_type='App\Stagaire';
-            $user->save();
-        }
-    }
 }
