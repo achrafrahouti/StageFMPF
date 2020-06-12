@@ -28,7 +28,7 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed pace-done sidebar-lg-show">
-    <header class="app-header navbar">
+    <header class="app-header navbar text-primary">
         <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,9 +39,7 @@
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>
         </button>
-         <div>
-           
-         </div>
+         
         <ul class="nav navbar-nav ml-auto">
             @if(count(config('panel.available_languages', [])) > 1)
                 <li class="nav-item dropdown d-md-down-none">
@@ -56,6 +54,22 @@
                 </li>
             @endif
         </ul>
+        <div>
+
+             <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="fas fa-user-circle"></span></a> 
+              <div class="dropdown-menu dropdown-menu-right">
+               <a href="{{ route('admin.users.edit', $user->id) }}" class=" nav-link  dropdown-item"><i class="nav-icon fas fa-user-edit"></i>  Mon compte</a> 
+      
+                <a href="#" class="nav-link dropdown-item
+                " onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt">
+
+                    </i>
+                    {{ trans('global.logout') }}
+                 </a>
+           
+              </div>
+       </div>
     </header>
 
     <div class="app-body">

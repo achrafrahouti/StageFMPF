@@ -2,6 +2,11 @@
     <nav class="sidebar-nav ps ps--active-y">
 
         <ul class="nav">
+           
+             {{-- <div class="py-3 text-center">
+                 <h3>{{Auth::user()->profile->etudiant->nom}}<br> {{Auth::user()->profile->etudiant->prenom}} </h3>
+             </div> --}}
+         
             <li class="nav-item">
                 <a href="{{ route("admin.home") }}" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt">
