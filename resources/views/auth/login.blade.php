@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
@@ -13,10 +13,11 @@
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <h1>
-                            <div class="login-logo">
-                                <a href="#">
-                                    {{ trans('global.site_title') }}
-                                </a>
+                            <div class="login-logo ">
+
+<center class="text-info ">
+                                {{ trans('global.site_title') }}
+                            </center>
                             </div>
                         </h1>
                         <p class="text-muted">{{ trans('global.login') }}</p>

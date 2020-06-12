@@ -91,7 +91,7 @@ class User extends Authenticatable
     {
         return $this->hasRole('Secretaire');
     }
-    public function isEncadreant()
+    public function isEncadrant()
     {
         return $this->hasRole('Encadrant');
     }

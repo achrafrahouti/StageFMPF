@@ -4,6 +4,8 @@
 <div class="card">
     <div class="card-header">
         {{ trans('global.show') }} {{ trans('global.demande.title') }}
+
+
     </div>
 
     <div class="card-body">
@@ -51,6 +53,7 @@
                     </th>
                     <td>
                         {{ $demande->objet_dem }}
+                        <td><a href="{{ route('stagaire.print',$demande->id) }}">Download PDF</a></td>
                     </td>
                 </tr>
             </tbody>

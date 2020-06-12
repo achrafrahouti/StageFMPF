@@ -51,6 +51,14 @@
                             {{ trans('global.user.title') }}
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.etudiants.index") }}" class="nav-link {{ request()->is('admin/etudiants') || request()->is('admin/etudiants/*') ? 'active' : '' }}">
+                            <i class="fas fa-user nav-icon">
+
+                            </i>
+                            {{ trans('global.etudiant.title') }}
+                        </a>
+                    </li>
                 </ul>
             </li>
             {{-- ooooo --}}
@@ -129,6 +137,15 @@
                     {{-- {{ trans('global.stage.title') }} --}}
                     Planning 
                 </a>
+            </li>            
+            <li class="nav-item">
+                <a href="{{ route("stagaire.repartition.synch") }}" class="nav-link {{ request()->is('stagaire/getStagaire') || request()->is('stagaire/getStagaires/*') ? 'active' : '' }}">
+                    <i class="fas fa-cubes nav-icon">
+
+                    </i>
+                    {{-- {{ trans('global.stage.title') }} --}}
+                    Attacher 
+                </a>
             </li>
              {{--demandes--}}
 
@@ -184,7 +201,7 @@
             </li>
             @endif
             {{-- ssssssssssssssssss --}}
-            @if (Auth::user()->isAdmin() || Auth::user()->isSecretaire())
+            @if (!Auth::user()->isEtudiant())
                 
             
             <li class="nav-item">

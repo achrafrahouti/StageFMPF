@@ -41,10 +41,10 @@
                             {{ trans('global.demande.fields.cne') }}
                         </th>
                         <th>
-                            {{ trans('global.user.fields.name') }}
+                            {{ trans('global.first_name') }}
                         </th>
                         <th>
-                        {{ trans('global.user.fields.lastname') }}
+                        {{ trans('global.last_name') }}
                         </th>
                         <th>
                             {{trans('global.groupe.fields.niveau_id')}}
@@ -61,7 +61,7 @@
                             {{ trans('global.demande.fields.type') }}
                         </th>
                         <th>
-                            Etat demande
+                            {{ trans('global.demande.fields.etat') }}
                         </th>
 
                         <th>
@@ -114,11 +114,9 @@
                                         <i class="fas fa-eye"></i>
                                     </a>
                                   {{-- @can('demande_delete') --}}
-                                    <form action="{{ route('admin.demandes.destroy', $demande->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                       <button type="submit" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></button>
-                                    </form>
+
+                                    <button class="btn btn-xs btn-danger remove-demande" data-id="{{ $demande->id }}" data-action="{{ route('admin.demandes.destroy', $demande->id) }}"> <i class="fas fa-trash "></i></button>
+
                                 {{-- @endcan  --}}
                                 
 
@@ -143,25 +141,44 @@
     url: "{{ route('admin.demandes.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-        var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-            return $(entry).data('entry-id')
-        });
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
 
-        if (ids.length === 0) {
-            alert('{{ trans('global.datatables.zero_selected') }}')
+      if (ids.length === 0) {
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','warning')
 
-            return
-        }
-
-        if (confirm('{{ trans('global.areYouSure') }}')) {
-                $.ajax({
-                headers: {'x-csrf-token': _token},
-                method: 'POST',
-                url: config.url,
-                data: { ids: ids, _method: 'DELETE' }})
-                .done(function () { location.reload() })
-         }
-        }
+        return
+      }
+// 
+Swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
+}).then((result) => {
+  if (result.value) {
+    $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+    Swal.fire({
+      titlt:'Deleted!',
+      text:'Your file has been deleted.',
+      icon:'success',
+      timer:3000
+    })
+  }
+})
+// 
+    }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('demande_delete')
@@ -171,13 +188,8 @@
   $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
 })
 
-</script> 
+</script>
 <script>
-    function setyes()
-    { 
-        
-    }
-
 async function accept(id,bool) {
     var demande_id=Number(id);
     if (demande_id) {
@@ -212,6 +224,38 @@ async function accept(id,bool) {
   }
     
 
+</script>
+{{-- mememememememememememememmeemememmememememememememememememememememememememem --}}
+@parent
+<script type="text/javascript">
+  $("body").on("click",".remove-demande",async  function(){
+    var current_object = $(this);
+    // console.log(current_object);
+    // return;
+  const WillDelete = await  swal.fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "error",
+        icon: 'warning',
+        showCancelButton: true,
+        dangerMode: true,
+        cancelButtonClass: '#DD6B55',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Delete!',
+    });
+    if(WillDelete){
+        if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);
+            var action = current_object.attr('data-action');
+            var token = jQuery('meta[name="csrf-token"]').attr('content');
+            var id = current_object.attr('data-id');
+            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+            $('body').find('.remove-form').submit();
+        }
+    }
+});
 </script>
 @endsection
 @endsection

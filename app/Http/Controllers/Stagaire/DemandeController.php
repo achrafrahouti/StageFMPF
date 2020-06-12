@@ -12,7 +12,7 @@ use App\Http\Requests\StoreDemandeRequest;
 use App\Http\Requests\UpdateDemandeRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use PDF;
 class DemandeController extends Controller
 {
     public function index()
@@ -92,5 +92,14 @@ class DemandeController extends Controller
 
         return response(null, 204);
     } 
+
+
+    public function print($id)
+    {
+        $demande=Demande::where('id',$id)->first();
+        $pdf = \PDF::loadView('stagaire..demandes.pdf', compact('demande'));
+        
+        return $pdf->download('disney.pdf');
+    }
 }
 

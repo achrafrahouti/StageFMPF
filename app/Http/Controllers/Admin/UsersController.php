@@ -11,8 +11,11 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\User;
 use App\Encadrant;
+use App\Etudiant;
 use App\Secretaire;
 use App\Service;
+use App\Stagaire;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -143,4 +146,5 @@ class UsersController extends Controller
 
         return response(null, 204);
     }
+
 }

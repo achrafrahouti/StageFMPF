@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
@@ -9,9 +9,9 @@
                         {{ csrf_field() }}
                         <h1>
                             <div class="login-logo">
-                                <a href="#">
+                                <center class="text-info">
                                     {{ trans('global.site_title') }}
-                                </a>
+                                </center>
                             </div>
                         </h1>
                         <p class="text-muted"></p>

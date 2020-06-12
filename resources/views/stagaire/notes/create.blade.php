@@ -41,9 +41,6 @@
                                 {{-- {{ trans('global.note.fields.note') }} --}}
                                 Note
                             </th>
-                            <th>
-                                &nbsp;
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,12 +59,14 @@
                                     <input class="{{ $errors->has('notes.*') ? 'has-error' : '' }}" type="double" name="notes[{{ $stagaire->id }}]" id="notes" value="{{ $stagaire->stages->where('id',$stage->id)->first()->pivot->note }}">
                                
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
             <div>
+                <input type="hidden" name="isEncadrant" value="{{ Auth::user()->isEncadrant()}}">
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>
         </form>
