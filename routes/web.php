@@ -3,12 +3,7 @@
 use App\Http\Controllers\AffictationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-Route::get('/achraf',function(){
-    return view('welcome')->with('succes','submited !!');
-})->name('achraf');
-Route::get('/ana',function(){
-    redirect()->route('achraf')->with('succes','submited !!');
-})->name('ana');
+
 Route::redirect('/', '/login');
 
 Route::redirect('/home', '/admin');
@@ -18,7 +13,7 @@ Auth::routes(['register' => false]);
 Route::get('repartition','Stagaire\RepartitionController@choix')->name('stagaire.repartition.choix');
 Route::get('affictation','Stagaire\AffictationController@choix')->name('affictation.choix')->middleware('role:admin');    
 Route::get('notes','Stagaire\NotesController@show')->name('notes.ajax');    //middleware
-
+Route::get('make','Admin\UsersController@storeStagaire');
 
 Route::group(['prefix' => 'stagaire','as' => 'stagaire.','namespace'=>'Stagaire','middleware'=>['auth']], function () {
     Route::get('notes','NotesController@index')->name('notes.index')->middleware('role:etudiant');

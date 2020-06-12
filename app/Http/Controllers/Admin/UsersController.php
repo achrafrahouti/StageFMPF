@@ -11,8 +11,11 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\User;
 use App\Encadrant;
+use App\Etudiant;
 use App\Secretaire;
 use App\Service;
+use App\Stagaire;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -142,5 +145,23 @@ class UsersController extends Controller
         User::whereIn('id', request('ids'))->delete();
 
         return response(null, 204);
+    }
+
+    public function storeStagaire()
+    {
+        $stagaires_ids=Stagaire::all()->pluck('etudiant_id');
+        $etudiants=Etudiant::whereNotIn('id',$stagaires_ids)->get();
+        foreach ($etudiants as $etudiant) {
+            $stagaire=Stagaire::create(['etudiant_id'=>$etudiant->id]);
+            $cne=$etudiant->cne;
+            $password=Hash::make($cne);
+            $nom=$etudiant->nom;
+            $prenom=$etudiant->prenom;
+            $email=$nom.'.'.$prenom.'@usmba.ac.ma';
+            $user=User::create(['email'=>$email,'password'=>$password]);
+            $user->profile_id=$stagaire->id;
+            $user->profile_type='App\Stagaire';
+            $user->save();
+        }
     }
 }
