@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-       <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div> 
+       {{-- <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div>  --}}
     </div>
 
     <div class="card-body">
@@ -20,7 +20,7 @@
                             {{ trans('global.note.fields.note') }}
                         </th>
                         <th>
-                            &nbsp;
+                            Fiche de validation
                         </th>
                     </tr>
                 </thead>
@@ -39,9 +39,9 @@
 
                                 @endif
                             </td>
-                            <td>
+                            <td width="15" class="text-center">
                                 @if ($stage->pivot->verify && $stage->pivot->note>=10)
-                                                                    <em class="btn btn-light"><a href="{{ route('stagaire.attestation.print',$stage->id) }}">Download Atestation </a></em>
+                                                                    <em class="btn btn-light"><a href="{{ route('stagaire.attestation.print',$stage->id) }}"><i class="fa fa-download" aria-hidden="false"></i></a></em>
 
                                 @endif
                             </td>

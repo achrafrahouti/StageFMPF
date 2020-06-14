@@ -26,7 +26,7 @@
 @endif
 <div class="card">
     <div class="card-header">
-        <i class="badge badge-dark">{{ trans('global.demande.title_singular') }} {{ trans('global.list') }}</i>
+        {{-- <i class="badge badge-dark">{{ trans('global.demande.title_singular') }} {{ trans('global.list') }}</i> --}}
     </div>
 
     <div class="card-body">

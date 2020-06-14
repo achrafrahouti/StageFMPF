@@ -46,7 +46,7 @@ class StagaireController extends Controller
             $user->roles()->sync($role);
             $user->save();
         }
-        return redirect()->route('admin.etudiants.index')->with('create', 'User Created');
+        return redirect()->route('admin.etudiants.index')->with('create', 'Stagaires ont  été créé');
 
     }
 
@@ -56,7 +56,7 @@ class StagaireController extends Controller
         $stagaire=$user->profile;
         $user->forceDelete();
         $stagaire->delete();
-        return back()->with('delete', 'User Deleted');
+        return back()->with('delete', 'Stagaire a  été supprimé');
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

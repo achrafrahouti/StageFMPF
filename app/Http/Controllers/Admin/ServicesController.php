@@ -32,7 +32,7 @@ class ServicesController extends Controller
 
         $service = Service::create($request->all());
 
-        return redirect()->route('admin.services.index')->with('create', 'Periode created');
+        return redirect()->route('admin.services.index')->with('create', 'Periode a été créé');
     }
 
     public function edit(Service $service)
@@ -48,7 +48,7 @@ class ServicesController extends Controller
 
         $service->update($request->all());
 
-        return redirect()->route('admin.services.index')->with('update', 'Periode Updated');
+        return redirect()->route('admin.services.index')->with('update', 'Periode a été modifié');
     }
 
     public function show(Service $service)
@@ -64,13 +64,13 @@ class ServicesController extends Controller
 
         $service->delete();
 
-        return back()->with('delete', 'Periode Deleted');
+        return back()->with('delete', 'Periode a été supprimé');
     }
 
     public function massDestroy(MassDestroyServiceRequest $request)
     {
         Service::whereIn('id', request('ids'))->delete();
 
-        return response(null, 204)->with('massdelete', 'Periodes Deleted');
+        return response(null, 204);
     }
 }

@@ -72,7 +72,7 @@ class NotesController extends Controller
         $s=DB::table('notes')->where('stage_id',$request->stage_id)->whereIn('stagaire_id',$pluck)->get()->count();
 
         if($s==0){
-            return redirect()->route('notes.ajax')->with('error','La repartition pas encor terminé ');
+            return redirect()->route('notes.ajax')->with('error','La repartition n\'est pas encore terminer ');
 
         }
         return view('stagaire.notes.create',compact('stage','stagaires'));
@@ -104,7 +104,7 @@ class NotesController extends Controller
         // dd($integration);
            $key=DB::table('notes')->select('verify')->where('stagaire_id',$stagaire->id)->where('stage_id',$stage)->first();
            if($key->verify){
-            return redirect()->route('notes.ajax')->with('verify','Les Notes ont verifié par l\'encadrant ');
+            return redirect()->route('notes.ajax')->with('verify','Les notes ont été verifié par l\'encadrant ');
            }
            $stagaire->stages()->syncWithoutDetaching([$stage=>['note'=>$note]]);
            $stagaire->stages()->syncWithoutDetaching([$stage=>['presence'=>$presence]]);
@@ -122,7 +122,7 @@ class NotesController extends Controller
          }
         }
 
-        return redirect()->route('notes.ajax')->with('succes','Les Notes sont Inséré ');
+        return redirect()->route('notes.ajax')->with('succes','Les notes ont  été inséré ');
     }
 
     

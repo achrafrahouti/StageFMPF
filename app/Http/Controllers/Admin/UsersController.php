@@ -76,7 +76,7 @@ class UsersController extends Controller
 
         
 
-        return redirect()->route('admin.users.index')->with('create', 'User Created');
+        return redirect()->route('admin.users.index')->with('create', 'Utilisateur a  été créé');
     }
 
     public function edit(User $user)
@@ -97,7 +97,7 @@ class UsersController extends Controller
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
 
-        return redirect()->route('admin.users.index')->with('update', 'User Updated');
+        return redirect()->route('admin.users.index')->with('update', 'Utilisateur a  été modifié');
     }
 
     public function show(User $user)
@@ -137,7 +137,7 @@ class UsersController extends Controller
             $admin->delete();  
         }
     
-        return back()->with('delete', 'User Deleted');
+        return back()->with('delete', 'Utilisateur a  été supprimé');
     }
 
     public function massDestroy(MassDestroyUserRequest $request)

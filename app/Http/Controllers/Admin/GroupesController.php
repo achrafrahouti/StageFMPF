@@ -40,7 +40,7 @@ class GroupesController extends Controller
 
         $groupe = Groupe::create($request->all());
 
-        return redirect()->route('admin.groupes.index')->with('create', 'Groupe Created');
+        return redirect()->route('admin.groupes.index')->with('create', 'Groupe a été créé');
     }
 
     public function edit(groupe $groupe)
@@ -56,7 +56,7 @@ class GroupesController extends Controller
 
         $groupe->update($request->all());
 
-        return redirect()->route('admin.groupes.index')->with('update', 'Groupe Updated');
+        return redirect()->route('admin.groupes.index')->with('update', 'Groupe a été modifié');
     }
 
     public function show(Groupe $groupe)
@@ -72,7 +72,7 @@ class GroupesController extends Controller
 
         Groupe::where('id',$id)->delete();
 
-        return back()->with('delete', 'Groupe Deleted');
+        return back()->with('delete', 'Groupe a été supprimé');
     }
     
 

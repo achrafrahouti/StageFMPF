@@ -31,7 +31,7 @@
 @endif
 <div class="card">
     <div class="card-header">
-        <i class="badge badge-dark">{{ trans('global.demande.title_singular') }} {{ trans('global.list') }}</i>
+        {{-- <i class="badge badge-dark">{{ trans('global.demande.title_singular') }} {{ trans('global.list') }}</i> --}}
         <div style="margin-bottom: 10px;" class="row float-right">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("stagaire.demandes.create") }}">

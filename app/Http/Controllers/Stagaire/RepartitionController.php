@@ -68,7 +68,7 @@ class RepartitionController extends Controller
         $nbrGroupe=Groupe::where('niveau_id',$periode->niveau_id)->distinct('groupe_tot')->count();
         $nbrPeriode=Periode::where('niveau_id',$periode->niveau_id)->count();
         if ($nbrGroupe!=$nbrPeriode) {
-            return redirect()->route('stagaire.repartition.show')->with('error','La Repartition est trompée, le nombre de période doit égale le nombre de groupe   ');
+            return redirect()->route('stagaire.repartition.show')->with('error','La repartition a été trompé, le nombre des périodes doit égale le nombre des groupes   ');
 
         }
         foreach($groupes as $groupe)
@@ -153,7 +153,7 @@ class RepartitionController extends Controller
                 $stagaire->stages()->attach($ligne->stage_id);
             }
         }
-        return back()->with('succes','Attachment des stagaires avec sont stages est terminé');
+        return back()->with('succes','Operation a été  terminé avec succes');
     }
     
 }

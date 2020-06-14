@@ -85,7 +85,7 @@ class DemandeController extends Controller
     if(is_null($demande->demande_validé))
     {
         $demande->update($request->all());
-        return redirect()->route('stagaire.demandes.index')->with('updatesuccess',"Votre demande est bien modifiée");
+        return redirect()->route('stagaire.demandes.index')->with('updatesuccess',"Votre demande a été bien modifié");
     }
 }
 

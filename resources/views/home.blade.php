@@ -40,31 +40,8 @@
                 </div>
       </div>
   </div> --}}
-<div class="card">
-  <table class="table table-bordered" style='font-family: "Comic Sans MS", cursive, sans-serif;'>
-    <tr>
-         <th> 
-            <div class="card pr-4 pl-4 mt-3" style="background-color:#bf56f0; color:white;"> 
-        
-                               <p>Gestion des stages</p>
-            </div>
-         </th>
-               
-        <th>
-               <div class="card pr-4 pl-4 mt-3" style="background-color:#4778d1;color:white;">
-                
-                         <p>Gestion des demandes</p>  
-                           
-                </div>
-        </th>   
-            <th>
-               <div class="card pr-4 pl-4 mt-3" style="background:#66c06b;color:white;">
-                           
-                                    <p>Gestion des encadants</p> 
-                            
-                </div>
-        </th> 
-    </tr>
+<div class="card " style="margin-left: 200px; margin-right: 200px;">
+  <table class="table table-borderless table-responsive d-flex justify-content-sm-center " style='font-family: "Comic Sans MS", cursive, sans-serif;'>
     <tr>
         <td>
            <div class="card pr-4 pl-4 mt-3"  style="background-color:#bf56f0;color:white;"> 

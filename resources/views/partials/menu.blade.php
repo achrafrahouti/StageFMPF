@@ -171,7 +171,9 @@
                     <i class="fas fa-file-alt nav-icon">
 
                     </i>
-                    {{ trans('global.demande.title') }}
+                    {{ trans('global.demande.title') }}@if (DB::table('demandes')->where('demande_validé',null)->get()->count()!=0)
+                    <i class="badge badge-info">{{ DB::table('demandes')->where('demande_validé',null)->get()->count() }}</i>
+                    @endif
                 </a>
 
                 <ul class="nav-dropdown-items">
@@ -180,7 +182,7 @@
                             <i class="fas fa-check nav-icon">
 
                             </i>
-                            {{-- {{ trans('global.demande.title') }} --}} verifiées
+                            {{-- {{ trans('global.demande.title') }} --}} verifiées 
                         </a>
                     </li>
                 </ul>
@@ -190,7 +192,7 @@
                             <i class="fas fa-eye-slash nav-icon">
 
                             </i>
-                            {{-- {{ trans('global.demande.title') }} --}}non  verifiées
+                            {{-- {{ trans('global.demande.title') }} --}}non  verifiées <i class="badge badge-info">{{ DB::table('demandes')->where('demande_validé',null)->get()->count() }}</i>
                         </a>
                     </li>
                 </ul>
