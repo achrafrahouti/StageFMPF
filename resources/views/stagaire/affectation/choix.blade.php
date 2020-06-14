@@ -16,7 +16,7 @@
 
 @endif
 <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong >   Affichage de liste des stagaire par groupe ou plusieur </strong>
+    <strong >   Affichage de liste des stagaire par  groupe ou plusieurs groupes </strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -26,22 +26,26 @@
 
           <div style="margin-bottom: 10px;" class="row float-right">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("stagaire.affectation.index") }}">
-                    <i class="fas fa-plus"></i> Regrouper
+                <a class="btn btn-success" href="{{ route("stagaire.affictation.index") }}">
+                      Regrouper
                 </a>
             </div>
         </div>
+    
+    <div class="card-body">
+        <form action="{{ route('stagaire.affictation.afficher') }}" method="POST" enctype="multipart/form-data">
+            @csrf
         <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
             <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>
             
-            <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" onchange="set(this.value);">
-                <option selected>{{ trans('global.repartition.fields.choix') }}</option>
+            <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" onchange="set(this.value);" >
+                <option >{{-- {{ trans('global.repartition.fields.choix') }} --}} Choisir un niveau </option>
                 @foreach($niveaux as $id => $niveau)
                     <option id="niveau_id" value="{{ $niveau->id }}">
                         {{ $niveau->liblle }}
                     </option>
                 @endforeach
-            <p class="helper-block"></p>
+            <p class="helper-block">
                 {{ trans('global.repartition.fields.niveau_id_helper') }}
             </p>
             </select>
@@ -52,7 +56,7 @@
         <form action="{{ route('stagaire.affectation.afficher') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="groupes">{{ trans('global.repartition.fields.groupe') }}*
+                <label for="groupes">{{-- {{ trans('global.repartition.fields.groupe') }} --}}Groupe*
                     <span class="btn btn-info btn-xs select-all">Select all</span>
                     <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
                 <select name="groupes[]" id="groupes" class="form-control select2" multiple="multiple">
@@ -63,13 +67,11 @@
                 </p>
             </div>
             <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}" >
-
-        </div>
         </form>
 
     </div>
 </div>
-
+</div>
 @endsection
 <script type="text/javascript" >
     function set(id){

@@ -28,12 +28,12 @@
 @endif
 <div class="card">
     <div class="card-header">
-        {{trans('global.stage.title_singular')}}{{ trans('global.list') }}
+        {{-- {{trans('global.stage.title_singular')}}{{ trans('global.list') }} --}}
         @can('stage_create')
     <div style="margin-bottom: 10px;" class="row float-right ">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.stages.create") }}">
-                <i class="fas  fa-plus"></i> {{ trans('global.stage.title_singular') }}
+                <i class="fas  fa-plus"></i>
             </a>
         </div>
     </div>
@@ -49,7 +49,7 @@
 
                         </th> 
                         <th>
-                            {{ trans('global.stage.fields.name') }}
+                           {{--  {{ trans('global.stage.fields.name') }} --}}Nom
                         </th>
                         <th>
                             {{ trans('global.stage.fields.services') }}

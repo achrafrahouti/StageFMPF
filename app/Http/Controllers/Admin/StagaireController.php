@@ -18,7 +18,7 @@ class StagaireController extends Controller
 
     function __construct()
     {
-        $this->middleware('role:admin');
+        $this->middleware('auth');
     }    
 
     public function index()
@@ -68,5 +68,29 @@ class StagaireController extends Controller
             $stagaire->delete();
         }
         return response(null, 204);
+    }
+    public function updatepassword()
+    {
+          return view('admin.users.updatepassword');
+    }
+    public function updatep(Request $request) {
+          $user=User::find($request->user_id);
+
+        if(!Hash::check($request->password,$user->password)){
+               return back()->with('erreur1',"ancien mot de passe est inccorect");
+           } 
+            elseif(!stristr($request->passwordn,$request->passwordc))
+            {
+                return back()->with('erreur2',"mot de passe de confirmation est inccorect");
+            }
+            else{   
+                 $hashpass=Hash::make(($request->passwordn));
+                 if(Hash::check($request->passwordn,$hashpass));
+                 {
+                  $user->update(['password'=>$hashpass]);     
+                   } 
+                   return back()->with('success','Mot de passe a été bien modifié');
+            }
+          
     }
 }

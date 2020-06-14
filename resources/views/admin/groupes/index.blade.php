@@ -28,12 +28,12 @@
 @endif
  <div class="card">
      <div class="card-header"> 
-        Liste des groupes
+       {{--  Liste des groupes --}}
             @can('groupe_create')
     <div style="margin-bottom: 10px;" class="row float-right">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.groupes.create") }}">
-                <i class="fas fa-plus"></i> {{ trans('global.groupe.title_singular') }}
+                <i class="fas fa-plus"></i> {{-- {{ trans('global.groupe.title_singular') }} --}}
             </a>
         </div>
     </div>
@@ -48,16 +48,16 @@
 
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.name') }}
+                           {{--  {{ trans('global.groupe.fields.name') }} --}}NOM
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_tot') }}
+                             {{-- {{ trans('global.groupe.fields.groupe_tot') }} --}}Groupe
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_sh') }}
+                            {{-- {{ trans('global.groupe.fields.groupe_sh') }} --}}sous groupe
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_sgh') }}
+                            {{-- {{ trans('global.groupe.fields.groupe_sgh') }} --}} Sous sous groupe
                         </th>
                         <th>
                             {{-- {{ trans('global.groupe.fields.groupe_sgh') }} --}}

@@ -12,7 +12,7 @@
                     <i class="nav-icon fas fa-tachometer-alt">
 
                     </i>
-                    {{ trans('global.dashboard') }}
+                    {{-- {{ trans('global.dashboard') }} --}}Tableau de bord
                 </a>
             </li>
             @if ( Auth::user()->isAdmin())
@@ -21,7 +21,7 @@
                     <i class="fas fa-users-cog nav-icon">
 
                     </i>
-                    {{ trans('global.userManagement.title') }}
+                   {{--  {{ trans('global.userManagement.title') }} --}} Gestion utilisateurs
                 </a>
                 <ul class="nav-dropdown-items">
 
@@ -48,24 +48,32 @@
                             <i class="fas fa-user nav-icon">
 
                             </i>
-                            {{ trans('global.user.title') }}
+                            {{-- {{ trans('global.user.title') }} --}}Utilisateurs
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route("admin.etudiants.index") }}" class="nav-link {{ request()->is('admin/etudiants') || request()->is('admin/etudiants/*') ? 'active' : '' }}">
-                            <i class="fas fa-user nav-icon">
+                            <i class="fas fa-user-md nav-icon">
 
                             </i>
-                            {{ trans('global.etudiant.title') }}
+                           {{--  {{ trans('global.etudiant.title') }} --}}Stagaires
                         </a>
                     </li>
                 </ul>
             </li>
             {{-- ooooo --}}
+    <li class="nav-item nav-dropdown">
+                    <a class="nav-link  nav-dropdown-toggle">
+                            <i class="fas fa-hospital nav-icon">
+
+                            </i>
+                           {{--  {{ trans('global.userManagement.title') }} --}} Gestion stages
+                  </a>
+    <ul class="nav-dropdown-items">
             
             <li class="nav-item">
                 <a href="{{ route("admin.periodes.index") }}" class="nav-link {{ request()->is('admin/periodes') || request()->is('admin/periodes/*') ? 'active' : '' }}">
-                    <i class="fas fa-cogs nav-icon">
+                    <i class="fas fa-calendar nav-icon">
 
                     </i>
                     {{ trans('global.periode.title') }}
@@ -83,7 +91,7 @@
             {{-- aaaaaaaaaaaaa --}}
             <li class="nav-item">
                 <a href="{{ route("admin.services.index") }}" class="nav-link {{ request()->is('admin/services') || request()->is('admin/services/*') ? 'active' : '' }}">
-                    <i class="fas fa-stethoscope nav-icon">
+                    <i class="fas fa-procedures nav-icon">
 
                     </i>
                     {{ trans('global.service.title') }}
@@ -93,7 +101,7 @@
             {{-- aaaaaaaaaaaaa --}}
             <li class="nav-item">
                 <a href="{{ route("admin.stages.index") }}" class="nav-link {{ request()->is('admin/stages') || request()->is('admin/stages/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-stethoscope nav-icon">
 
                     </i>
                     {{ trans('global.stage.title') }}
@@ -131,7 +139,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route("stagaire.repartition.show") }}" class="nav-link {{ request()->is('stagaire/repartition') || request()->is('stagaire/repartition/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="far fa-calendar-check nav-icon">
 
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}
@@ -140,26 +148,36 @@
             </li>            
             <li class="nav-item">
                 <a href="{{ route("stagaire.repartition.synch") }}" class="nav-link {{ request()->is('stagaire/getStagaire') || request()->is('stagaire/getStagaires/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-sync-alt nav-icon">
 
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}
-                    Attacher 
+                    Répartition 
                 </a>
             </li>
+              <li class="nav-item">
+                <a href="{{ route("notes.ajax") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
+                    <i class="fas fa-plus nav-icon">
+
+                    </i>
+                    {{-- {{ 'Saisir les '.trans('global.note.title') }} --}}Notes
+                </a>
+            </li>     
+             </ul>
              {{--demandes--}}
 
               <li class="nav-item nav-dropdown">
                 <a class="nav-link  nav-dropdown-toggle">
-                    <i class="fas fa-users-cog nav-icon">
+                    <i class="fas fa-file-alt nav-icon">
 
                     </i>
                     {{ trans('global.demande.title') }}
                 </a>
+
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a href="{{ route("admin.demandes.indexv") }}" class="nav-link {{ request()->is('admin/demande/demandeverifiees') || request()->is('admin/demande/demandeverifiees/*') ? 'active' : '' }}">
-                            <i class="fas fa-user nav-icon">
+                            <i class="fas fa-check nav-icon">
 
                             </i>
                             {{-- {{ trans('global.demande.title') }} --}} verifiées
@@ -169,22 +187,23 @@
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a href="{{ route("admin.demandes.index") }}" class="nav-link {{ request()->is('admin/demandes') || request()->is('admin/demandes/*') ? 'active' : '' }}">
-                            <i class="fas fa-user nav-icon">
+                            <i class="fas fa-eye-slash nav-icon">
 
                             </i>
                             {{-- {{ trans('global.demande.title') }} --}}non  verifiées
                         </a>
                     </li>
                 </ul>
-            </li>         
-
+            </li>    
+           
+      
             @endif
            
             {{-- etudaints --}}
             @if (Auth::user()->isEtudiant())
             <li class="nav-item">
                 <a href="{{ route("stagaire.notes.index") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-chalkboard-teacher nav-icon">
 
                     </i>
                     {{ trans('global.note.title') }}
@@ -193,7 +212,7 @@
              {{--demandes--}}
             <li class="nav-item">
                 <a href="{{ route("stagaire.demandes.index") }}" class="nav-link {{ request()->is('stagaire/demandes') || request()->is('stagaire/demandes/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-file-alt nav-icon">
 
                     </i>
                     {{ trans('global.demande.title') }}
@@ -201,15 +220,15 @@
             </li>
             @endif
             {{-- ssssssssssssssssss --}}
-            @if (!Auth::user()->isEtudiant() && !Auth::user()->isEncadrant())
+            @if (Auth::user()->isSecretaire())
                 
             
             <li class="nav-item">
                 <a href="{{ route("notes.ajax") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-plus nav-icon">
 
                     </i>
-                    {{ 'Saisir les '.trans('global.note.title') }}
+                    {{-- {{ 'Saisir les '.trans('global.note.title') }} --}} Insertion notes
                 </a>
             </li>
             @endif
@@ -223,7 +242,7 @@
                                 <i class="fas fa-cubes nav-icon">
             
                                 </i>
-                                {{ 'Verifier les '.trans('global.note.title') }}
+                                {{ 'Verification des '.trans('global.note.title') }}
                             </a>
                         </li>
                         @endif
@@ -233,7 +252,7 @@
                     <i class="nav-icon fas fa-sign-out-alt">
 
                     </i>
-                    {{ trans('global.logout') }}
+                    {{-- {{ trans('global.logout') }} --}}Deconnexion
                 </a>
             </li>
             

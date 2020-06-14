@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.service.title') }}
+        {{-- {{ trans('global.show') }} {{ trans('global.service.title') }} --}}
     </div>
 
     <div class="card-body">
@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.service.fields.name') }}
+                       {{--  {{ trans('global.service.fields.name') }} --}}Nom
                     </th>
                     <td>
                         {{ $service->name }}

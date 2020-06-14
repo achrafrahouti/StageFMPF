@@ -35,13 +35,13 @@
 @endif
 <div class="card">
     <div class="card-header">
-        <center>         {{ trans('global.repartition.title_singular') }}
-</center>
+       {{--  <center>         {{ trans('global.repartition.title_singular') }}
+</center> --}}
         <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
             <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>
             
             <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" @if (Auth::user()->isAdmin())onchange="setAdmin(this.value);"@endif @if (Auth::user()->isSecretaire() || Auth::user()->isEncadrant())onchange="set(this.value);"@endif >
-                <option selected>{{ trans('global.repartition.fields.choix') }}</option>
+                <option selected>{{-- {{ trans('global.repartition.fields.choix') }} --}}Choisir un niveau </option>
                 @foreach($niveaux as $id => $niveau)
                     <option id="niveau_id" value="{{ $niveau->id }}">
                         {{ $niveau->liblle }}
@@ -61,7 +61,7 @@
 
 
             <div class="form-group">
-                <label for="stage_id">{{ trans('global.repartition.fields.stage') }}*</label>
+                <label for="stage_id">{{-- {{ trans('global.repartition.fields.stage') }}* --}}Stages</label>
                 <select name="stage_id" id="stage_id" class="form-control select2" >
  
                 </select>
@@ -70,7 +70,7 @@
                 </p>
             </div>
             <div class="form-group">
-                <label for="groupe_id">{{ trans('global.repartition.fields.groupe') }}*</label>
+                <label for="groupe_id">{{-- {{ trans('global.repartition.fields.groupe') }}* --}}Groupes</label>
                 <select name="groupe_id" id="groupe_id" class="form-control select2" >
 
                 </select>

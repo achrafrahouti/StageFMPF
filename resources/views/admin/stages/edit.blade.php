@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('global.stage.title_singular') }}
+        {{-- {{ trans('global.edit') }} {{ trans('global.stage.title_singular') }} --}}
     </div>
 
     <div class="card-body">
@@ -10,7 +10,7 @@
             @csrf
             @method('PUT')
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('global.stage.fields.name') }}*</label>
+                <label for="name">{{-- {{ trans('global.stage.fields.name') }}* --}}Nom</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($stage) ? $stage->name : '') }}">
                 @if($errors->has('name'))
                     <em class="invalid-feedback">
@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('services') ? 'has-error' : '' }}">
-                <label for="services">{{ trans('global.stage.fields.services') }}*</label>
+                <label for="services">{{ trans('global.stage.fields.services') }}</label>
                 <select name="service_id" id="service_id" class="form-control select2" >
                     
                     @foreach($services as $id => $services)
@@ -41,7 +41,7 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
-                <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}*</label>
+                <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>
                 <select name="niveau_id" id="niveau_id" class="form-control select2"  >
                     @foreach($niveaux as $id => $niveau)
                         <option value="{{ $niveau->id }}" @if ($niveau->id==$stage->niveau_id) selected @endif>

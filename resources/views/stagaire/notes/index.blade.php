@@ -37,7 +37,7 @@
                             @if ($stage->pivot->verify)
                             {{ $stage->pivot->note }}
 
-                            @endif
+                                @endif
                             </td>
                             <td>
                                 @if ($stage->pivot->verify && $stage->pivot->note>=10)

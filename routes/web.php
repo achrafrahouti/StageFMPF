@@ -85,6 +85,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('etudiants/destroy', 'StagaireController@massDestroy')->name('etudiants.massDestroy');
     Route::get('etudiants/makes','StagaireController@store')->name('etudiants.make');
     Route::resource('etudiants', 'StagaireController')->except(['create','store','show','edit','update']);
-    
+    Route::get('user/password','StagaireController@updatepassword')->name('users.password');
+    Route::put('user/updatep','StagaireController@updatep')->name('users.updatep');
 
 });

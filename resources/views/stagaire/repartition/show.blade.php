@@ -29,8 +29,8 @@
   <div class="card">
       <div class="card-header">
         <div class="container-sm text-center">
-           <h1 class="badge badge-dark text-bold">{{ 'Planing  des Stages ' }}  </h1>
- </div>
+           <h1 class="badge badge-dark text-bold">{{ 'Planning  des Stages ' }}  </h1>
+</div>
     @can('groupe_create')
     @if (Auth::user()->isAdmin())
         
@@ -38,7 +38,7 @@
     <div style="margin-bottom: 10px;" class="row float-right">
       <div class="col-lg-12">
           <a class="btn btn-success" href="{{ route("stagaire.repartition.choix") }}">
-              <i class="fas fa-plus"></i> {{ 'Repartir'}}
+              <i class="fas fa-plus"></i> {{ 'Planning'}}
           </a>
       </div>
   </div>

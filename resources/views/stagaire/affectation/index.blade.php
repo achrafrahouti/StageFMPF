@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="card">
     <div class="card-header">
-        {{ trans('global.create') }} {{ trans('global.groupe.title_singular') }}
+       {{--  {{ trans('global.create') }} {{ trans('global.groupe.title_singular') }} --}}
     </div>
 
     <div class="card-body">
@@ -28,17 +28,17 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('capacite') ? 'has-error' : '' }}">
-                <label for="capacite">Nombre des Stagaires dans sous groupe</label>
+                <label for="capacite">Nombre des Stagaires dans sous groupe<strong>(valeur par defaut:la capcité minimale du services d'accueils)</strong></label>
                 <input type="number" id="capacite" name="capacite" class="form-control" value="{{ old('capacite', isset($groupe) ? $groupe->capacite : '') }}">
                 @if($errors->has('capacite'))
                     <em class="invalid-feedback">
                         {{ $errors->first('capacite') }}
                     </em>
-                @endif
+                @endif     
 
  
                 <p class="helper-block text-danger">
-                      Si ce champ est vide:Valeur par defaut c'est capacité minimale de service du niveau
+                      {{-- Si ce champ est vide:Valeur par defaut c'est capacité minimale de service du niveau --}}
                  </p>
             </div>
             <div>

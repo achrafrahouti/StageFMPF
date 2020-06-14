@@ -5,13 +5,13 @@
 @endphp
 <div class="card">
     <div class="card-header">
-        <center>         {{ trans('global.repartition.title_singular') }}
-</center>
+       {{--  <center>         {{ trans('global.repartition.title_singular') }}
+</center> --}}
         <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
             <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>
             
             <select name="niveau_id" id="niveau_id" class="form-control select2-selection__choice" onchange="set(this.value);">
-                <option selected>{{ trans('global.repartition.fields.choix') }}</option>
+                <option selected>{{-- {{ trans('global.repartition.fields.choix') }} --}}Choisir un niveau</option>
                 @foreach($niveaux as $id => $niveau)
                     <option id="niveau_id" value="{{ $niveau->id }}">
                         {{ $niveau->liblle }}
@@ -29,7 +29,7 @@
             @csrf
             {{-- <button type="button" onclick="set();" class="btn btn-warning" id="save">Save</button> --}}
             <div class="form-group ">
-                <label for="periode_id">{{ trans('global.repartition.fields.periode') }}</label>
+                <label for="periode_id">{{-- {{ trans('global.repartition.fields.periode') }} --}}Periode</label>
                 <select name="periode_id" id="periode_id" class="form-control select2" >
  
                 </select>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group">
-                <label for="stage_id">{{ trans('global.repartition.fields.stage') }}*</label>
+                <label for="stage_id">{{-- {{ trans('global.repartition.fields.stage') }}* --}}Stage</label>
                 <select name="stage_id" id="stage_id" class="form-control select2" >
  
                 </select>
@@ -48,7 +48,7 @@
                 </p>
             </div>
             <div class="form-group">
-                <label for="groupes">{{ trans('global.repartition.fields.groupe') }}*
+                <label for="groupes">{{--{{ trans('global.repartition.fields.groupe') }}* --}}Groupes
                     <span class="btn btn-info btn-xs select-all">Select all</span>
                     <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
                 <select name="groupes[]" id="groupes" class=" form-control select2" multiple="multiple">

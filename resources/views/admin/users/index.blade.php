@@ -29,12 +29,12 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.user.title_singular') }} {{ trans('global.list') }}
+        {{-- {{ trans('global.user.title_singular') }} {{ trans('global.list') }} --}}
         @can('user_create')
         <div style="margin-bottom: 10px;" class="row float-right ">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.users.create") }}">
-                <i class="fas  fa-plus"></i> {{ trans('global.user.title_singular') }}
+                <i class="fas  fa-plus"></i>
             </a>
              </div>
          </div>
@@ -50,10 +50,10 @@
 
                         </th>
                         <th>
-                            {{ trans('global.user.fields.name') }}
+                            {{-- {{ trans('global.user.fields.name') }} --}}Nom
                         </th>
                          <th>
-                            {{ trans('global.user.fields.lastname') }}
+                            {{-- {{ trans('global.user.fields.lastname') }} --}}Prenom
                         </th>
                         <th>
                             {{ trans('global.user.fields.email') }}

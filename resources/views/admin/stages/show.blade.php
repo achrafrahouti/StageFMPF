@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.stage.title') }}
+     {{--    {{ trans('global.show') }} {{ trans('global.stage.title') }} --}}
     </div>
 
     <div class="card-body">
@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.stage.fields.name') }}
+                       {{--  {{ trans('global.stage.fields.name') }} --}}Nom
                     </th>
                     <td>
                         {{ $stage->name }}

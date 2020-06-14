@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('global.service.title_singular') }}
+        {{-- {{ trans('global.edit') }} {{ trans('global.service.title_singular') }} --}}
     </div>
 
     <div class="card-body">
@@ -12,7 +12,7 @@
             @method('PUT')
             {{-- iname --}}
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('global.service.fields.name') }}*</label>
+                <label for="name">{{-- {{ trans('global.service.fields.name') }} --}}Nom*</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($service) ? $service->name : '') }}">
                 @if($errors->has('name'))
                     <em class="invalid-feedback">

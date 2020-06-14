@@ -27,9 +27,12 @@ class DemandeController extends Controller
     public function create()
     {
         // abort_unless(\Gate::allows('demande_create'), 403);
-        $niveau_id=Auth::user()->profile->etudiant->niveau_id;
-        $stages=Stage::where('niveau_id',$niveau_id)->get();
-
+        // $niveau_id=Auth::user()->profile->etudiant->niveau_id;
+        // $stages=Stage::where('niveau_id',$niveau_id)->get();
+          $stagaire=Auth::user()->profile;
+          $groupe=$stagaire->groupe;
+          $stagearr=DB::table('stage_groupe_periode')->where('groupe_id',$groupe->id)->get()->pluck('stage_id')->toArray();
+          $stages=Stage::whereIn('id',$stagearr)->get();
         return view('stagaire.demandes.create',compact('stages'));
     }
 
@@ -42,15 +45,31 @@ class DemandeController extends Controller
          $periode=Periode::where('id',$periode_id->periode_id)->first();         
           $date_debut=Carbon::parse( $periode->date_debut);
           $now=Carbon::now();
+         if(stristr($request->type_dem,"Transfert")||stristr($request->type_dem,"Revalidation")){
          if($date_debut->diffInDays($now)>=10){
              $Demande = Demande::create($request->all());
-              return redirect()->route('stagaire.demandes.index')->with('success',"Votre demande est bien creé");
+              return redirect()->route('stagaire.demandes.index')->with('success',"Votre demande a été bien crée");
             }
             else{
 
-                return redirect()->route('stagaire.demandes.index')->with('danger',"La date de la depot de demande est depassé!");
+                return redirect()->route('stagaire.demandes.index')->with('danger',"La date de la depot de demande a été depassé!");
             }
-       
+       }
+       if(stristr($request->type_dem,"Reclamtion")){
+         $stagaire_id=Auth::user()->profile->id;
+         $stage_id=$request->id_stage;
+         $verify=DB::table('notes')->where('stage_id',$stage_id)->where('stagaire_id',$stagaire_id)->first()->verify;
+         if($verify)
+         {
+             $Demande = Demande::create($request->all());
+              return redirect()->route('stagaire.demandes.index')->with('success',"Votre demande a été bien crée");
+         }
+         else{
+            return redirect()->route('stagaire.demandes.index')->with('dangerr',"La note de ce stage n'est pas encore afficher!");
+         }
+
+       }
+
     }
 
     public function edit(Demande $demande)

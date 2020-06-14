@@ -7,6 +7,7 @@
     <div class="card-header">
         {{-- {{ trans('global.create') }} {{ trans('global.note.title_singular') }} --}}
        <center class="title exc-title-primary">                <h3 class="text-uppercase text-info hide">{{ $stage->name }}</h3> </center>
+      {{--  <h3 class="h1"> Insert Notes de                 {{ $stage->name }}</h3> --}}
     </div>
 
     <div class="card-body">

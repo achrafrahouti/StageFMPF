@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.periode.fields.name') }}
+                     {{--    {{ trans('global.periode.fields.name') }} --}}Nom
                     </th>
                     <td>
                         {{ $periode->name }}

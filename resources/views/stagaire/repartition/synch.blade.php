@@ -29,7 +29,7 @@
     <div style="margin-bottom: 10px;" class="row float-right">
       <div class="col-lg-12">
           <a class="btn btn-success" href="{{ route("stagaire.synchroniser") }}">
-              <strong> {{ 'Attacher'}}</strong>
+               Repartir
           </a>
       </div>
   </div>
@@ -37,7 +37,7 @@
         <div class="row ">
           <label class="text-right col-sm-2" for="niveau_id"><strong class="text-secondary"> {{ trans('global.periode.fields.niveau_id') }} :</strong></label>
           <select name="niveau_id" id="niveau_id" class=" col-sm-3 custom-select custom-select-sm " >
-              <option value="0" selected>{{ trans('global.repartition.fields.choix') }}</option>
+              <option value="0" selected>{{-- {{ trans('global.repartition.fields.choix') }} --}} Choisir un niveau</option>
               @foreach($niveaux as $id => $niveau)
                   <option id="niveau_id" value="{{ $niveau->id }}">
                       {{ $niveau->liblle }}
@@ -102,7 +102,7 @@
                             <td>
 
                                 @foreach($etudiant->stagaire->stages as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                    <span class="badge badge-info">{{$item->name}}</span>
                                 @endforeach
                             </td>
 
