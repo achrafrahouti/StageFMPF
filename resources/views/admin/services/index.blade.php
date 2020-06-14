@@ -28,12 +28,12 @@
 @endif
 <div class="card">
     <div class="card-header">
-        Liste des services
+       {{--  Liste des services --}}
         @can('service_create')
     <div style="margin-bottom: 10px;" class="row  float-right ">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.services.create") }}">
-                <i class="fas fa-plus"></i> {{ trans('global.service.title_singular') }}
+                <i class="fas fa-plus"></i> {{-- {{ trans('global.service.title_singular') }} --}}
             </a>
         </div>
     </div>
@@ -49,7 +49,7 @@
 
                         </th>
                         <th>
-                            {{ trans('global.service.fields.name') }}
+                           {{--  {{ trans('global.service.fields.name') }} --}}Nom
                         </th>
                         <th>
                             {{ trans('global.service.fields.capacite') }}

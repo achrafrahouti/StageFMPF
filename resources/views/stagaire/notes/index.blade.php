@@ -32,10 +32,11 @@
                             <td>
                                 {{ $stage->name ?? '' }}
                             </td>
-                            <td>@if ($stage->pivot->verify)
+                            <td>
+                                @if ($stage->pivot->verify)
                                                                 {{ $stage->pivot->note }}
 
-                            @endif
+                                @endif
                             </td>
                         </tr>
                     @endforeach

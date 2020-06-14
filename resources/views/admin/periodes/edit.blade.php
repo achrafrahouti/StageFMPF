@@ -11,7 +11,7 @@
             @csrf
             @method('PUT')
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('global.periode.fields.name') }}*</label>
+                <label for="name">{{-- {{ trans('global.periode.fields.name') }} --}}Nom*</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($periode) ? $periode->name : '') }}">
                 @if($errors->has('name'))
                     <em class="invalid-feedback">

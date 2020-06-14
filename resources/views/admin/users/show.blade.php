@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.user.title') }}
+       {{--  {{ trans('global.show') }} {{ trans('global.user.title') }} --}}
     </div>
 
     <div class="card-body">
@@ -11,10 +11,18 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.user.fields.name') }}
+                        {{-- {{ trans('global.user.fields.name') }} --}}Nom
                     </th>
                     <td>
-                        {{ $user->name }}
+                        {{Auth::user()->profile->nom }}
+                    </td>
+                </tr>
+                 <tr>
+                    <th>
+                        {{-- {{ trans('global.user.fields.name') }} --}}Prenom
+                    </th>
+                    <td>
+                        {{Auth::user()->profile->prenom }}
                     </td>
                 </tr>
                 <tr>
@@ -25,15 +33,6 @@
                         {{ $user->email }}
                     </td>
                 </tr>
-                <tr>
-                    <th>
-                        {{ trans('global.user.fields.email_verified_at') }}
-                    </th>
-                    <td>
-                        {{ $user->email_verified_at }}
-                    </td>
-                </tr>
-                <tr>
                     <th>
                         Roles
                     </th>

@@ -59,14 +59,14 @@
 
              <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="fas fa-user-circle"></span></a> 
               <div class="dropdown-menu dropdown-menu-right">
-               <a href="{{ route('admin.users.edit', $user->id) }}" class=" nav-link  dropdown-item"><i class="nav-icon fas fa-user-edit"></i>  Mon compte</a> 
+               <a href="{{ route('admin.users.password') }}" class=" nav-link  dropdown-item"><i class="nav-icon fas fa-user-edit"></i>  Mon compte</a> 
       
                 <a href="#" class="nav-link dropdown-item
                 " onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">
 
                     </i>
-                    {{ trans('global.logout') }}
+                    {{-- {{ trans('global.logout') }} --}}Deconnexion
                  </a>
            
               </div>

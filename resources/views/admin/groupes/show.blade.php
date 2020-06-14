@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.groupe.fields.name') }}
+                        {{-- {{ trans('global.groupe.fields.name') }} --}}Nom
                     </th>
                     <td>
                         {{ $groupe->name }}
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <th>
-                            {{ trans('global.groupe.fields.groupe_sgh') }}
+                        Sous sous groupe   {{--  {{ trans('global.groupe.fields.groupe_sgh') }} --}}
                     </th>
                     <td>
                         {{ $groupe->groupe_sgh }}

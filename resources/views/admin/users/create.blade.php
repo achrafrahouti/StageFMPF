@@ -3,14 +3,14 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.create') }} {{ trans('global.user.title_singular') }}
+        {{-- {{ trans('global.create') }} {{ trans('global.user.title_singular') }} --}}
     </div>
 
     <div class="card-body">
         <form action="{{ route("admin.users.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('global.user.fields.name') }}*</label>
+                <label for="name">{{-- {{ trans('global.user.fields.name') }} --}}Nom*</label>
                 <input type="text" id="name" name="prenom" class="form-control" >
                 @if($errors->has('name'))
                     <em class="invalid-feedback">
@@ -23,7 +23,7 @@
             </div>
             {{-- last_name --}}
             <div class="form-group {{ $errors->has('lastname') ? 'has-error' : '' }}">
-                <label for="lastname">{{ trans('global.user.fields.lastname') }}*</label>
+                <label for="lastname">{{-- {{ trans('global.user.fields.lastname') }} --}}Prenom*</label>
                 <input type="text" id="lastname" name="nom" class="form-control">
                 @if($errors->has('lastname'))
                     <em class="invalid-feedback">
@@ -46,7 +46,7 @@
                     @endforeach
                 </select>
                 <p class="helper-block">
-                    {{ trans('global.user.fields.service_helper') }}
+                    {{ trans('global.stage.fields.services_helper') }}
                 </p>
             {{-- end service --}}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -62,7 +62,7 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label for="password">{{ trans('global.user.fields.password') }}</label>
+                <label for="password">{{-- {{ trans('global.user.fields.password') }} --}}Mot de passe</label>
                 <input type="password" id="password" name="password" class="form-control">
                 @if($errors->has('password'))
                     <em class="invalid-feedback">

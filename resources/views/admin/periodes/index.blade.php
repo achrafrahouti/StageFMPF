@@ -26,13 +26,13 @@
 @endif
 <div class="card">
     <div class="card-header">
-        Liste des périodes
+       {{--  Liste des périodes --}}
 
 @can('periode_create')
     <div style="margin-bottom: 10px;" class="row  float-right">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.periodes.create") }}">
-                <i class="fas fa-plus"></i> {{ trans('global.periode.title_singular') }}
+                <i class="fas fa-plus"></i>{{--  {{ trans('global.periode.title_singular') }} --}}
             </a>
         </div>
     </div>
@@ -48,7 +48,7 @@
 
                         </th>
                         <th>
-                            {{ trans('global.periode.fields.name') }}
+                           {{--  {{ trans('global.periode.fields.name') }} --}}Nom
                         </th>
                         <th>
                             {{ trans('global.periode.fields.date_debut') }}

@@ -11,12 +11,12 @@
 
  <div class="card">
      <div class="card-header"> 
-        Liste des  Stagaire
+      {{--   Liste des  Stagaire --}}
             @can('groupe_create')
-    <div style="margin-bottom: 10px;" class="row float-right">
+    <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("stagaire.affictation.index") }}">
-                <i class="fas fa-plus"></i> Regrouper
+            <a class="btn btn-info" href="{{ url()->previous() }}">
+                <i class="fas fa-arrow-circle-left"></i> retour
             </a>
         </div>
     </div>
@@ -31,7 +31,7 @@
 
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.name') }}
+                            {{-- {{ trans('global.groupe.fields.name') }} --}}Nom
                         </th>
                         <th>
                             {{ trans('global.groupe.fields.groupe_tot') }}
@@ -40,7 +40,7 @@
                             {{ trans('global.groupe.fields.groupe_sh') }}
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_sgh') }}
+                            Sous sous groupe
                         </th>
                         <th>
                             &nbsp;

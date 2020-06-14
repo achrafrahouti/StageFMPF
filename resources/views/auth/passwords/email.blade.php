@@ -14,9 +14,9 @@
                         {{ csrf_field() }}
                         <h1>
                             <div class="login-logo">
-                                <a href="#">
+                                <center class="text-info">
                                     {{ trans('global.site_title') }}
-                                </a>
+                                </center>
                             </div>
                         </h1>
                         <p class="text-muted"></p>
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-12 text-right">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                    {{ trans('global.reset_password') }}
+                                    {{-- {{ trans('global.reset_password') }} --}}Envoyer lien de récupération
                                 </button>
                             </div>
                         </div>

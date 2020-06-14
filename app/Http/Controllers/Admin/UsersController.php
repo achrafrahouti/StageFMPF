@@ -82,12 +82,12 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         abort_unless(\Gate::allows('user_edit'), 403);
-
+        $services=Service::all();
         $roles = Role::all()->pluck('title', 'id');
 
         $user->load('roles');
 
-        return view('admin.users.edit', compact('roles', 'user'));
+        return view('admin.users.edit', compact('roles', 'user','services'));
     }
 
     public function update(UpdateUserRequest $request, User $user)

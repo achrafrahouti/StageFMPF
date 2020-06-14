@@ -20,7 +20,7 @@
                             </center>
                             </div>
                         </h1>
-                        <p class="text-muted">{{ trans('global.login') }}</p>
+                        {{-- <p class="text-muted">{{ trans('global.login') }}</p> --}}
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -36,7 +36,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             </div>
-                            <input name="password" type="password" class="form-control @if($errors->has('password')) is-invalid @endif" placeholder="{{ trans('global.login_password') }}">
+                            <input name="password" type="password" class="form-control @if($errors->has('password')) is-invalid @endif" placeholder="{{-- {{ trans('global.login_password') }} --}}Mot de passe">
                             @if($errors->has('password'))
                                 <em class="invalid-feedback">
                                     {{ $errors->first('password') }}
@@ -45,14 +45,14 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <input type="submit" class="btn btn-primary px-4" value='{{ trans('global.login') }}'>
+                                <input type="submit" class="btn btn-primary px-4" value='{{-- {{ trans('global.login') }} --}}Connexion'>
                                 <label class="ml-2">
-                                    <input name="remember" type="checkbox" /> {{ trans('global.remember_me') }}
+                                    <input name="remember" type="checkbox" /> {{-- {{ trans('global.remember_me') }} --}}Rester connecté
                                 </label>
                             </div>
                             <div class="col-6 text-right">
                                 <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                    {{ trans('global.forgot_password') }}
+                                    {{-- {{ trans('global.forgot_password') }} --}}Mot de passe oublié?
                                 </a>
                             </div>
                         </div>

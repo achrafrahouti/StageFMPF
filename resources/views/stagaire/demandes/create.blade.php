@@ -33,10 +33,10 @@
                 <select name="type_dem" id="type_dem" class="form-control  select2-selection __choice">
                     <option value="" selected >Sélectionner le type de demande : </option>
                     <option value="Transfert">{{ trans('global.demande.type_d.transfert') }}</option>
+                    @if(Auth::user()->profile->etudiant->niveau->id==6)
                     <option value="Revalidation">{{ trans('global.demande.type_d.revalidation') }}</option>
+                    @endif
                     <option value="Reclamtion">{{ trans('global.demande.type_d.reclamation') }}</option>
-                     <option value="Attestation">{{ trans('global.demande.type_d.attestation') }}</option>
-
                 </select>
                 @if($errors->has('type_dem'))
                     <em class="invalid-feedback">

@@ -3,16 +3,16 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('global.user.title_singular') }}
+        {{-- {{ trans('global.edit') }} {{ trans('global.user.title_singular') }} --}}
     </div>
 
     <div class="card-body">
         <form action="{{ route("admin.users.update", [$user->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{ trans('global.user.fields.name') }}*</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($user) ? $user->name : '') }}">
+           <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                <label for="name">{{-- {{ trans('global.user.fields.name') }} --}}Prenom*</label>
+                <input type="text" id="name" name="prenom" class="form-control" value="{{$user->profile->prenom}}">
                 @if($errors->has('name'))
                     <em class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -22,9 +22,37 @@
                     {{ trans('global.user.fields.name_helper') }}
                 </p>
             </div>
+            {{-- last_name --}}
+            <div class="form-group {{ $errors->has('lastname') ? 'has-error' : '' }}">
+                <label for="lastname">{{-- {{ trans('global.user.fields.lastname') }} --}}Nom*</label>
+                <input type="text" id="lastname" name="nom" class="form-control" value="{{$user->profile->nom}}">
+                @if($errors->has('lastname'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('lastname') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('global.user.fields.lastname_helper') }}
+                </p>
+            </div>
+            {{-- end last_name --}}
+            {{-- service --}}
+     <div class="form-group {{ $errors->has('service_id') ? 'has-error' : '' }}">
+                <label for="service_id">{{ trans('global.stage.fields.services') }}*</label>
+                <select name="service_id" id="service_id" class="form-control select2"  >
+                    @foreach($services as $service)
+                        <option value="{{ $service->id }}" @if($user->profile->service_id==$service->id) selected @endif>
+                            {{ $service->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <p class="helper-block">
+                    {{ trans('global.stage.fields.services_helper') }}
+                </p>
+            {{-- end service --}}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label for="email">{{ trans('global.user.fields.email') }}*</label>
-                <input type="email" id="email" name="email" class="form-control" value="{{ old('email', isset($user) ? $user->email : '') }}">
+                <input type="email" id="email" name="email" class="form-control" value="{{$user->email}}">
                 @if($errors->has('email'))
                     <em class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -35,7 +63,7 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label for="password">{{ trans('global.user.fields.password') }}</label>
+                <label for="password">{{-- {{ trans('global.user.fields.password') }} --}}Mot de passe</label>
                 <input type="password" id="password" name="password" class="form-control">
                 @if($errors->has('password'))
                     <em class="invalid-feedback">
@@ -47,13 +75,11 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
-                <label for="roles">{{ trans('global.user.fields.roles') }}*
-                    <span class="btn btn-info btn-xs select-all">Select all</span>
-                    <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
-                <select name="roles[]" id="roles" class="form-control select2" multiple="multiple">
-                    @foreach($roles as $id => $roles)
-                        <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>
-                            {{ $roles }}
+                <label for="roles">{{ trans('global.user.fields.roles') }}*</label>
+                <select name="roles[]" id="roles" class="form-control select2">
+                    @foreach($roles as $id => $role)
+                        <option value="{{$id}}">
+                            {{ $role }}
                         </option>
                     @endforeach
                 </select>

@@ -41,10 +41,10 @@
                             {{ trans('global.demande.fields.cne') }}
                         </th>
                         <th>
-                            {{ trans('global.first_name') }}
+                            {{-- {{ trans('global.first_name') }} --}}Prenom
                         </th>
                         <th> 
-                        {{ trans('global.last_name') }}
+                       {{--  {{ trans('global.last_name') }} --}}Nom
                         </th>
                         <th>
                             {{trans('global.groupe.fields.niveau_id')}}

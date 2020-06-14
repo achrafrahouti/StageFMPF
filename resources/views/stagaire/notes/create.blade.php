@@ -6,10 +6,10 @@
 <div class="card">
     <div class="card-header">
         {{-- {{ trans('global.create') }} {{ trans('global.note.title_singular') }} --}}
-       <h3 class="h1"> Insert Notes de                 {{ $stage->name }}</h3>
+      {{--  <h3 class="h1"> Insert Notes de                 {{ $stage->name }}</h3> --}}
 @error('notes.*')
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Erreur</strong><br>  o	Certain(s) note(s) est invalide !!
+    <strong>Erreur</strong><br>Certain(s) note(s)  invalide !!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
