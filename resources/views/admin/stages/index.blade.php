@@ -119,21 +119,21 @@
       });
 
       if (ids.length === 0) {
-        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','warning')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','','warning')
 
         return
       }
 // 
 Swal.fire({
-  title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+  title: "Vous êtes sûr?",
+        text: "Vous ne pourrez pas récupérer cette ligne!",
         type: "error",
         icon: 'warning',
         showCancelButton: true,
         dangerMode: true,
         cancelButtonClass: '#DD6B55',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Delete!',
+        confirmButtonColor: '#dc3545',cancelButtonText:'Annuler',
+        confirmButtonText: 'Supprimer!',
 }).then((result) => {
   if (result.value) {
     $.ajax({
@@ -143,8 +143,8 @@ Swal.fire({
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
     Swal.fire({
-      titlt:'Deleted!',
-      text:'Your file has been deleted.',
+      title:'Supprimé',
+      text:'Votre ligne a été supprimé.',
       icon:'success',
       timer:3000
     })
@@ -169,15 +169,15 @@ Swal.fire({
     // console.log(current_object);
     // return;
   const WillDelete = await  swal.fire({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        title: "Vous êtes sûr?",
+        text: "Vous ne pourrez pas récupérer cette ligne!",
         type: "error",
         icon: 'warning',
         showCancelButton: true,
         dangerMode: true,
         cancelButtonClass: '#DD6B55',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Delete!',
+        confirmButtonColor: '#dc3545',cancelButtonText:'Annuler',
+        confirmButtonText: 'Supprimer!',
     });
     if(WillDelete){
         if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);

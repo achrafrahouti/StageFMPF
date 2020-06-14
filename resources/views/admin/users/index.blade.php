@@ -134,7 +134,7 @@
       });
 
       if (ids.length === 0) {
-        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','','error')
 
         return
       } 
@@ -170,15 +170,15 @@ Swal.fire({
     // console.log(current_object);
     // return;
   const WillDelete = await  swal.fire({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        title: "Vous êtes sûr?",
+        text: "Vous ne pourrez pas récupérer cette ligne!",
         type: "error",
         icon: 'warning',
         showCancelButton: true,
         dangerMode: true,
         cancelButtonClass: '#DD6B55',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Delete!',
+        confirmButtonColor: '#dc3545',cancelButtonText:'Annuler',
+        confirmButtonText: 'Supprimer!',
     });
     if(WillDelete){
         if (WillDelete.isConfirmed) {      console.log(WillDelete.isConfirmed);

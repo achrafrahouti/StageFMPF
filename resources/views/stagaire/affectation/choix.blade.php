@@ -26,14 +26,14 @@
 
           <div style="margin-bottom: 10px;" class="row float-right">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route("stagaire.affictation.index") }}">
+                <a class="btn btn-success" href="{{ route("stagaire.affectation.index") }}">
                       Regrouper
                 </a>
             </div>
         </div>
     
     <div class="card-body">
-        <form action="{{ route('stagaire.affictation.afficher') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('stagaire.affectation.afficher') }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
             <label for="niveau_id">{{ trans('global.periode.fields.niveau_id') }}</label>

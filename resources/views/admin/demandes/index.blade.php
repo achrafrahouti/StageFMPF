@@ -170,7 +170,7 @@ async function accept(id,bool) {
     var demande_id=Number(id);
     if (demande_id) {
        const WillDelete=await swal.fire({
-            title:"are you sure ?",
+            title:"Vous êtes sûr ?",
             type:'warning',
             showCancelButton:true,
 

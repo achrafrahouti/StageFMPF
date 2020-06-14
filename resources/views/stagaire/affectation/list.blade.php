@@ -11,12 +11,12 @@
 
  <div class="card">
      <div class="card-header"> 
-        Liste des  Stagaire
+        {{-- Liste des  Stagaire --}}
         @can('groupe_create')
         <div style="margin-bottom: 10px;" class="row float-right">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route("stagaire.affectation.index") }}">
-                    <i class="fas fa-plus"></i> Regrouper
+                     Regrouper
                 </a>
             </div>
         </div>
@@ -31,7 +31,8 @@
 
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.name') }}
+                            {{-- {{ trans('global.groupe.fields.name') }} --}}
+                            Nom
                         </th>
                         <th>
                             {{ trans('global.groupe.fields.groupe_tot') }}
@@ -40,7 +41,8 @@
                             {{ trans('global.groupe.fields.groupe_sh') }}
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_sgh') }}
+                            {{-- {{ trans('global.groupe.fields.groupe_sgh') }} --}}
+                            Sous_sous groupe
                         </th>
                         <th>
                             &nbsp;
@@ -101,13 +103,13 @@
       });
 
       if (ids.length === 0) {
-        swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
+        swal.fire('{{ trans('global.datatables.zero_selected') }}','','error')
 
         return
       }
 // 
 Swal.fire({
-  title: 'Are you sure?',
+  title: 'Vous êtes sûr?',
   text: "You won't be able to revert this!",
   icon: 'warning',
   showCancelButton: true,
@@ -123,8 +125,8 @@ Swal.fire({
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
     Swal.fire({
-      titlt:'Deleted!',
-      text:'Your file has been deleted.',
+      title:'Supprimé',
+      text:'Votre ligne a été supprimé.',
       icon:'success',
       timer:3000
     })

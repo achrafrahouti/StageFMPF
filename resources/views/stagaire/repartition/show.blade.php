@@ -161,13 +161,13 @@ let deleteButton = {
     });
 
     if (ids.length === 0) {
-      swal.fire('{{ trans('global.datatables.zero_selected') }}','select a row','error')
+      swal.fire('{{ trans('global.datatables.zero_selected') }}','','error')
 
       return
     }
 // 
 Swal.fire({
-title: 'Are you sure?',
+title: 'Vous êtes sûr?',
 text: "You won't be able to revert this!",
 icon: 'warning',
 showCancelButton: true,
@@ -183,8 +183,8 @@ if (result.value) {
         data: { ids: ids, _method: 'DELETE' }})
         .done(function () { location.reload() })
   Swal.fire({
-    titlt:'Deleted!',
-    text:'Your file has been deleted.',
+    title:'Supprimé',
+    text:'Votre ligne a été supprimé.',
     icon:'success',
     timer:3000
   })
