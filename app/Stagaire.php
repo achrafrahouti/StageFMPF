@@ -27,7 +27,7 @@ class Stagaire extends Model
     }
     public function stages()
     {
-        return $this->belongsToMany('App\Stage', 'notes', 'stagaire_id', 'stage_id')->withPivot(['note','verify']);
+        return $this->belongsToMany('App\Stage', 'notes', 'stagaire_id', 'stage_id')->withPivot(['note','verify','motivation','presence','Assiduite','integration','connaissance']);
     }
 
     public function user()

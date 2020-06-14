@@ -9,14 +9,14 @@ use App\Stagaire;
 use App\Stage;
 use Illuminate\Http\Request;
 
-class AffictationController extends Controller
+class affectationController extends Controller
 {
 
 
     public function choix()
     {
         $niveaux=Niveau::all();
-        return view('stagaire.affictation.choix',compact('niveaux'));
+        return view('stagaire.affectation.choix',compact('niveaux'));
     }
 
     public function affecter( $niveau_id)
@@ -32,7 +32,7 @@ class AffictationController extends Controller
         $groupes=Groupe::whereIn('id',$request->groupes)->get()->pluck('id');
         $arrGroupes=$groupes->toArray();
         $stagaires=Stagaire::whereIn('groupe_id',$arrGroupes)->get();
-        return view('stagaire.affictation.show',compact('stagaires'));
+        return view('stagaire.affectation.show',compact('stagaires'));
 
     }
 
@@ -41,7 +41,7 @@ class AffictationController extends Controller
     public function index()
     {
         $niveaux=Niveau::all();
-        return view('stagaire.affictation.index',compact('niveaux'));
+        return view('stagaire.affectation.index',compact('niveaux'));
     }
     public function store(Request $request)
     {
@@ -77,7 +77,7 @@ class AffictationController extends Controller
         $i++;
         }
 
-        return view('stagaire.affictation.list',compact('niveau','etudiants'));
-        // return redirect()->route('affictation.choix')->with('succes','affectation terminer avec succes');
+        return view('stagaire.affectation.list',compact('niveau','etudiants'));
+        // return redirect()->route('affectation.choix')->with('succes','affectation terminer avec succes');
     }
 }

@@ -24,8 +24,18 @@ class NotesRequest extends FormRequest
     public function rules()
     {
         return [
-            'notes'=>'array',
-            'notes.*'=>'required|numeric|min:0|max:20',
+            'notes'=>'bail|array',
+            'notes.*'=>'bail|required|numeric|min:0|max:20',
+            'presences'=>'bail|array',
+            'presences.*'=>'bail|required|numeric|min:0|max:3',
+            'motivations'=>'bail|array',
+            'motivations.*'=>'bail|required|numeric|min:0|max:3',
+            'Assiduites'=>'bail|array',
+            'Assiduites.*'=>'bail|required|numeric|min:0|max:3',
+            'integrations'=>'bail|array',
+            'integrations.*'=>'bail|required|numeric|min:0|max:3',
+            'connaissances'=>'bail|array',
+            'connaissances.*'=>'bail|required|numeric|min:0|max:8',
         ];
     }
 }

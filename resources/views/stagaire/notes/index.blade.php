@@ -2,9 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-
        <div class="text-center text-danger">{{ trans('global.note.title_singular') }}{{ trans('global.list') }}</div> 
-
     </div>
 
     <div class="card-body">
@@ -21,6 +19,9 @@
                         <th>
                             {{ trans('global.note.fields.note') }}
                         </th>
+                        <th>
+                            &nbsp;
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,10 +33,17 @@
                             <td>
                                 {{ $stage->name ?? '' }}
                             </td>
-                            <td>@if ($stage->pivot->verify)
-                                                                {{ $stage->pivot->note }}
+                            <td>
+                            @if ($stage->pivot->verify)
+                            {{ $stage->pivot->note }}
 
                             @endif
+                            </td>
+                            <td>
+                                @if ($stage->pivot->verify && $stage->pivot->note>=10)
+                                                                    <em class="btn btn-light"><a href="{{ route('stagaire.attestation.print',$stage->id) }}">Download Atestation </a></em>
+
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -44,7 +52,4 @@
         </div>
     </div>
 </div>
-<script>
-
-</script>
 @endsection

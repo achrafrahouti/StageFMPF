@@ -95,12 +95,23 @@ class NotesController extends Controller
         $stagaires=Stagaire::find($request->stagaire_id);
         
        foreach ($stagaires as  $stagaire) {
-           $note=$request->notes[$stagaire->id];
+           $presence=$request->presences[$stagaire->id];
+           $motivation=$request->motivations[$stagaire->id];
+           $Assiduite=$request->Assiduites[$stagaire->id];
+           $integration=$request->integrations[$stagaire->id];
+           $connaissance=$request->connaissances[$stagaire->id];
+           $note=$presence+$motivation+$Assiduite+$integration+$connaissance;
+        // dd($integration);
            $key=DB::table('notes')->select('verify')->where('stagaire_id',$stagaire->id)->where('stage_id',$stage)->first();
            if($key->verify){
             return redirect()->route('notes.ajax')->with('verify','Les Notes ont verifié par l\'encadrant ');
            }
            $stagaire->stages()->syncWithoutDetaching([$stage=>['note'=>$note]]);
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['presence'=>$presence]]);
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['motivation'=>$motivation]]);
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['Assiduite'=>$Assiduite]]);
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['integration'=>$integration]]);
+           $stagaire->stages()->syncWithoutDetaching([$stage=>['connaissance'=>$connaissance]]);
         }   
         /**
          * reste feedback
@@ -112,12 +123,6 @@ class NotesController extends Controller
         }
 
         return redirect()->route('notes.ajax')->with('succes','Les Notes sont Inséré ');
-    }
-
-
-    public function validernotes()
-    {
-        
     }
 
     

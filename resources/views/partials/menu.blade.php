@@ -121,7 +121,7 @@
             </li> --}}
             {{-- end secretaires--}}
             <li class="nav-item">
-                <a href="{{ route("affictation.choix") }}" class="nav-link {{ request()->is('stagaire/affictation') || request()->is('stagaire/affictation/*') ? 'active' : '' }}">
+                <a href="{{ route("affectation.choix") }}" class="nav-link {{ request()->is('stagaire/affectation') || request()->is('stagaire/affectation/*') ? 'active' : '' }}">
                     <i class="fas fa-cubes nav-icon">
                         
                     </i>
@@ -201,7 +201,7 @@
             </li>
             @endif
             {{-- ssssssssssssssssss --}}
-            @if (!Auth::user()->isEtudiant())
+            @if (!Auth::user()->isEtudiant() && !Auth::user()->isEncadrant())
                 
             
             <li class="nav-item">
@@ -214,6 +214,20 @@
             </li>
             @endif
             {{-- ssssssssssssssssss --}}
+                        {{-- ssssssssssssssssss --}}
+                        @if (Auth::user()->isEncadrant())
+                
+            
+                        <li class="nav-item">
+                            <a href="{{ route("notes.ajax") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
+                                <i class="fas fa-cubes nav-icon">
+            
+                                </i>
+                                {{ 'Verifier les '.trans('global.note.title') }}
+                            </a>
+                        </li>
+                        @endif
+                        {{-- ssssssssssssssssss --}}
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-sign-out-alt">

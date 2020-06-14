@@ -1,6 +1,6 @@
 <?php
 
-return [ 
+return [
     'add'                                  => 'Add',
     'create'                               => 'Create',
     'list'                                 => 'List',

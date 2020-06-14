@@ -30,8 +30,11 @@
       <div class="card-header">
         <div class="container-sm text-center">
            <h1 class="badge badge-dark text-bold">{{ 'Planing  des Stages ' }}  </h1>
-</div>
+ </div>
     @can('groupe_create')
+    @if (Auth::user()->isAdmin())
+        
+
     <div style="margin-bottom: 10px;" class="row float-right">
       <div class="col-lg-12">
           <a class="btn btn-success" href="{{ route("stagaire.repartition.choix") }}">
@@ -39,6 +42,7 @@
           </a>
       </div>
   </div>
+  @endif
       <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
         <div class="row ">
           <label class="text-right col-sm-2" for="niveau_id"><strong class="text-secondary"> {{ trans('global.periode.fields.niveau_id') }} :</strong></label>
@@ -149,7 +153,7 @@
 let deleteButtonTrans = ''
 let deleteButton = {
   text: deleteButtonTrans,
-  url: "{{ route('stagaire.affictation.show') }}",
+  url: "{{ route('stagaire.affectation.show') }}",
   className: '',
   action: function (e, dt, node, config) {
     var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {

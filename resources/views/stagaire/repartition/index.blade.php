@@ -109,7 +109,7 @@
 let deleteButtonTrans = ''
 let deleteButton = {
   text: deleteButtonTrans,
-  url: "{{ route('stagaire.affictation.show') }}",
+  url: "{{ route('stagaire.affectation.show') }}",
   className: '',
   action: function (e, dt, node, config) {
     var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {

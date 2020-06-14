@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route("stagaire.affictation.store") }}" method="GET" enctype="multipart/form-data">
+        <form action="{{ route("stagaire.affectation.store") }}" method="GET" enctype="multipart/form-data">
             {{-- @csrf --}}
             <div class="form-group {{ $errors->has('niveau_id') ? 'has-error' : '' }}">
                 <label for="niveau_id">{{ trans('global.groupe.fields.niveau_id') }}*</label>

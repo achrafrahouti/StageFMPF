@@ -16,6 +16,11 @@ class CreateLignestageStagePivotTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('Note')->nullable();
+            $table->double('presence')->nullable();
+            $table->double('motivation')->nullable();
+            $table->double('Assiduite')->nullable();
+            $table->double('integration')->nullable();
+            $table->double('connaissance')->nullable();
             $table->unsignedBigInteger('stagaire_id');
             $table->unsignedBigInteger('stage_id');
             $table->boolean('verify')->nullable();

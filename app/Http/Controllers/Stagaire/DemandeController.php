@@ -95,11 +95,14 @@ class DemandeController extends Controller
 
 
     public function print($id)
-    {
-        $demande=Demande::where('id',$id)->first();
-        $pdf = \PDF::loadView('stagaire..demandes.pdf', compact('demande'));
+    {   $stage=Stage::where('id',$id)->first();
+        $user=Auth::user();
+        $stagaire=$user->profile;
+        $verify=DB::table('notes')->where('stagaire_id',$stagaire->id)->where('stage_id',$stage->id)->first();
+        // return view('stagaire.notes.attestation', compact('stagaire','stage'));
+        $pdf = \PDF::loadView('stagaire.notes.attestation', compact('stagaire','stage'));
         
-        return $pdf->download('disney.pdf');
+        return $pdf->download('Attestaion.pdf');
     }
 }
 
