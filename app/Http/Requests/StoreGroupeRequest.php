@@ -24,9 +24,10 @@ class StoreGroupeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-            ]
+            'name' => 'bail|required',
+            'groupe_tot' => 'bail|required',
+            'groupe_sh' => 'bail|required',
+            'groupe_sgh' => 'bail|required',
         ];
     }
 }
