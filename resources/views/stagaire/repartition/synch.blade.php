@@ -23,7 +23,6 @@
   <div class="card">
       <div class="card-header">
         <div class="container-sm text-center">
-           <h1 class="badge badge-dark text-bold">{{ 'Planing  des Stages ' }}  </h1>
 </div>
     @can('groupe_create')
     <div style="margin-bottom: 10px;" class="row float-right">

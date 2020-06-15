@@ -23,7 +23,7 @@
                         {{-- <p class="text-muted">{{ trans('global.login') }}</p> --}}
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                <span class="input-group-text"><i class="fa fa-user    "></i></span>
                             </div>
                             <input name="email" type="text" class="form-control @if($errors->has('email')) is-invalid @endif" placeholder="{{ trans('global.login_email') }}">
                             @if($errors->has('email'))

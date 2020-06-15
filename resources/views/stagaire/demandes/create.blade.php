@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.create') }} {{ trans('global.demande.title_singular') }}
+        {{-- {{ trans('global.create') }} {{ trans('global.demande.title_singular') }} --}}
     </div>
 
     <div class="card-body">

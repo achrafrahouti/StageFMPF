@@ -32,17 +32,20 @@
                         </th>
                         <th>
                             {{-- {{ trans('global.groupe.fields.name') }} --}}
+                            CNE
+                        </th>
+                        <th>
+                            {{-- {{ trans('global.groupe.fields.groupe_tot') }} --}}
                             Nom
                         </th>
                         <th>
-                            {{ trans('global.groupe.fields.groupe_tot') }}
-                        </th>
-                        <th>
-                            {{ trans('global.groupe.fields.groupe_sh') }}
+                            Prenom
+
                         </th>
                         <th>
                             {{-- {{ trans('global.groupe.fields.groupe_sgh') }} --}}
-                            Sous_sous groupe
+                            {{ trans('global.groupe.fields.groupe_sh') }}
+
                         </th>
                         <th>
                             &nbsp;

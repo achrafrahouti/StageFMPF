@@ -45,7 +45,8 @@
                         <div class="row">
                             <div class="col-12 text-right">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                    {{ trans('global.reset_password') }}
+                                    {{-- {{ trans('global.reset_password') }} --}}
+                                    Recuperer mot de passe
                                 </button>
                             </div>
                         </div>

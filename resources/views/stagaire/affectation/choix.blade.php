@@ -16,7 +16,7 @@
 
 @endif
 <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong >   Affichage de liste des stagaire par  groupe ou plusieurs groupes </strong>
+    <strong >   Affichage de la liste des stagaires par  groupe ou plusieurs groupes </strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

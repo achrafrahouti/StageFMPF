@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <nav class="sidebar-nav ps ps--active-y">
+    <nav class="sidebar-nav">
 
         <ul class="nav">
            
@@ -241,10 +241,10 @@
             
                         <li class="nav-item">
                             <a href="{{ route("notes.ajax") }}" class="nav-link {{ request()->is('stagaire/notes') || request()->is('stagaire/notes`/*') ? 'active' : '' }}">
-                                <i class="fas fa-cubes nav-icon">
+                               
             
-                                </i>
-                                {{ 'Verification des '.trans('global.note.title') }}
+                               <i class="fa fa-check-circle-o nav-icon" aria-hidden="true"></i>
+                                {{ trans('global.note.title') }}
                             </a>
                         </li>
                         @endif
