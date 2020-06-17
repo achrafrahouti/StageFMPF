@@ -18,7 +18,7 @@ class CreateSecretairesTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->unsignedBigInteger('service_id')->nullable();
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
         });
     }

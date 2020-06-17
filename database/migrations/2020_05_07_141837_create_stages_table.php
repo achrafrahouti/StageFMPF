@@ -17,7 +17,7 @@ class CreateStagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->unsignedBigInteger('niveau_id');
             $table->foreign('niveau_id')->references('id')->on('niveaux');
             $table->timestamps();

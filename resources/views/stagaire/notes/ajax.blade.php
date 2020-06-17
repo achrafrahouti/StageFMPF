@@ -78,8 +78,9 @@
                     {{ trans('global.repartition.fields.groupe_helper') }}
                 </p>
             </div>
-            <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
-
+            <button class="btn btn btn-info float-right">
+                suivant <span class="fas fa-arrow-right"></span>
+        </button>
         </div>
         </form>
 

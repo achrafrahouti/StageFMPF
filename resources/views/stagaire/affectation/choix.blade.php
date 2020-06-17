@@ -55,18 +55,19 @@
     <div class="card-body">
         <form action="{{ route('stagaire.affectation.afficher') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            <div class="form-group"  {{ $errors->has('groupes') ? 'has-error' : '' }}>
                 <label for="groupes">{{-- {{ trans('global.repartition.fields.groupe') }} --}}Groupe*
                     <span class="btn btn-info btn-xs select-all">Select all</span>
                     <span class="btn btn-info btn-xs deselect-all">Deselect all</span></label>
                 <select name="groupes[]" id="groupes" class="form-control select2" multiple="multiple">
-
                 </select>
                 <p class="helper-block">
                     {{ trans('global.repartition.fields.groupe_helper') }}
                 </p>
-            </div>
-            <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}" >
+            </div> 
+                   <button class="btn btn btn-info float-right">
+                           suivant <span class="fas fa-arrow-right"></span>
+                   </button>
         </form>
 
     </div>

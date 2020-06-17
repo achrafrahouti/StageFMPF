@@ -19,7 +19,7 @@ class CreateEtudiantsTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')->references('id')->on('niveaux');
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('cascade');
             $table->timestamps();
         });
     }

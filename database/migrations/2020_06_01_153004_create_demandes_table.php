@@ -22,8 +22,8 @@ class CreateDemandesTable extends Migration
             $table->text('objet_dem');
             $table->boolean('demande_validé')->nullable();
             $table->timestamps();
-            $table->foreign('id_stagaire')->references('id')->on('stagaires');
-            $table->foreign('id_stage')->references('id')->on('stages');
+            $table->foreign('id_stagaire')->references('id')->on('stagaires')->onDelete('cascade');
+            $table->foreign('id_stage')->references('id')->on('stages')->onDelete('cascade');
         });
     }
 

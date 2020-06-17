@@ -57,11 +57,11 @@ class RepartitionController extends Controller
         $collections['groupes']=$groupes;
         return json_encode($collections);
 
-    }
-
+    } 
+ 
     public function partitionner(Request $request)
     {
-
+        $this->validate($request,['periode_id'=>'required','groupes'=>'array','groupes.*'=>'required']);
         $periode=Periode::where('id',$request->periode_id)->first();
         $stage=Stage::where('id',$request->stage_id)->first();
         $groupes=$request->groupes;
@@ -71,8 +71,14 @@ class RepartitionController extends Controller
             return redirect()->route('stagaire.repartition.show')->with('error','La repartition a été trompé, le nombre des périodes doit égale le nombre des groupes   ');
 
         }
+        $c1=DB::table('stage_groupe_periode')->where('periode_id',$request->periode_id)->where('stage_id',$request->stage_id)->first();
+        if (!$c1==null ) {
+            return redirect()->route('stagaire.repartition.show')->with('error','La repartition a été trompé,  ');
+
+        }
         foreach($groupes as $groupe)
         {
+
             $periode->stages()->attach($stage->id,['groupe_id'=>$groupe]);
         }
         $this->repartition($periode->id,$groupes,$stage->id);
@@ -150,7 +156,11 @@ class RepartitionController extends Controller
             $groupe=Groupe::where('id',$ligne->groupe_id)->first();
             $stagaires=$groupe->stagaires;
             foreach ($stagaires as  $stagaire) {
-                $stagaire->stages()->attach($ligne->stage_id);
+                $c1=DB::table('notes')->where('stagaire_id',$stagaire->id)->where('stage_id',$ligne->stage_id)->first();
+                if ($c1==null) {
+                                    $stagaire->stages()->attach($ligne->stage_id);
+
+                }
             }
         }
         return back()->with('succes','Operation a été  terminé avec succes');

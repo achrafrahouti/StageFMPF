@@ -17,8 +17,8 @@ class CreateStagairesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('etudiant_id');
             $table->unsignedBigInteger('groupe_id')->nullable();
-            $table->foreign('groupe_id')->references('id')->on('groupes');
-            $table->foreign('etudiant_id')->references('id')->on('etudiants');
+            $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('set null');
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
         });
     }
 

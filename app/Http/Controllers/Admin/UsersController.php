@@ -36,8 +36,9 @@ class UsersController extends Controller
     public function create()
     {
         abort_unless(\Gate::allows('user_create'), 403);
-
-        $roles = Role::all()->pluck('title', 'id');
+        $roles=Role::whereNotIN('title',['Etudiant'])->get()->pluck('title','id');
+        
+        // $roles = Role::where()->pluck('title', 'id');
         $services=Service::all();
 
         return view('admin.users.create', compact(['roles','services']));

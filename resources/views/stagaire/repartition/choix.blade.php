@@ -15,12 +15,19 @@
                 @foreach($niveaux as $id => $niveau)
                     <option id="niveau_id" value="{{ $niveau->id }}">
                         {{ $niveau->liblle }}
+                        
                     </option>
                 @endforeach
             <p class="helper-block"></p>
                 {{ trans('global.repartition.fields.niveau_id_helper') }}
             </p>
             </select>
+            @if ($errors->has('niveau_id'))
+            <em class="invalid-feedback">
+                {{ $errors->first('niveau_id') }}
+
+            </em>
+            @endif
         </div>
     </div>
 
@@ -37,7 +44,6 @@
                     {{ trans('global.repartition.fields.periode_helper') }}
                 </p>
             </div>
-
             <div class="form-group">
                 <label for="stage_id">{{-- {{ trans('global.repartition.fields.stage') }}* --}}Stage</label>
                 <select name="stage_id" id="stage_id" class="form-control select2" >
@@ -54,6 +60,12 @@
                 <select name="groupes[]" id="groupes" class=" form-control select2" multiple="multiple">
 
                 </select>
+                @if ($errors->has('groupes'))
+                <em class="invalid-feedback">
+                    {{ $errors->first('groupes') }}
+    
+                </em>
+                @endif
                 <p class="helper-block">
                     {{ trans('global.repartition.fields.groupe_helper') }}
                 </p>
@@ -86,10 +98,8 @@
 
                         $('#periode_id').empty();
                         if(periodes.length>0){
-                        for(i=0;i<periodes.length;i++){
-                            var periode="<option value='"+periodes[i].id+"'>"+periodes[i].name+"</option>";
+                            var periode="<option value='"+periodes[0].id+"'>"+periodes[0].name+"</option>";
                                                $('#periode_id').append(periode);
-                        }         
                     }
                         $('#stage_id').empty();
                         if(stages.length>0){

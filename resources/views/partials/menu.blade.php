@@ -130,7 +130,7 @@
             {{-- end secretaires--}}
             <li class="nav-item">
                 <a href="{{ route("affectation.choix") }}" class="nav-link {{ request()->is('stagaire/affectation') || request()->is('stagaire/affectation/*') ? 'active' : '' }}">
-                    <i class="fas fa-cubes nav-icon">
+                    <i class="fas fa-list-alt nav-icon">
                         
                     </i>
                     {{-- {{ trans('global.stage.title') }} --}}

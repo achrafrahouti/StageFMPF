@@ -29,6 +29,7 @@ class affectationController extends Controller
 
     public function afficher(Request $request)
     {
+        $this->validate( $request,['groupes'=>'required']);
         $groupes=Groupe::whereIn('id',$request->groupes)->get()->pluck('id');
         $arrGroupes=$groupes->toArray();
         $stagaires=Stagaire::whereIn('groupe_id',$arrGroupes)->get();

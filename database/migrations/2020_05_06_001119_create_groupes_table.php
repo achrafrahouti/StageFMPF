@@ -20,7 +20,7 @@ class CreateGroupesTable extends Migration
             $table->integer('groupe_sh');
             $table->integer('groupe_sgh');
             $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')->references('id')->on('niveaux');
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('cascade');
             $table->timestamps();
         });
     }

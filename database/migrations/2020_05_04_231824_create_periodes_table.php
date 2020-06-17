@@ -19,7 +19,7 @@ class CreatePeriodesTable extends Migration
             $table->date('date_debut');
             $table->date('date_fin');
             $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')->references('id')->on('niveaux');
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
