@@ -261,6 +261,11 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42', 
             ],
+            [   'id'         => '43',
+                'title'      => 'add_note',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42', 
+        ],
             
         ];
 

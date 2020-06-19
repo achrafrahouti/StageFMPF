@@ -99,10 +99,12 @@
                                 {{ $etudiant->prenom ?? '' }}
                             </td>
                             <td>
-
+                              @if ($etudiant->stagaire!=null)
                                 @foreach($etudiant->stagaire->stages as $key => $item)
                                     <span class="badge badge-info">{{$item->name}}</span>
                                 @endforeach
+                              @endif
+
                             </td>
 
 

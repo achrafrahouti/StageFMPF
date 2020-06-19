@@ -42,7 +42,7 @@ class ServicesSeeder extends Seeder
             ],
             [
                 'id'         => '4',
-                'name'       => 'Urgance',
+                'name'       => 'Urgence',
                 'capacite'   => '16',
                 'lieu'       => 'CHU FES',
                 // 'secretaire_id'=>null,
@@ -51,7 +51,7 @@ class ServicesSeeder extends Seeder
             ],
             [
                 'id'         => '5',
-                'name'       => 'LAbo',
+                'name'       => 'Laboratoire',
                 'capacite'   => '30',
                 'lieu'       => 'CHU FES',
                 // 'secretaire_id'=>null,

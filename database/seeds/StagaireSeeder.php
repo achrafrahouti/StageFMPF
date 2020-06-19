@@ -1,5 +1,6 @@
 <?php
 
+use App\Etudiant;
 use App\Stagaire;
 use Illuminate\Database\Seeder;
 
@@ -12,7 +13,8 @@ class StagaireSeeder extends Seeder
      */
     public function run()
     {
-        $stagaires=[
+
+        $stagaires1=[
             [
                 'id'=> '1',
                 'etudiant_id'=>'1',
@@ -64,17 +66,18 @@ class StagaireSeeder extends Seeder
                 'groupe_id'=>'4'
             ],
             ];
+            Stagaire::insert($stagaires1);
 
-            // sync stages with stagaire and insert notes
-            Stagaire::insert($stagaires);
+            // $etudiants=Etudiant::where('niveau_id',2)->where('id',1)->get();
+            // foreach ($etudiants as  $etudiant) {
+            //     $stagaires['etudiant_id']=$etudiant->id;
+            //     Stagaire::insert($stagaires);
+
+            // }
+            // sync stages with stagairin      Stagaire::insert($stagaires);
             $stagaires=Stagaire::all();
             foreach ($stagaires as $stagaire) {
-                $stagaire->stages()->attach([
-                    1 => ['note' => 12],
-                    2 => ['note' => 13],
-                    3 => ['note' => 14],
-                    4 => ['note' => 15],
-                ]);
+                $stagaire->stages()->attach([1 ,2 ,3 ,4 ,]);
             }
     }
 }

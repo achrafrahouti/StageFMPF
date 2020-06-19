@@ -42,6 +42,8 @@
 
                         </th>
                         <th>
+                            {{-- {{ trans('global.first_name') }} --}}CNE
+                        </th>                        <th>
                             {{-- {{ trans('global.first_name') }} --}}Nom
                         </th>
                          <th>
@@ -66,6 +68,9 @@
                         <tr data-entry-id="{{ $stagaire->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $stagaire->profile->etudiant->cne ?? '' }}
                             </td>
                             <td>
                                 {{ $stagaire->profile->etudiant->nom ?? '' }}

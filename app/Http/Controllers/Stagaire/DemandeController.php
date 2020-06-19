@@ -15,6 +15,10 @@ use Carbon\Carbon;
 use PDF;
 class DemandeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         // abort_unless(\Gate::allows('demande_access'), 403);

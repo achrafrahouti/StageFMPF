@@ -18,51 +18,100 @@ class StageSeeder extends Seeder
         [
         'id' => '1',
         'name'=>'Chirurgie A',
-        'service_id'=>'1',        
-        'niveau_id'=>'1',
+        'service_id'=>'6',        
+        'niveau_id'=>'2',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
         [
         'id' => '2',
         'name'=>'Chirurgie B',
-        'service_id'=>'1',
-        'niveau_id'=>'1',
+        'service_id'=>'6',
+        'niveau_id'=>'2',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
         [
         'id' => '3',
-        'name'=>' RadioX',
-        'service_id'=>'1',
-        'niveau_id'=>'1',
+        'name'=>' Urgences',
+        'service_id'=>'4',
+        'niveau_id'=>'2',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
         [
         'id' => '4',
-        'name'=>'LAbo 1',
+        'name'=>'Urgences',
         'service_id'=>'5',        
-        'niveau_id'=>'1',
+        'niveau_id'=>'2',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
         [
         'id' => '5',
-        'name'=>'Labo A',
+        'name'=>'Cardiologie',
+        'service_id'=>'5',
+        'niveau_id'=>'2',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+        [
+        'id' => '6',
+        'name'=>'Médecine Interne',
+        'service_id'=>'5',
+        'niveau_id'=>'2',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+                 [
+        'id' => '7',
+        'name'=>'CCV',
         'service_id'=>'5',
         'niveau_id'=>'1',
         'created_at'=> '2019-04-15 19:14:42',
         'updated_at'=> '2019-04-15 19:14:42',
         ],
-        [
-            'id' => '6',
-            'name'=>'Stage test repartition',
-            'service_id'=>'5',
-            'niveau_id'=>'1',
-            'created_at'=> '2019-04-15 19:14:42',
-            'updated_at'=> '2019-04-15 19:14:42',
-            ],
+                 [
+        'id' => '8',
+        'name'=>'Pneumologie',
+        'service_id'=>'5',
+        'niveau_id'=>'1',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+                 [
+        'id' => '9',
+        'name'=>'Gastro-entéro',
+        'service_id'=>'2',
+        'niveau_id'=>'1',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+                 [
+        'id' => '10',
+        'name'=>'Chir Thoracique',
+        'service_id'=>'6',
+        'niveau_id'=>'1',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+                 [
+        'id' => '11',
+        'name'=>'Médecine Interne',
+        'service_id'=>'5',
+        'niveau_id'=>'1',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+                 [
+        'id' => '12',
+        'name'=>'Laboratoire',
+        'service_id'=>'5',
+        'niveau_id'=>'1',
+        'created_at'=> '2019-04-15 19:14:42',
+        'updated_at'=> '2019-04-15 19:14:42',
+        ],
+            
     ];
     Stage::insert($stages);
     DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[1,1,1,1 ]);
@@ -80,11 +129,11 @@ class StageSeeder extends Seeder
     DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[13,3,3,5 ]);
     DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[14,3,4,1 ]);
     DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[15,3,5,2 ]);
-    DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[16,4,1,4 ]);
-    DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[17,4,2,5 ]);
-    DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[18,4,3,1 ]);
-    DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[19,4,4,2 ]);
-    DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[20,4,5,3 ]);
+    // DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[16,4,1,4 ]);
+    // DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[17,4,2,5 ]);
+    // DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[18,4,3,1 ]);
+    // DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[19,4,4,2 ]);
+    // DB::insert('insert into stage_groupe_periode (id, stage_id , groupe_id , periode_id) values (?, ?, ?, ?)',[20,4,5,3 ]);
 
 
     }

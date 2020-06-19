@@ -127,7 +127,14 @@
             </div>
             <div>
                 <input size="12" type="hidden" name="isEncadrant" value="{{ Auth::user()->isEncadrant()}}">
-                <input size="12" class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+                @if (Auth::user()->isEncadrant())
+                <input size="12" class="btn btn-danger" type="submit" value="Valider">
+
+                @endif
+                @if (!Auth::user()->isEncadrant())
+                    <input size="12" class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
+
+                @endif
             </div>
         </form>
     </div>
