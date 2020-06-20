@@ -9,12 +9,12 @@
     <div class="card-body">
         <form action="{{ route("admin.users.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{-- {{ trans('global.user.fields.name') }} --}}Nom*</label>
-                <input type="text" id="name" name="prenom" class="form-control" >
-                @if($errors->has('name'))
+            <div class="form-group {{ $errors->has('nom') ? 'has-error' : '' }}">
+                <label for="nom">{{-- {{ trans('global.user.fields.name') }} --}}Nom*</label>
+                <input type="text" id="nom" name="nom" class="form-control" >
+                @if($errors->has('nom'))
                     <em class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('nom') }}
                     </em>
                 @endif
                 <p class="helper-block">
@@ -22,12 +22,12 @@
                 </p>
             </div>
             {{-- last_name --}}
-            <div class="form-group {{ $errors->has('lastname') ? 'has-error' : '' }}">
-                <label for="lastname">{{-- {{ trans('global.user.fields.lastname') }} --}}Prenom*</label>
-                <input type="text" id="lastname" name="nom" class="form-control">
-                @if($errors->has('lastname'))
+            <div class="form-group {{ $errors->has('prenom') ? 'has-error' : '' }}">
+                <label for="prenom">{{-- {{ trans('global.user.fields.lastname') }} --}}Prenom*</label>
+                <input type="text" id="prenom" name="prenom" class="form-control">
+                @if($errors->has('prenom'))
                     <em class="invalid-feedback">
-                        {{ $errors->first('lastname') }}
+                        {{ $errors->first('prenom') }}
                     </em>
                 @endif
                 <p class="helper-block">

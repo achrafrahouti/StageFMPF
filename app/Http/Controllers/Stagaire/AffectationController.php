@@ -76,6 +76,9 @@ class affectationController extends Controller
             $j++;
         } 
         $stagaire= $etudiant->stagaire; 
+        if($stagaire==null){
+            return back()->with('not','Les comptes des stagiaires ne sont pas encore crées');
+        }
         $stagaire->groupe_id=$groupes[$j]->id;
         $stagaire->save();
         $i++;

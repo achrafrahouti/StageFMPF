@@ -18,52 +18,52 @@ class StagaireSeeder extends Seeder
             [
                 'id'=> '1',
                 'etudiant_id'=>'1',
-                'groupe_id'=>'1'
+                'groupe_id'=>'13'
             ],
             [
                 'id'=> '2',
                 'etudiant_id'=>'2',
-                'groupe_id'=>'1'
+                'groupe_id'=>'13'
             ],
             [
                 'id'=> '3',
                 'etudiant_id'=>'3',
-                'groupe_id'=>'2'
+                'groupe_id'=>'14'
             ],
             [
                 'id'=> '4',
                 'etudiant_id'=>'4',
-                'groupe_id'=>'2'
+                'groupe_id'=>'14'
             ],
             [
                 'id'=> '5',
                 'etudiant_id'=>'5',
-                'groupe_id'=>'3'
+                'groupe_id'=>'15'
             ],
             [
                 'id'=> '6',
                 'etudiant_id'=>'6',
-                'groupe_id'=>'3'
+                'groupe_id'=>'15'
             ],
             [
                 'id'=> '7',
                 'etudiant_id'=>'7',
-                'groupe_id'=>'4'
+                'groupe_id'=>'16'
             ],
             [
                 'id'=> '8',
                 'etudiant_id'=>'8',
-                'groupe_id'=>'4'
+                'groupe_id'=>'16'
             ],
             [
                 'id'=> '9',
                 'etudiant_id'=>'9',
-                'groupe_id'=>'4'
+                'groupe_id'=>'17'
             ],
             [
                 'id'=> '10',
                 'etudiant_id'=>'10',
-                'groupe_id'=>'4'
+                'groupe_id'=>'17'
             ],
             ];
             Stagaire::insert($stagaires1);

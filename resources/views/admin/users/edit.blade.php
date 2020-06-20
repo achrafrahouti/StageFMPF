@@ -10,12 +10,12 @@
         <form action="{{ route("admin.users.update", [$user->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-           <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label for="name">{{-- {{ trans('global.user.fields.name') }} --}}Prenom*</label>
-                <input type="text" id="name" name="prenom" class="form-control" value="{{$user->profile->prenom}}">
-                @if($errors->has('name'))
+           <div class="form-group {{ $errors->has('nom') ? 'has-error' : '' }}">
+                <label for="nom">{{-- {{ trans('global.user.fields.name') }} --}}Nom*</label>
+                <input type="text" id="nom" name="nom" class="form-control" value="{{$user->profile->nom}}">
+                @if($errors->has('nom'))
                     <em class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('nom') }}
                     </em>
                 @endif
                 <p class="helper-block">
@@ -23,12 +23,12 @@
                 </p>
             </div>
             {{-- last_name --}}
-            <div class="form-group {{ $errors->has('lastname') ? 'has-error' : '' }}">
-                <label for="lastname">{{-- {{ trans('global.user.fields.lastname') }} --}}Nom*</label>
-                <input type="text" id="lastname" name="nom" class="form-control" value="{{$user->profile->nom}}">
-                @if($errors->has('lastname'))
+            <div class="form-group {{ $errors->has('prenom') ? 'has-error' : '' }}">
+                <label for="prenom">{{-- {{ trans('global.user.fields.lastname') }} --}}Prenom*</label>
+                <input type="text" id="prenom" name="prenom" class="form-control" value="{{$user->profile->prenom}}">
+                @if($errors->has('prenom'))
                     <em class="invalid-feedback">
-                        {{ $errors->first('lastname') }}
+                        {{ $errors->first('prenom') }}
                     </em>
                 @endif
                 <p class="helper-block">
@@ -62,8 +62,9 @@
                     {{ trans('global.user.fields.email_helper') }}
                 </p>
             </div>
+            {{--  
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label for="password">{{-- {{ trans('global.user.fields.password') }} --}}Mot de passe</label>
+                <label for="password">{{ trans('global.user.fields.password') }}Mot de passe</label>
                 <input type="password" id="password" name="password" class="form-control">
                 @if($errors->has('password'))
                     <em class="invalid-feedback">
@@ -73,7 +74,7 @@
                 <p class="helper-block">
                     {{ trans('global.user.fields.password_helper') }}
                 </p>
-            </div>
+            </div>    --}}
             <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
                 <label for="roles">{{ trans('global.user.fields.roles') }}*</label>
                 <select name="roles[]" id="roles" class="form-control select2">

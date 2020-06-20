@@ -22,7 +22,7 @@ class SecretaireSeeder extends Seeder
             'id'=>1,
             'nom'=>'Abdo',
             'prenom'=>'Rahou',
-            'service_id'=>'1',
+            'service_id'=>'6',
             'created_at'     => '2019-04-15 19:13:32',
             'updated_at'     => '2019-04-15 19:13:32',
 
@@ -38,7 +38,7 @@ class SecretaireSeeder extends Seeder
             'id'=>1,
             'nom'=>'Achraf',
             'prenom'=>'Rahou',
-            'service_id'=>'1',
+            'service_id'=>'6',
             'created_at'     => '2019-04-15 19:13:32',
             'updated_at'     => '2019-04-15 19:13:32',
 
@@ -82,7 +82,7 @@ class SecretaireSeeder extends Seeder
                 'id'=>6,
                 'nom'=>'Achraf',
                 'prenom'=>'Rahou',
-                'service_id'=>'6',
+                'service_id'=>'1',
                 'created_at'     => '2019-04-15 19:13:32',
                 'updated_at'     => '2019-04-15 19:13:32',
     

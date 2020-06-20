@@ -104,7 +104,7 @@
                         var periodes=data.periodes;
                         var stages=data.stages;
                         var groupes=data.groupes;
-
+ 
                         $('#stage_id').empty();
                         if(stages.length>0){
                         for(i=0;i<stages.length;i++){

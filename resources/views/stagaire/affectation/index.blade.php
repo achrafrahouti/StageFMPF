@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@if (session('not'))
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Succes</strong>    {{ session('not') }}!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+@endif
 <div class="card">
     <div class="card-header">
        {{--  {{ trans('global.create') }} {{ trans('global.groupe.title_singular') }} --}}

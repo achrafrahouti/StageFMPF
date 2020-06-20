@@ -44,8 +44,9 @@ class UsersController extends Controller
         return view('admin.users.create', compact(['roles','services']));
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest  $request)
     {
+        
         abort_unless(\Gate::allows('user_create'), 403);
         if($request->roles[0]==4)
         {   $encadrant=Encadrant::create($request->except(['email','password']));
