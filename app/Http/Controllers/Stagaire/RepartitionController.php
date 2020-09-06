@@ -41,7 +41,6 @@ class RepartitionController extends Controller
         
         $niveaux=Niveau::all();
         return view('stagaire.repartition.choix',compact('niveaux'));
-;
     }
 
     /**
